@@ -54,12 +54,9 @@ function extract_summary(){
     
     //filter only numericals based on their existance in run.logs.js
     com = com.filter(function(d,i){
-	var exist=false;
-	logs.map(function(l){
-	    if(l.right==d[2]){
-		exist=true;}//break;}
-	})
-	return exist;});
+	//This is to filter only numericals.
+	return(ips[d[2]].valueSig == ("I"||"J"||"S"||"Z"||"D"||"F"));
+    });
 //    cov = cov.filter(function(d,i){return mean[i]>0?true:false})
 //    mean = mean.filter(function(d){return(d>0?true:false)})
     //for(var i=0;i<com.length;i++)

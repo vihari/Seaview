@@ -107,14 +107,6 @@ function clear_all(className) {
     }
 }
 
-function togglePush(obj){
-    if(obj.checked){
-	document.getElementById('push').innerHTML="</br></br></br></br></br></br></br></br></br></br></br>";
-    }
-    else{
-	document.getElementById('push').innerHTML="";
-    }
-}
 function filterBy(obj,parameter,ModePlot,ModeSelect){
     var logs = file_content.split('</br>');
     var ToDisplay = "";
@@ -184,6 +176,14 @@ function filterBy(obj,parameter,ModePlot,ModeSelect){
 			break;
 		    }
 		}
+		if(parameter=="class")
+		    if(log.className==obj.className)
+			ToDisplay+=logs[i]+"</br>";
+
+		if(parameter=="method")
+		    if(log.methodName==obj.methodName)
+			ToDisplay+=logs[i]+"</br>";
+		
 		if(parameter=="dim"){
 		    if(log.dimensionID==obj.dimensionID){
 			ToDisplay+=logs[i]+"</br>";
@@ -371,6 +371,7 @@ function colorizeDims(content){
     var dims = new Array();
     var ToDisplay="";
     var first=true;
+    var delim = "  ;;"
     for(var i=0,line;i<logs.length;i++){
 	line = logs[i];
 	var st,ip_num;
@@ -409,15 +410,16 @@ function colorizeDims(content){
 		    var mn = Math.min(r,g,b);
 		    if((mx+mn)/512.0>=(0.5)){
 			if(!HideInfo)
-			    line = line.replace(iter[j],'<span id="SV'+i+'" onclick="group('+s+')" style="background-color:black;color:'+color+'">'+sv[2]+"</span>"+"ClassName:"+ips[s]["className"]+"Method:"+ips[s]["methodName"]+"line:"+ips[s]["lineNum"]);
+			    line = line.replace(iter[j],'<span id="SV'+i+'" onclick="group('+s+')" style="background-color:black;color:'+color+'">'+sv[2]+delim+"ClassName:"+ips[s]["className"]+" Method:"+ips[s]["methodName"]+" line: "+ips[s]["lineNum"]+delim+"</span>");
 			if(HideInfo)
 			    line = line.replace(iter[j],'<span id="SV'+i+'" onclick="group('+s+')" style="background-color:black;color:'+color+'">'+sv[2]+"</span>");
 		    }
-		    else
+		    else{
 			if(!HideInfo)
-			    line = line.replace(iter[j],'<span id="SV'+i+'" onclick="group('+s+')" style="background-color:white;color:'+color+'">'+sv[2]+"</span>"+"ClassName:"+ips[s]["className"]+"Method:"+ips[s]["methodName"]+"line:"+ips[s]["lineNum"]);
-		    else
-			line = line.replace(iter[j],'<span id="SV'+i+'" onclick="group('+s+')" style="background-color:white;color:'+color+'">'+sv[2]+"</span>");
+			    line = line.replace(iter[j],'<span id="SV'+i+'" onclick="group('+s+')" style="background-color:white;color:'+color+'">'+sv[2]+delim+"ClassName:"+ips[s]["className"]+" Method:"+ips[s]["methodName"]+" line:"+ips[s]["lineNum"]+delim+"</span>");
+			else
+			    line = line.replace(iter[j],'<span id="SV'+i+'" onclick="group('+s+')" style="background-color:white;color:'+color+'">'+sv[2]+"</span>");
+		    }
 		}
 	    }
 	    else{
@@ -428,7 +430,7 @@ function colorizeDims(content){
 		    var dim;
 		    
 		    var s = ip_num;
-		    dim = ips[s]["dimsnsionID"];
+		    dim = ips[s]["dimensionID"];
 		    /*for(s=0,log;s<ips.length;s++){
 			log = ips[s];
 			if(log.IPNum == ip_num){
@@ -452,13 +454,13 @@ function colorizeDims(content){
 		    //TODO:make this more scalable. I mean HideInfo, HideSV and all.
 		    if((mx+mn)/512.0>=(0.5)){
 			if(!HideInfo)
-			    line = line.replace(iter[j],'<span id="SV'+i +'" onclick="group('+s+')" style="background-color:black;color:'+color+'">'+iter[j]+"ClassName:"+ips[s]["className"]+"Method:"+ips[s]["methodName"]+"line:"+ips[s]["lineNum"]);		   		
+			    line = line.replace(iter[j],'<span id="SV'+i +'" onclick="group('+s+')" style="background-color:black;color:'+color+'">'+iter[j]+delim+"ClassName:"+ips[s]["className"]+" Method:"+ips[s]["methodName"]+" line:"+ips[s]["lineNum"]+delim+"</span>");		   		
 			else
-			    line = line.replace(iter[j],'<span id="SV'+i +'" onclick="group('+s+')" style="background-color:black;color:'+color+'">');		   		
+			    line = line.replace(iter[j],'<span id="SV'+i +'" onclick="group('+s+')" style="background-color:black;color:'+color+'">'+iter[j]+"</span>");		   		
 		    }
 		    else{
 			if(!HideInfo)
-			    line = line.replace(iter[j],'<span id="SV'+i+'" onclick="group('+s+')" style="background-color:white;color:'+color+'">'+iter[j]+"</span>"+"ClassName:"+ips[s]["className"]+"Method:"+ips[s]["methodName"]+"line:"+ips[s]["lineNum"]);		   
+			    line = line.replace(iter[j],'<span id="SV'+i+'" onclick="group('+s+')" style="background-color:white;color:'+color+'">'+iter[j]+delim+"ClassName:"+ips[s]["className"]+" Method:"+ips[s]["methodName"]+" line:"+ips[s]["lineNum"]+delim+"</span>");		   
 			else
 			    line = line.replace(iter[j],'<span id="SV'+i+'" onclick="group('+s+')" style="background-color:white;color:'+color+'">'+iter[j]+"</span>");
 		    }

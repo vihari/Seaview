@@ -1,6 +1,16 @@
 zip.workerScriptsPath = "WebContent/";
 var files;
-var model;
+var model
+
+function elementInDocument(element) {
+    while (element = element.parentNode) {
+        if (element == document) {
+            return true;
+        }
+    }
+    return false;
+}
+
 (function(obj) {
 
     if (window.addEventListener) {
@@ -146,19 +156,25 @@ function handle_storage(e){
 function show(file){
     var path = localStorage.getItem("file");
     var zip_file = files.name.split(".")[0];
+    console.log("triggered")
     path = path.split(".").join("/");
     file = zip_file+"/"+path+".java";
+    //in some cases of reason unknown files are not given the prefix from zip file name.
+    var file_other = path+".java"
     var body = document.getElementById("body");
     var div = document.getElementById("container");
-    body.removeChild(div);
+    if(elementInDocument(div))
+	body.removeChild(div);
     var parent=document.createElement("container");
     parent.id="container"
     var child=document.createElement("pre");
 	    
     model.getEntries(files, function(entries) {
-	console.log(files);
+	console.log(file);
+	console.log(file_other);
 	entries.forEach(function(entry) {
-	    if(entry.filename==file/*"muse-src/edu/stanford/muse/xword/Crossword.java"*/){
+	    console.log(entry.filename)
+	    if(entry.filename==(file_other)||(entry.filename==file)/*"muse-src/edu/stanford/muse/xword/Crossword.java"*/){
 		entry.getData(new zip.TextWriter(), function(text) {
 		    document.getElementById("control").style.display="none";
 		    text = text.replace(/[\/\**\*\/]/g,"");
