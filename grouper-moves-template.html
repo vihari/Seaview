@@ -1,0 +1,27 @@
+<html>
+<head>
+<title>Grouper moves</title>
+<link href="js/muse.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/png" href="images/muse-favicon.png"/>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/protovis-d3.2.js"></script>
+<script type="text/javascript" src="js/muse.js"></script>
+<script type="text/javascript" src="js/move-graph.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+var json = JSON_HERE;
+var search_func = draw_move_graph(json);
+</script>
+<div id="message" class="rounded" style="display:none;padding:10px;background-color:rgba(0,0,0,0.5); position:fixed;left:300px;top:20px;width:520px">
+</div>
+
+<div class="rounded" style="display:block;padding:10px;background-color:rgba(0,0,0,0.5); position:fixed;left:860px;top:20px;width:200px">
+Search 
+<input type="text" id="searchTerm" name="searchTerm" onkeyup="search_func(this.value)" size="12"/>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+#! /usr/bin/perl
+my $str = "Size 1091: 1 unit set(s)";
+my @spl = split(/['\n':' ']/,str)
+print @spl

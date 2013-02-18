@@ -1,0 +1,28 @@
+<html>
+<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="protovis-r3.2.js"></script>
+<link href="seaview.css" rel="stylesheet" type="text/css"/>
+
+<body style="width:10000px">
+<script type="text/javascript" src="SEAVIEW/run.logs.js"></script>
+<script type="text/javascript"> 
+
+var log = function(mesg)
+{
+//  alert ('logging ' + mesg);
+    if (typeof console != 'undefined')
+        console.log(mesg);
+}
+
+function uniques(a)
+{
+	var unique = 0;
+	var flags = new Array();
+	a.forEach(function(d) { var v = d.toString(); if (!flags[v]) { unique++; flags[v] = true;} });
+	return unique;
+}
+
+var nVars = uniques(logs.map(function(d) { return ips[d.right].unit_num; }));
+</div>
+</body>
+</html>

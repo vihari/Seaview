@@ -1,0 +1,272 @@
+<html>
+<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="protovis-r3.2.js"></script>
+<link href="seaview.css" rel="stylesheet" type="text/css"/>
+
+<body style="width:10000px">
+<script type="text/javascript" src="SEAVIEW/run.logs.js"></script>
+<script type="text/javascript" src="SEAVIEW/info.js"></script>
+<script type="text/javascript" src="SEAVIEW/unit_names.js"></script>
+
+<div id="message" class="rounded" style="display:none;padding:10px;background-color:rgba(0,0,0,0.5); position:fixed;left:500px;top:100px;width:520px"></div>
+<script type="text/javascript"> 
+var color_by_dimension = true;
+
+var log = function(mesg)
+{
+//  alert ('logging ' + mesg);
+    if (typeof console != 'undefined')
+        console.log(mesg);
+}
+
+
+// converts fq class names to simple names
+// e.g. a.b.c.d to d
+function strip_package_from_class_name (class_name)
+{
+    // System.out.print ("input is " + s);
+
+    var z = class_name.lastIndexOf ('.');
+    if (z >= 0)
+        class_name = class_name.substring (z+1);
+    else
+    {
+        z = class_name.lastIndexOf ('/');
+        if (z >= 0)
+            class_name = class_name.substring (z+1);
+    }
+    return class_name;
+}
+
+function unique_elements(a)
+{
+	var unique = 0;
+	var flags = new Array();
+	var u = new Array();
+	a.forEach(function(d) { var v = d.toString(); if (!flags[v]) { unique++; flags[v] = true; u.push(v); }});
+    return u;
+}
+
+function uniques(a)
+{
+	var unique = 0;
+	var flags = new Array();
+	a.forEach(function(d) { var v = d.toString(); if (!flags[v]) { unique++; flags[v] = true;} });
+	return unique;
+}
+
+var nVars = uniques(logs.map(function(d) { return ips[d.right].unit_num; }));
+var nDims = uniques(logs.map(function(d) { return ips[d.right].dimensionID; }));
+var nDimsInIPs = uniques(ips.map(function(d) { return d.dimensionID; }));
+
+if (typeof logname == 'undefined')
+	logname = 'UNNAMED';
+document.write ("Log " + logname + " has " + logs.length + " log records from " + nVars + " variables across " + nDims + " dimensions.<br/>"); 
+document.write ("(Total instrumented: " + ips.length + " variables across " + nDimsInIPs + " dimensions)<br/>"); </script>
+Currently the only action available is to select one of the units and see the bar chart of its magnitude across time. <br/>
+Initially all units are selected (temporarily for debug).
+<p>
+<div style="float:left">
+<div align="center">Control panel</div>
+<div id="control">
+<div id="units"><span class="header">Units</span>
+<hr/>
+
+</div>
+
+<br/>
+<span class="header">Filter</span>
+<hr/>
+
+<input size="30" value="(To be implemented)"></input>
+<br/><br/>
+<span class="header">Encoding</span>
+<hr/>
+<table>
+<tr><td>X-Axis: </td><td><input size="30" value="Time"></input></td></tr>
+<tr><td>Y-Axis:</td><td><input size="30" value="Magnitude"></input></td></tr>
+<tr><td>Color: </td><td><input size="30" value="Color assigned to unit"></input></td></tr>
+</table>
+<br/>
+<span class="header">Actions</span><br/>
+
+<hr/>
+<table>
+<tr><td>Hover </td><td> <input size="30" value="Default hover action"></input></td></tr>
+<tr><td>Click </td><td> <input size="30" value="Default click action"></input></td></tr>
+</table>
+<div id="info">
+</div>
+</div>
+</div>
+
+<div style="float:left" id="graphs">
+
+<script type="text/javascript">
+function bump(a, i)
+{
+	if (typeof a[i] == 'undefined')
+		a[i] = 1;
+	else 
+		a[i]++;
+}
+
+var vis = null, mainBar = null;
+var colorPalette = [ "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",
+                     "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"];
+
+function display_data(x_data, y_height)
+{
+	$('svg').remove();
+	if (x_data.length == 0)
+		return;
+		
+	var H = y_height, BAR_WIDTH = 5, W = BAR_WIDTH * x_data.length + 100;
+	var maxValue = pv.max(x_data.map(function(d) { return d.left; } ));
+	log('maxValue = ' + maxValue);
+	var y = pv.Scale.linear(0, maxValue).range(5, H);
+	var x = pv.Scale.linear(0, x_data.length).range(0, BAR_WIDTH*x_data.length);
+
+	vis = new pv.Panel().width(W+100).height(H+150).overflow('visible');
+	var mainPanel = vis.add(pv.Panel).height(H).width(W).bottom(120).left(50);
+	
+	mainBar = mainPanel.add(pv.Bar);
+
+	mainBar
+	.data(x_data)
+	.height(function(d) { return Math.floor(y(d.left)); } )
+	.width(BAR_WIDTH)
+	.bottom(0)
+	.left(function(d) { return this.index * BAR_WIDTH; })
+	.fillStyle(function(d) { 	var ip_num = d.right;
+                                var cid = (!color_by_dimension) ? ip_num : ips[ip_num].dimensionID; return colorPalette[cid%colorPalette.length];})
+	//.strokeStyle('yellow')
+	//.lineWidth(function() { return is_selected(this.index) ? 3: 0;})
+	.event("mouseover", function(d) { 
+			var xIdx = this.index;
+			var ip_num = d.right;
+			log ('ip_num = ' + ip_num + ' unit_num = ' + uid);
+            if (color_by_dimension)
+            {
+			    var did = ips[ip_num].unit_num;
+			    var dname = rep_names[did].name;
+			    $('#message').html('Dimension: ' + dname + ' IP#' + ip_num + ' Value = ' + d.left);
+            }
+            else
+            {
+			    var uid = ips[ip_num].unit_num;
+			    var uname = unit_names[uid];
+			    $('#message').html('Unit: ' + uname.name + ' IP#' + ip_num + ', Value = ' + d.left);
+            }
+			$('#message').show();
+		})
+	.event("mouseout", function() { $('#message').hide();})
+	.event("click", function(e) { 
+			log ('selectedMove ' + this.index + ' e =  ' + dump_obj(e));
+			var move = moves[this.index];
+			if (!pv.event.shiftKey)
+				hilitedMoves = [];
+			log('hilitedMoves.length = ' + hilitedMoves.length);
+			hilitedMoves.push(this.index);
+			log(move.n1_createdby);
+			if (typeof move.n1_createdby != 'undefined')
+				hilitedMoves = hilitedMoves.concat(move.n1_createdby);
+			if (typeof move.n2_createdby != 'undefined')
+				hilitedMoves = hilitedMoves.concat(move.n2_createdby);
+		});
+	
+	var stColor = 'rgba(127,127,127,0.3)';
+	x_rule = mainPanel.add(pv.Rule).bottom(0).strokeStyle(stColor)
+			  .add(pv.Rule).data((x.ticks)).visible(function(d) { return d;}).left(x).bottom(0).height(5).strokeStyle(stColor)
+			  .anchor("bottom").add(pv.Label).text(function(d) { return d; });
+	
+	y_rule = mainPanel.add(pv.Rule).left(0).strokeStyle(stColor)
+			  .add(pv.Rule).data(y.ticks()).bottom(y).width(5).strokeStyle(stColor)
+			  .anchor("left").add(pv.Label).text(function(d) {return d;});
+
+	vis.render();
+	
+
+}
+
+function info_about_dimension(records, dim_id)
+{
+      var filtered_logs = records.filter(function(d) { if (ips[d.right].dimensionID == dim_id) { return true; } } );
+      log (filtered_logs.length + ' instances of dimension ' + dim_id);
+      var min = pv.min(filtered_logs.map(function(d) { return d.left; }));
+      var max = pv.max(filtered_logs.map(function(d) { return d.left; }));
+      var unique = uniques(filtered_logs.map(function(d) { return d.left; })); 
+      var instances = filtered_logs.length;
+      return {'min': min, 'max': max, 'unique': unique, 'instances': instances, 'filtered': filtered_logs};
+}
+
+function select_unit(i)
+{
+	var target = event.target;
+	var already_selected = $(target).hasClass('selected'); 
+	$('.unit').removeClass('selected'); 
+	if (!already_selected)
+	{
+		log ('selecting ' + i);
+        color_by_dimension = false;
+		$(target).addClass('selected');
+        r = info_about_dimension(logs, i);
+        filtered_logs = r.filtered;
+
+        var unique_ips = unique_elements (filtered_logs.map(function(d) { return d.right; }));
+		var message =  "<br/>Info:<br/> " + log_counts[i] + " values from " + ip_counts[i] + " statements";
+		message += '<br/>range: [' + r.min + ", " + r.max + "] " + r.unique + " unique";
+        for (var x = 0; x < unique_ips.length; x++)
+        {
+            var ip = unique_ips[x];
+            var line_info = (ips[ip].lineNum >= 0) ? " line " + ips[ip].lineNum : "";
+		    message +=  "<br/><a href=\"#\" onclick=\"alert('should be hyperlinked to source');\">" + strip_package_from_class_name(ips[ip].className) + '.' + ips[ip].methodName + line_info + "</a>";
+        }
+
+		$('#info').html (message);
+	}
+	else
+	{
+        color_by_dimension = true;
+		log ('unselecting ' + i);
+		$('#info').html('');
+		filtered_logs = logs;
+	}
+	display_data (filtered_logs, 500);
+    }
+
+	// these are per dimension arrays, how many points, how many vars, how many records
+	var ip_counts = new Array();
+	var var_counts = new Array();
+	var log_counts = new Array();
+	$.each(ips, function(i, p) { var unit = p.dimensionID; bump(ip_counts, unit); });
+	$.each(logs, function(i, p) { var ip_num = p.right; var unit = ips[ip_num].dimensionID; bump(log_counts, unit); });	
+    var shown = 0;
+	$.each(rep_names, function(i) { 
+		if (!ip_counts[i] || !log_counts[i] || ip_counts[i] == 0 || log_counts[i] == 0) 
+        {
+           log ('disabling ' + i);
+			return; // don't show units which were never instrumented or logged
+        }
+		var color = colorPalette[shown%colorPalette.length];
+        shown++;
+
+		var style = 'style="display:inline;padding:1px; background-color:' + color + '"'; 
+ 		var x = "<div class=\"unitholder\"><span " + style + ">&nbsp;&nbsp;&nbsp;</span>";
+ 		x += "<span class=\"unit\" title=\"" + rep_names[i].long_name + "\" onclick=\"select_unit(" + i + ");\">&nbsp;" + rep_names[i].name + "</span></div>\n"; 
+
+
+        var r = info_about_dimension(logs, i);
+        if (r.min == r.max)
+            x += '<br/>(Fixed: ' + r.min + ')';
+		else
+            $('#units').append (x);  // don't show fixed values
+		log(x);});
+	
+	var filtered_logs = logs;
+	display_data (filtered_logs, 500);
+</script>
+
+</div>
+</body>
+</html>

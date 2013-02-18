@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<head>
+  <title>Read</title>
+</head>
+<body>
+  <input type="file" id="files" name="files[]" multiple />
+  <output id="list"></output>
+  <script>
+    function handleFileSelect(evt){
+    for (var i = 0, f; f = files[i]; i++) {
+    var files = evt.target.files; // FileList object
+    var reader = new FileReader();
+    reader.readAsDataURL(f);
+    }
+    }
+    document.getElementById('files').addEventListener('change', handleFileSelect, false);
+  </script>
+</body>
