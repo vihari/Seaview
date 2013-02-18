@@ -4,7 +4,11 @@ var UniqueDims;
 var UniqueUnits;
 var UnderDisplay=new String();
 var DimColors=new Array();
+
+//The default is to hide.
 var HideSV = true;
+var HideInfo = true;
+
 var ShowInstrumented = true;
 var UnderDisplayHTML;
 $(document).ready(function() {
@@ -88,6 +92,7 @@ function getElementsByClassName(node,classname) {
     })(classname, node);
   }
 }
+
 function clear_all(className) {
     var parent = getElementsByClassName(document, 'plot');
     parent=parent[0];
@@ -101,6 +106,7 @@ function clear_all(className) {
 	}
     }
 }
+
 function togglePush(obj){
     if(obj.checked){
 	document.getElementById('push').innerHTML="</br></br></br></br></br></br></br></br></br></br></br>";
@@ -218,6 +224,16 @@ function toggleSV(obj){
     }
     else{
 	HideSV = false;
+	colorizeDims(UnderDisplay);
+    }
+}
+function toggleInfo(obj){
+    if(obj.checked){
+	HideInfo = true;
+	colorizeDims(UnderDisplay);
+    }
+    else{
+	HideInfo = false;
 	colorizeDims(UnderDisplay);
     }
 }
@@ -370,14 +386,16 @@ function colorizeDims(content){
 		    var ip_num = parseInt(sv[1].slice(2,sv[1].length));
 		    var dim;
 		    var log;
-		    var s;
-		    for(s=0;s<ips.length;s++){
+
+		    var s = ip_num;
+		    dim = ips[s]["dimensionID"];
+		    /*for(s=0;s<ips.length;s++){
 			log = ips[s];
 			if(log.IPNum == ip_num){
 			    dim = log.dimensionID;
 			    break;
 			}
-		    }
+		    }*/
 		    var color;
 		    for(var m=0;m<UniqueDims.length;m++){
 			if(UniqueDims[m]==dim){
@@ -390,8 +408,14 @@ function colorizeDims(content){
 		    var mx = (r>g?r:g)>b?(r>g?r:g):b;
 		    var mn = Math.min(r,g,b);
 		    if((mx+mn)/512.0>=(0.5)){
-			line = line.replace(iter[j],'<span id="SV'+i+'" onclick="group('+s+')" style="background-color:black;color:'+color+'">'+sv[2]+"</span>");
+			if(!HideInfo)
+			    line = line.replace(iter[j],'<span id="SV'+i+'" onclick="group('+s+')" style="background-color:black;color:'+color+'">'+sv[2]+"</span>"+"ClassName:"+ips[s]["className"]+"Method:"+ips[s]["methodName"]+"line:"+ips[s]["lineNum"]);
+			if(HideInfo)
+			    line = line.replace(iter[j],'<span id="SV'+i+'" onclick="group('+s+')" style="background-color:black;color:'+color+'">'+sv[2]+"</span>");
 		    }
+		    else
+			if(!HideInfo)
+			    line = line.replace(iter[j],'<span id="SV'+i+'" onclick="group('+s+')" style="background-color:white;color:'+color+'">'+sv[2]+"</span>"+"ClassName:"+ips[s]["className"]+"Method:"+ips[s]["methodName"]+"line:"+ips[s]["lineNum"]);
 		    else
 			line = line.replace(iter[j],'<span id="SV'+i+'" onclick="group('+s+')" style="background-color:white;color:'+color+'">'+sv[2]+"</span>");
 		}
@@ -402,14 +426,16 @@ function colorizeDims(content){
 		    var sv = tag.split(":::");
 		    var ip_num = parseInt(sv[1].slice(2,sv[1].length));
 		    var dim;
-		    var s;
-		    for(s=0,log;s<ips.length;s++){
+		    
+		    var s = ip_num;
+		    dim = ips[s]["dimsnsionID"];
+		    /*for(s=0,log;s<ips.length;s++){
 			log = ips[s];
 			if(log.IPNum == ip_num){
 			    dim = log.dimensionID;
 			    break;
 			}
-		    }
+		    }*/
 		    var color;
 		    for(var m=0;m<UniqueDims.length;m++){
 			if(UniqueDims[m]==dim){
@@ -423,10 +449,19 @@ function colorizeDims(content){
 		    var mx = (r>g?r:g)>b?(r>g?r:g):b;
 		    var mn = Math.min(r,g,b);
 		    //line_num as the id
-		    if((mx+mn)/512.0>=(0.5))
-			line = line.replace(iter[j],'<span id="SV'+i +'" onclick="group('+s+')" style="background-color:black;color:'+color+'">'+iter[j]+"</span>");		   
-		    else
-			line = line.replace(iter[j],'<span id="SV'+i+'" onclick="group('+s+')" style="background-color:white;color:'+color+'">'+iter[j]+"</span>");		   
+		    //TODO:make this more scalable. I mean HideInfo, HideSV and all.
+		    if((mx+mn)/512.0>=(0.5)){
+			if(!HideInfo)
+			    line = line.replace(iter[j],'<span id="SV'+i +'" onclick="group('+s+')" style="background-color:black;color:'+color+'">'+iter[j]+"ClassName:"+ips[s]["className"]+"Method:"+ips[s]["methodName"]+"line:"+ips[s]["lineNum"]);		   		
+			else
+			    line = line.replace(iter[j],'<span id="SV'+i +'" onclick="group('+s+')" style="background-color:black;color:'+color+'">');		   		
+		    }
+		    else{
+			if(!HideInfo)
+			    line = line.replace(iter[j],'<span id="SV'+i+'" onclick="group('+s+')" style="background-color:white;color:'+color+'">'+iter[j]+"</span>"+"ClassName:"+ips[s]["className"]+"Method:"+ips[s]["methodName"]+"line:"+ips[s]["lineNum"]);		   
+			else
+			    line = line.replace(iter[j],'<span id="SV'+i+'" onclick="group('+s+')" style="background-color:white;color:'+color+'">'+iter[j]+"</span>");
+		    }
 		}
 	    }
 	    line = "<span id='line"+i+"'>"+line+"</span>";
