@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Scatter Plot</title>
+    <script type="text/javascript"
+	    src="d3/d3.v3.min.js"></script>
+    <script type="text/javascript" src="SEAVIEW/info.js"></script>
+    <script type="text/javascript" src="SEAVIEW/run.logs.js"></script>
+    <script type="text/javascript" src="SEAVIEW/units.js"></script>
+  </head>
+  <body>
+    <div id="plot">
+    </div>
+  </body>
+  
+  <link href="tipsy.css" rel="stylesheet" type="text/css" />
+  <svg>
+  <line fill="black" x1="50" x2="177.49790075416365" y1="159.73675836837356" y2="177.48019444797754"></line>
+  </svg>
+  <script type="text/javascript" src="jquery/jquery-1.6.2.min.js"></script>
+  <script type="text/javascript" src="js/jquery.tipsy.js"></script>
+  <script type="text/javascript" src="js/scatter_plot.js"></script>
+  
+</html>
