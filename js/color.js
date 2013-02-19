@@ -107,14 +107,14 @@ function clear_all(className) {
     }
 }
 
-function filterBy(obj,parameter,ModePlot,ModeSelect){
+function filterBy(obj,parameter,parameter_plot,ModePlot,ModeSelect){
     var logs = file_content.split('</br>');
     var ToDisplay = "";
     var first = true;
     var ip_num;
     var log;
     var log_ip;
-    if(ModePlot){
+    if(ModePlot&&(parameter_plot=="bar")){
 	dataset = []
 	for(var i=0;i<logs.length;i++){
 	    if(logs[i].search(/:::SV[0-9]*:::(?:(?!:::).)*:::/)>-1){
@@ -213,9 +213,11 @@ function filterBy(obj,parameter,ModePlot,ModeSelect){
 function group(j){
     var sel = document.getElementById("action_select");
     var value = sel.options[sel.selectedIndex].value;
+    var sel = document.getElementById("graph_type");
+    var value_plot = sel.options[sel.selectedIndex].value;
     var ModePlot = document.getElementById("plot_mode").checked;
     var ModeSelect = document.getElementById("select_mode").checked;
-    filterBy(ips[j],value,ModePlot,ModeSelect);
+    filterBy(ips[j],value,value_plot,ModePlot,ModeSelect);
 }
 function toggleSV(obj){
     if(obj.checked){
