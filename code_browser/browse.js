@@ -170,13 +170,13 @@ function show(file){
     var parent=document.createElement("container");
     parent.id="container"
     var child=document.createElement("pre");
-    var found = false;
+	    
     model.getEntries(files, function(entries) {
-//	console.log(file);
-//	console.log(file_other);
+	console.log(file);
+	console.log(file_other);
 	entries.forEach(function(entry) {
+	    console.log(entry.filename)
 	    if(entry.filename==(file_other)||(entry.filename==file)/*"muse-src/edu/stanford/muse/xword/Crossword.java"*/){
-		found = true;
 		entry.getData(new zip.TextWriter(), function(text) {
 		    document.getElementById("control").style.display="none";
 		    text = text.replace(/[\/\**\*\/]/g,"");
@@ -189,6 +189,9 @@ function show(file){
 	    }
 	})
     })
+<<<<<<< HEAD
     if(!found)
 	console.log("File Not found!!\n\n\n")
+=======
+>>>>>>> parent of 6bd58c1... issue #11
 };
