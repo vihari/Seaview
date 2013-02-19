@@ -163,6 +163,8 @@ function show(file){
     var file_other = path+".java"
     var body = document.getElementById("body");
     var div = document.getElementById("container");
+    console.log("file "+file)
+    console.log("file "+file_other)
     if(elementInDocument(div))
 	body.removeChild(div);
     var parent=document.createElement("container");
@@ -188,5 +190,5 @@ function show(file){
 	})
     })
     if(!found)
-	console.log("Not found!!\n\n\n")
+	console.log("File Not found!!\n\n\n")
 };
