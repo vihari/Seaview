@@ -6,10 +6,42 @@ var lightline = "#A6A2A2";
 var axis = 30;
 var padding=50;
 var dataset = [100,234,123,21,45,67,89,200,300,350,400];
+var com = [];
 
 var mean = makeArrayOf(0,ips.length)
 var count = makeArrayOf(0,ips.length)
 var cov = makeArrayOf(0,ips.length)
+
+function handle_storage(e){
+    //alert("called_handle")
+    if(!e)
+	e=window.event;
+    if(e.key=="scatter"){
+	console.log("scatter"+parseInt(e.newValue))
+	highlight_circle(parseInt(e.newValue));
+    }
+}
+
+function highlight_circle(ip){
+    console.log("high"+ip)
+    var i;
+    console.log(dataset)
+    for(i=0;i<dataset.length;i++)
+	if(ip==dataset[i][2])
+	    break;
+    var col = cols(ips[ip]["dimensionID"])
+    d3.select("#circle"+i).transition()
+	.delay(750)
+	.attr("style", "fill:"+col);
+    d3.select("#circle"+i).transition()
+	.delay(750)
+	.style("style", "fill:red");
+    d3.select("#circle"+i).transition()
+	.delay(750)
+	.attr("style", "fill:"+col);
+    	
+    d3.select("#circle"+(i)).attr( "style", "fill:red" );
+}
 
 function downlight( data, i, element ) {
     d3.select("#circle"+(i)).attr("stroke", function(d) { return d3.rgb( cols( ips[d[2]]["dimensionID"] )).darker(); });
@@ -32,7 +64,6 @@ function makeArrayOf(value, length) {
   return arr;
 }
 
-var com = [];
 var rad_sum = 0;
 var dim = makeArrayOf(0,ips.length)
 function extract_summary(){

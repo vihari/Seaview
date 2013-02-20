@@ -16,6 +16,19 @@ var codesize = 360;
 var nonesize = 60;
 $(document).ready(function() {
     //css is n't able to trigger the events properly in chrome and hence...
+    $("#rev_map").change(function(){
+	$('*[id^="SV"]').hover(function(){
+	    var g = this.onclick.toString();
+	    g = g.split("group\(");
+	    g = g[1].split("\)");
+	    g = g[0]
+	    if((($("#rev_map").attr("checked"))?true:false)){
+		console.log("set")
+		localStorage.setItem("scatter",g)
+	    }
+	});
+    });
+    
     $("#menu-nav-check").change(function(){
 	if(this.checked){
 	    $(".page-wrap").css("width","80%")

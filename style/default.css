@@ -29,6 +29,10 @@ a { text-decoration: none; }
     }
 }
 
+.main-header:hover{
+    background: black;
+}
+
 .main-header{
     z-index: 1000;
     left: 20px;
