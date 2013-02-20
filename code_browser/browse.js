@@ -19,7 +19,7 @@ function elementInDocument(element) {
 	window.attachEvent("onstorage", handle_storage);
     };
     var requestFileSystem = obj.webkitRequestFileSystem || obj.mozRequestFileSystem || obj.requestFileSystem;
-
+    console.log(requestFileSystem)
     function onerror(message) {
 	alert(message);
     }
