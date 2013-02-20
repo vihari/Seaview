@@ -12,6 +12,40 @@ var HideInfo = true;
 var ShowInstrumented = true;
 var UnderDisplayHTML;
 $(document).ready(function() {
+    $("#plot").change(function(){
+	if((this.checked)&&!($("#code").attr('checked')?true:false)){
+	    $("#log").css("top","260px");
+	    $("#log").height((window.innerHeight-260)+"px")
+	    console.log("called")
+	    //$("menu").width("20%")
+	    //$(".toggle-menu").left("20%")
+	}
+
+	else if(!($("#code").attr('checked')?true:false)){
+	    $("#log").css("top","50px");
+	    $("#log").height((window.innerHeight-50)+"px")
+	}
+    });
+    $("#code").change(function(){
+	if(this.checked){
+	    $("#log").css("top","360px");
+	    $("#log").height((window.innerHeight-360)+"px")
+	    console.log("called")
+	    //$("menu").width("20%")
+	    //$(".toggle-menu").left("20%")
+	}
+	else if(!($("#plot").attr('checked')?true:false)){
+	    $("#log").css("top","50px");
+	    $("#log").height((window.innerHeight-50)+"px")
+	}
+	else if(($("#plot").attr('checked')?true:false)){
+	    console.log("should")
+	    $("#log").css("top","260px");
+	    $("#log").height((window.innerHeight-260)+"px")
+	}
+    });
+    $("#log").height((window.innerHeight-50)+"px")
+    console.log(window.innerHeight);
     $( "#barchart" ).resizable({      
     });
     $("#barchart").bind("resize", function (event, ui) {
@@ -38,35 +72,36 @@ function showCode(){
     var obj=document.getElementById("code");
     if(obj.checked){
 	document.getElementById("code_area").style.display="block";
-	document.getElementById('log').style.marginTop='410px';
+//	document.getElementById('log').style.marginTop='410px';
 	//document.getElementById("code_area").style.marginTop="100px";
     }
     else{
-	document.getElementById("log").style.marginTop='110px';
+//	document.getElementById("log").style.marginTop='110px';
 	d3.select('#code_area').style('display','none')}
 }
 
 function toggleShowPlot(){
     obj = document.getElementById("plot");
     if(!obj.checked){
-	var sz= document.getElementById('log').style.marginTop.substr(0,3)
+	/*var sz= document.getElementById('log').style.marginTop.substr(0,3)
 	sz = parseInt(sz)
 	if(sz==310)//else something else is handling it.
-	    document.getElementById('log').style.marginTop='110px';
+	    document.getElementById('log').style.marginTop='110px';*/
 	d3.select('#barchart').style('display','none')}
     else{
-	var sz= document.getElementById('log').style.marginTop.substr(0,3)
+	/*var sz= document.getElementById('log').style.marginTop.substr(0,3)
 	sz = parseInt(sz)
 	console.log(sz)
 	if(sz<310)
 	    document.getElementById('log').style.marginTop="310px"
 	document.getElementById('barchart').style.height='210px';
-	document.getElementById('iframe_plot').style.height='206px';
+	document.getElementById('iframe_plot').style.height='206px';*/
 	var sel = document.getElementById('graph_type');
 	var value = sel.options[sel.selectedIndex].value;
 	if(value=='bar')document.getElementById('iframe_plot').src='bar.html';
 	else if(value=='scatter')document.getElementById('iframe_plot').src='scatter.html';
-	document.getElementById('log').style.marginTop='310px';
+	
+	//document.getElementById('log').style.marginTop='310px';
 	d3.select('#barchart').style('display','block')}
 }
 
