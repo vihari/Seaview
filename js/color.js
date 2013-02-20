@@ -11,40 +11,64 @@ var HideInfo = true;
 
 var ShowInstrumented = true;
 var UnderDisplayHTML;
+var plotsize = 260;
+var codesize = 360;
+var nonesize = 60;
 $(document).ready(function() {
+    //css is n't able to trigger the events properly in chrome and hence...
+    $("#menu-nav-check").change(function(){
+	if(this.checked){
+	    $(".page-wrap").css("width","80%")
+	    $(".page-wrap").css("position","relative")
+	    $(".plot").attr("width","80%")
+	    $("#code_area").attr("width","80%")
+	    $(".plot").css("left","20%")
+	    $("#code_area").css("left","20%")
+	    console.log("Here")
+	}
+	else{
+	    console.log("Here")
+	    $(".page-wrap").css("position","relative")
+	    $(".page-wrap").css("width","100%")
+	    $(".plot").attr("width","100%")
+	    $(".plot").css("left","10px")
+	    $("#code_area").css("left","10px")
+	    $("#code_area").attr("width","100%")
+	}
+    });
     $("#plot").change(function(){
 	if((this.checked)&&!($("#code").attr('checked')?true:false)){
-	    $("#log").css("top","260px");
-	    $("#log").height((window.innerHeight-260)+"px")
+	    $("#log").css("top",plotsize+"px");
+	    $("#log").height((window.innerHeight-plotsize)+"px")
 	    console.log("called")
 	    //$("menu").width("20%")
 	    //$(".toggle-menu").left("20%")
 	}
 
 	else if(!($("#code").attr('checked')?true:false)){
-	    $("#log").css("top","50px");
-	    $("#log").height((window.innerHeight-50)+"px")
+	    $("#log").css("top",nonesize+"px");
+	    $("#log").height((window.innerHeight-nonesize)+"px")
 	}
     });
     $("#code").change(function(){
 	if(this.checked){
-	    $("#log").css("top","360px");
-	    $("#log").height((window.innerHeight-360)+"px")
+	    $("#log").css("top",codesize+"px");
+	    $("#log").height((window.innerHeight-codesize)+"px")
 	    console.log("called")
 	    //$("menu").width("20%")
 	    //$(".toggle-menu").left("20%")
 	}
 	else if(!($("#plot").attr('checked')?true:false)){
-	    $("#log").css("top","50px");
-	    $("#log").height((window.innerHeight-50)+"px")
+	    $("#log").css("top",nonesize+"px");
+	    $("#log").height((window.innerHeight-nonesize)+"px")
 	}
 	else if(($("#plot").attr('checked')?true:false)){
 	    console.log("should")
-	    $("#log").css("top","260px");
-	    $("#log").height((window.innerHeight-260)+"px")
+	    $("#log").css("top",plotsize+"px");
+	    $("#log").height((window.innerHeight-plotsize)+"px")
 	}
     });
-    $("#log").height((window.innerHeight-50)+"px")
+    $("#log").height((window.innerHeight-nonesize)+"px")
     console.log(window.innerHeight);
     $( "#barchart" ).resizable({      
     });
@@ -181,7 +205,6 @@ function filterBy(obj,parameter,parameter_plot,ModePlot,ModeSelect){
 		document.getElementById('barchart').style.height = "210px";
 	    localStorage.setItem("data",dataset);
 	    if(document.getElementById("plot").checked){
-		document.getElementById("log").style.marginTop="310px";
 		document.getElementById("iframe_plot").height="206px";
 		document.getElementById("iframe_plot").src="bar.html";
 	    }
