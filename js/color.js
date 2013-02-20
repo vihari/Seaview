@@ -591,10 +591,10 @@ function highlight_line(ip){
 		//elem.style.color = "white";
 		//elem.style.backgroundColor = "black";
 
-		if(position>400)
-		    $("body").scrollTop(position-400);	
+		if(position>100)
+		    $("#log").scrollTop(position-100);	
 		else
-		    $("body").scrollTop(400-position);	
+		    $("#log").scrollTop(100-position);	
 		found = false;
 		break;
 	    }
