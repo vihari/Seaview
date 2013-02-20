@@ -14,11 +14,13 @@ var cov = makeArrayOf(0,ips.length)
 function downlight( data, i, element ) {
     d3.select("#circle"+(i)).attr("stroke", function(d) { return d3.rgb( cols( ips[d[2]]["dimensionID"] )).darker(); });
     d3.select("#line"+(i)).attr("style","stroke:"+lightline)
+    d3.select("#hor"+(i)).attr("style","stroke:"+lightline)
 }
 
 function highlight( data, i, element ) {
     //    d3.select(element).attr("stroke", function(d) { return d3.rgb( cols( ips[d[2]]["dimensionID"] )).brighter(); });
     d3.select("#line"+(i)).attr("style","stroke:#000000")
+    d3.select("#hor"+(i)).attr("style","stroke:#000000")
     d3.select("#circle"+(i)).attr( "stroke", "black" );
 }
 
@@ -114,6 +116,9 @@ var xAxis = d3.svg.axis()
 var yAxis = d3.svg.axis()
     .scale(yScale)
     .orient("left");
+var yAxis2 = d3.svg.axis()
+    .scale(yScale)
+    .orient("right");
 
 var cols = d3.scale.category20();//["red","blue","green","teal","steelblue"];
 
@@ -137,25 +142,39 @@ xval.map(function(d){x.push(d);})
 xval.map(function(d){x.push(d);})
 
 sel.selectAll("line")
-    .data(dataset)
+    .data(m)
     .enter().append("line")
     .attr("style","stroke:"+lightline)
     .attr("id",function(d,i){
-	return("line"+i)})
+	if(i<dataset.length)
+	return("line"+i)
+	else return("hor"+(i-dataset.length));})
     .attr("x1", function(d,i){
-	return xScale(x[i]);})
+	if(i<dataset.length)
+	    return xScale(x[i]);
+	else
+	    return xScale(0)})
     .attr("x2", function(d,i){
-	return xScale(x[i]);})
+	if(i<dataset.length)
+	    return xScale(x[i]);
+	else
+	    return xScale(w)})
     .attr("y1", function(d,i){
+	if(i<dataset.length){
 	var log = [];var ip=d[2]
 	logs.map(function(d){if(d.right==ip)log.push(d.left)})
-	return yScale(d3.max(log));})
+	return yScale(d3.max(log));}
+	else return(yScale(d[0]))})
     .attr("y2",function(d,i){
-	var log = [];var ip=d[2]
-	logs.map(function(d){if(d.right==ip)log.push(d.left)})
-	return yScale(d3.min(log));})
+	if(i<dataset.length){
+	    var log = [];var ip=d[2]
+	    logs.map(function(d){if(d.right==ip)log.push(d.left)})
+	    return yScale(d3.min(log));}
+	else return(yScale(d[0]))
+    })
     .on("mouseover", function(d, i) { highlight( d, i, this ); })
     .on("mouseout", function(d, i) { downlight( d, i, this ); });
+
 var circle = sel.selectAll("circle")
     .data(dataset);
 
@@ -180,6 +199,10 @@ sel.append("g")
 sel.append("g")
     .attr("transform", "translate(" + padding + ",0)")
     .call(yAxis);
+sel.append("g")
+    .attr("transform", "translate(" + (w-2*padding) + ",0)")
+    .call(yAxis2);
+console.log("w "+w)
 
 $('circle').tipsy({ 
     gravity: $.fn.tipsy.autoWE,
