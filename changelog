@@ -1,0 +1,6 @@
+changelog on comparision with master.
+This version-2.3 is modified to address all the issues in Milestone:2.3.
+1) The index page is redesigned to what is supposed to be a better one.(The menu is hidden, movements were made smooth,
+   log text is now restricted to its own scroll. Basically tried to use the space more efficiently.)
+2) Mapping from log file to scatter plot.
+3) horizontal lines were added to scatter plot, to ease the reading of values.
