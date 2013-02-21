@@ -22,6 +22,10 @@ function handle_storage(e){
     }
 }
 
+function isLarge(height){
+    return ((height>400)?true:false);
+}
+
 function highlight_circle(ip){
     console.log("high"+ip)
     var i;
@@ -144,12 +148,27 @@ function redraw() {
 var xAxis = d3.svg.axis()
     .scale(xScale)
     .orient("bottom");
-var yAxis = d3.svg.axis()
-    .scale(yScale)
-    .orient("left");
-var yAxis2 = d3.svg.axis()
-    .scale(yScale)
-    .orient("right");
+if(isLarge(h)){
+    //then ticks wont look crowded.
+    var yAxis = d3.svg.axis()
+	.scale(yScale)
+	.orient("left")
+	.ticks(10);
+    var yAxis2 = d3.svg.axis()
+	.scale(yScale)
+	.orient("right")
+	.ticks(10);
+}
+else{
+   var yAxis = d3.svg.axis()
+	.scale(yScale)
+	.orient("left")
+	.ticks(5);
+    var yAxis2 = d3.svg.axis()
+	.scale(yScale)
+	.orient("right")
+	.ticks(5);
+}
 
 var cols = d3.scale.category20();//["red","blue","green","teal","steelblue"];
 
@@ -172,39 +191,63 @@ dataset.map(function(d){m.push(d);})
 xval.map(function(d){x.push(d);})
 xval.map(function(d){x.push(d);})
 
-sel.selectAll("line")
-    .data(m)
-    .enter().append("line")
-    .attr("style","stroke:"+lightline)
-    .attr("id",function(d,i){
-	if(i<dataset.length)
-	return("line"+i)
-	else return("hor"+(i-dataset.length));})
-    .attr("x1", function(d,i){
-	if(i<dataset.length)
-	    return xScale(x[i]);
-	else
-	    return xScale(0)})
-    .attr("x2", function(d,i){
-	if(i<dataset.length)
-	    return xScale(x[i]);
-	else
-	    return xScale(w)})
-    .attr("y1", function(d,i){
-	if(i<dataset.length){
-	var log = [];var ip=d[2]
-	logs.map(function(d){if(d.right==ip)log.push(d.left)})
-	return yScale(d3.max(log));}
-	else return(yScale(d[0]))})
-    .attr("y2",function(d,i){
-	if(i<dataset.length){
+if(isLarge(h)){
+    sel.selectAll("line")
+	.data(m)
+	.enter().append("line")
+	.attr("style","stroke:"+lightline)
+	.attr("id",function(d,i){
+	    if(i<dataset.length)
+		return("line"+i)
+	    else return("hor"+(i-dataset.length));})
+	.attr("x1", function(d,i){
+	    if(i<dataset.length)
+		return xScale(x[i]);
+	    else
+		return xScale(0)})
+	.attr("x2", function(d,i){
+	    if(i<dataset.length)
+		return xScale(x[i]);
+	    else
+		return xScale(w)})
+	.attr("y1", function(d,i){
+	    if(i<dataset.length){
+		var log = [];var ip=d[2]
+		logs.map(function(d){if(d.right==ip)log.push(d.left)})
+		return yScale(d3.max(log));}
+	    else return(yScale(d[0]))})
+	.attr("y2",function(d,i){
+	    if(i<dataset.length){
+		var log = [];var ip=d[2]
+		logs.map(function(d){if(d.right==ip)log.push(d.left)})
+		return yScale(d3.min(log));}
+	    else return(yScale(d[0]))
+	})
+	.on("mouseover", function(d, i) { highlight( d, i, this ); })
+	.on("mouseout", function(d, i) { downlight( d, i, this ); });
+}
+else{
+    sel.selectAll("line")
+	.data(dataset)
+	.enter().append("line")
+	.attr("style","stroke:"+lightline)
+	.attr("id",function(d,i){
+	    return("line"+i)})
+	.attr("x1", function(d,i){
+	    return xScale(x[i])})
+	.attr("x2", function(d,i){
+	    return xScale(x[i])})
+	.attr("y1", function(d,i){
 	    var log = [];var ip=d[2]
 	    logs.map(function(d){if(d.right==ip)log.push(d.left)})
-	    return yScale(d3.min(log));}
-	else return(yScale(d[0]))
-    })
-    .on("mouseover", function(d, i) { highlight( d, i, this ); })
-    .on("mouseout", function(d, i) { downlight( d, i, this ); });
+	    return yScale(d3.max(log));})
+	.attr("y2",function(d,i){
+	    var log = [];var ip=d[2]
+	    logs.map(function(d){if(d.right==ip)log.push(d.left)})
+	    return yScale(d3.min(log));})
+	.on("mouseover", function(d, i) { highlight( d, i, this ); })
+	.on("mouseout", function(d, i) { downlight( d, i, this ); });
+}
 
 var circle = sel.selectAll("circle")
     .data(dataset);
