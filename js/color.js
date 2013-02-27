@@ -195,6 +195,8 @@ function filterBy(obj,parameter,parameter_plot,ModePlot,ModeSelect){
 		iter = st.split(',');
 		for(var j=0;j<iter.length;j++){
 		    var tags = iter[j].split(":::");
+		    if(tags.length<3)
+			continue;
 		    if(first){
 			first = false
 		    }
@@ -451,17 +453,27 @@ function colorizeDims(content){
 	if(line.search(/:::SV[0-9]*:::.*:::/)>-1){
 	    //This reg expression can even recognize more than one instrumented logs in the same line 
 	    st = line.match(/:::SV[0-9]*:::(?:(?!:::).)*:::/g);
+	    //TODO: global search over the line will return the matching sub-strings seperated by 'comma' if the string itself contains 'comma' then there is no way to distinguish and hence not coloring such lines.
 	    st = st.toString();
 	    var iter = st.split(',');
 	    if(HideSV){
 		for(var j=0;j<iter.length;j++){
 		    var tag = iter[j];
 		    var sv = tag.split(":::");
+		    if(sv.length<3)
+			continue;
+		    //console.log(sv)
 		    var ip_num = parseInt(sv[1].slice(2,sv[1].length));
 		    var dim;
 		    var log;
 
 		    var s = ip_num;
+		    if(!s)
+			continue;
+		    //console.log(ip_num)
+		    //console.log(line)
+		    //console.log(ips.length)
+		    //console.log(logs.length)
 		    dim = ips[s]["dimensionID"];
 		    /*for(s=0;s<ips.length;s++){
 			log = ips[s];
@@ -499,10 +511,13 @@ function colorizeDims(content){
 		for(var j=0;j<iter.length;j++){
 		    var tag = iter[j];
 		    var sv = tag.split(":::");
+		    if(sv.length<3)
+			continue;
 		    var ip_num = parseInt(sv[1].slice(2,sv[1].length));
 		    var dim;
-		    
 		    var s = ip_num;
+		    if(!s)
+			continue;
 		    dim = ips[s]["dimensionID"];
 		    /*for(s=0,log;s<ips.length;s++){
 			log = ips[s];
@@ -578,6 +593,8 @@ function highlight_line(ip){
 	    for(var j=0;j<iter.length;j++){
 		var tag = iter[j];
 		var sv = tag.split(":::");
+		if(sv.length<3)
+		    continue;
 		var ip_num = parseInt(sv[1].slice(2,sv[1].length));
 		if(ip_num == ip){
 		    found = true;

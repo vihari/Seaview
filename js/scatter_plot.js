@@ -302,12 +302,13 @@ $('circle').tipsy({
 	x+=unit_name.substr(unit_name.length-chunk,unit_name);
 	unit_name = x;*/
 	unit_name = unit_name.split(";").join(";<br>")
-	if(reps[unit_mappings[d[2]]]["is_quant_or_ord"])
+	if(rep_names[unit_mappings[d[2]]]["is_quant_or_ord"])
 	    var message = '<div width="150px"><span style="color:white">The max and min values for the selected circle are '+Math.round((d3.max(log)))+','+Math.round(d3.min(log))+" respectively</br>Mean and variance are "+Math.round(d[0]*100)/100+','+Math.round(cov[d[2]]*100)/100+" respectively</br>Count is "+count[ip]+"</br>info"+unit_name+" ip: "+ip+"</span></div>"
 	else
-	    var message = '<div width="150px"><span style="color:white">The max and min values for the selected circle are '+Math.round((d3.max(log)))+','+Math.round(d3.min(log))+" respectively</br>Mean is "+Math.round(d[0]*100)/100+"</br>Count is "+count[ip]+"</br>info"+unit_name+" ip: "+ip+"</span></div>"
+	    var message = '<div width="150px"><span style="color:white">The max and min values for the selected circle are '+Math.round((d3.max(log)))+','+Math.round(d3.min(log))+" respectively</br>Mean is "+Math.round(d[0]*100)/100+"</br>Count is "+count[ip]+"</br>info"+unit_name+" ip: "+ip+"</span></div>";
 	console.log(message)
-	if(count[ip]>2)
+	//there is no point in showing the line plot if there are huge number of logs.
+	if((count[ip]>2)&&(count[ip]<1000))
             return '<table><tr><td><div width="150px" height="80px"><iframe width="150px" height = "80px" src = "linechart.html" id="iframe_plot"></iframe></div></td><td>'+message+"</td></tr></table>"; 
 	else
 	    return message; 
