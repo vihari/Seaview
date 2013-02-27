@@ -1,0 +1,4 @@
+1) We should have an idea of how big a log file we are dealing with or some constraints on how big we can deal can also help.
+2) By generating the js scripts firefox is throwing the error: "Array initialiser is too large." this has to be fixed.
+3) May be the things should be made more efficient as it is taking really long to load the scatter plot or line-chart making it atleast o(nlnn) would help.
+4) Making count as the factor for radius of circle is just not enough and hence is better to have no factor and make it the same for all the var's.

@@ -1,0 +1,32 @@
+<head><title>Barchart</title>
+<style type="text/css">
+  div.bar {
+  display: inline-block;
+  width: 20px;
+  height: 75px;/* Gets overriden by D3-assigned height below */
+  margin-right: 2px;
+  background-color: teal;
+  }
+</style>
+</head>
+<script type="text/javascript" src="js/bar_chart.js"></script>
+<script type="text/javascript" src="d3/d3.v3.min.js"></script>
+<body>
+<div style="position:fixed;
+	    position:obsolute;/*for ie6*/
+	    background-color: rgba(0,0,0,1.0);
+	    height:206px;
+	    width: 100%;
+	    top:0px;
+	    right:0px;" class="plot" id="barchart">
+  <!-- //206px;-->
+</br></br>
+  <p class="bob"></p>
+</div>
+
+
+</body>
+<script>
+  var color = "F";
+  barChart(color);
+</script>
