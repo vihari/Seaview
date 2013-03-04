@@ -1,44 +1,41 @@
 #!/usr/bin/bash
+
 set -e
+export UNIFI=$HOME/workspace/unifi
+export CLASSPATH="$UNIFI/classes/unifi.jar:$UNIFI/lib/bcel-5.2.jar:$UNIFI/lib/log4j-1.2.15.jar:$UNIFI/lib/commons-logging-1.1.1.jar:$UNIFI/lib/gson-1.5.jar"
 
 if [ -z $1 ];
 then 
     printf "Usage is:\n"
-    printf "bash instrument.sh <path to muse-standlaone.jar/muse-standlaone.jar>\n"
+    printf "bash instrument.sh <path to muse-standalone.jar/muse-standalone.jar>\n"
     exit 0
 fi
 
-#making of muse_war
+# extract muse.war, muse.jar
 rm -R -f tmpmuse
 mkdir tmpmuse
 cd tmpmuse
-jar -xvf $1
-mkdir muse_war
-cd muse_war
-jar -xvf ../muse.war 
-cd ../
+jar -xvf $1 muse.war
+jar -xvf muse.war WEB-INF/lib/muse.jar
+echo $CLASSPATH
 
-cp -R ../hangal .
-#copy=${1%/}
-#copy=$(echo $copy|awk -F "/" '{print $NF}')
-cd hangal
-rm -R -f edu
-rm -f muse.jar
-cp ../muse_war/WEB-INF/lib/muse.jar .
-jar -xvf muse.jar
-./do
+export TARGET=WEB-INF/lib/muse.jar
+export CLASSPATH="$TARGET\:$CLASSPATH"
+echo $CLASSPATH
+java -Xmx1g -classpath $CLASSPATH unifi.drivers.Instrumenter $TARGET
+
+# instrumented files under seaview, jar up and copy to target
 cd SEAVIEW
-jar -cvf ../muse.jar edu
+jar cvf ../muse.jar .
 cd ..
-cp -R SEAVIEW ../../
-rm ../muse_war/WEB-INF/lib/muse.jar
-cp muse.jar ../muse_war/WEB-INF/lib/
-cp unifi.jar ../muse_war/WEB-INF/lib/
-cd ../muse_war
-jar -cvf ../muse.war .
+/bin/rm -f $TARGET
+mv muse.jar $TARGET
+
+# update muse.jar in muse.war
+jar uvf muse.war $TARGET
+
+# update muse.war in muse-standalone
+jar uvf $1 muse.war
+jar uvf $1 $UNIFI/classes/unifi.jar
 cd ..
-rm -R muse_war
-rm -R hangal
-jar -cvf ../muse-standalone-instrumeneted.jar .
-cd ..
-rm -R tmpmuse
+#rm -rf tmpmuse
