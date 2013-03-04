@@ -31,11 +31,11 @@ cd ..
 /bin/rm -f $TARGET
 mv muse.jar $TARGET
 
-# update muse.jar in muse.war
-jar uvf muse.war $TARGET
+# update muse.jar in muse.war and also insert unifi.jar for the seaview runtime
+cp -p $UNIFI/classes/unifi.jar WEB-INF/lib/
+jar uvf muse.war WEB-INF/lib
 
 # update muse.war in muse-standalone
 jar uvf $1 muse.war
-jar uvf $1 $UNIFI/classes/unifi.jar
 cd ..
 #rm -rf tmpmuse
