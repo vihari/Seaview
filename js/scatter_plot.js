@@ -78,12 +78,12 @@ function extract_summary(){
     logs.map(function(d){if(d.right!=exclude&&count[d.right]>0){cov[d.right]+=((d.left-mean[d.right])*(d.left-mean[d.right]));}})
     logs.map(function(d){if(d.right!=exclude)dim[d.right]=d.right})
     //cov.map(function(d,i){if(mean[i]>0&&count[i]>0){d=(Math.sqrt(d)/(count[i]));/*d/=mean[i]*/}})
-    for(var i=0;i<cov.length;i++)
+    /*for(var i=0;i<cov.length;i++)
 	if(mean[i]>0&&count[i]>0){cov[i]=Math.sqrt(cov[i]);}
     //mean.filter(function(d){return d>0?true:false})
-    var mx_cnt = d3.max(count);
+    var mx_cnt = d3.max(count);*/
     for(var i=0;i<mean.length;i++){
-	com.push([mean[i],Math.pow(count[i]/(mx_cnt),0.5),dim[i]])
+	com.push([mean[i],Math.pow(count[i]/(mx_cnt),0.5) /*This is the factor for radius.*/,dim[i]])
 	rad_sum += Math.pow(count[i]/mx_cnt,0.5);
     }
     
@@ -93,6 +93,7 @@ function extract_summary(){
     com = com.filter(function(d,i){
 	//This is to filter only numericals.
 	return(ips[d[2]].valueSig == ("I"||"J"||"S"||"Z"||"D"||"F"));
+	//No objects.
     });
 //    cov = cov.filter(function(d,i){return mean[i]>0?true:false})
 //    mean = mean.filter(function(d){return(d>0?true:false)})

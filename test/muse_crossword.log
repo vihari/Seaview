@@ -1,0 +1,1374 @@
+27 Feb 17:01 Log4JUtils INFO  - Log messages will be recorded in /tmp/tomcat7-tomcat7-tmp/muse.log
+27 Feb 17:01 JSPHelper INFO  - Muse is running on the Jetty web server (due to system property muse.container: :::SV251:::false:::)
+27 Feb 17:01 JSPHelper INFO  - NEW Request: http://localhost:8080/muse/
+27 Feb 17:01 JSPHelper INFO  - browser = Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:19.0) Gecko/20100101 Firefox/19.0
+27 Feb 17:01 JSPHelper INFO  - NEW Request: http://localhost:8080/muse/
+27 Feb 17:01 EmailUtils INFO  - Thunderbird probably not installed: no prefs.js in directory: /prefs.js
+27 Feb 17:01 EmailUtils INFO  - Thunderbird probably not installed: no prefs.js in directory: /prefs.js
+27 Feb 17:01 JSPHelper INFO  - COMPLETED Request: http://localhost:8080/muse/
+27 Feb 17:01 JSPHelper INFO  - CLIENT LOG: simple login form: go button pressed
+27 Feb 17:01 JSPHelper INFO  - CLIENT LOG: checkbox sent-messages-only is on
+27 Feb 17:01 JSPHelper INFO  - NEW Request: http://localhost:8080/muse/ajax/setupAccounts.jsp params: password0 -> *** downloadAttachments ->  alternateEmailAddrs ->  loginName0 -> viharipiratla simple -> true accountType0 -> gmail sent-messages-only -> on 
+27 Feb 17:01 JSPHelper INFO  - session invalidated
+27 Feb 17:01 Accounts INFO  - adding account: viharipiratla@gmail.com success=:::SV237:::1:::
+27 Feb 17:01 MuseEmailFetcher INFO  - finalizing email sources, alt email addresses = 
+27 Feb 17:01 MuseEmailFetcher INFO  - Email store: :::SV75:::IMAP/POP message store with protocol="imaps" server="imap.gmail.com" port="-1" userName="viharipiratla" :::
+27 Feb 17:01 EmailUtils INFO  - Thunderbird probably not installed: no prefs.js in directory: /prefs.js
+27 Feb 17:01 EmailUtils INFO  - Thunderbird probably not installed: no prefs.js in directory: /prefs.js
+27 Feb 17:01 MuseEmailFetcher INFO  - 5 lexicons copied to /usr/share/tomcat7/.muse/user
+27 Feb 17:01 AddressBook INFO  - 1 own email addresses: :::SV15:::viharipiratla@gmail.com :::
+27 Feb 17:01 JSPHelper INFO  - CLIENT LOG: set up accounts status = success
+27 Feb 17:01 JSPHelper INFO  - CLIENT LOG: account setup: data = [object Object]
+27 Feb 17:01 JSPHelper INFO  - CLIENT LOG: #accounts = 1
+27 Feb 17:01 JSPHelper INFO  - CLIENT LOG: n_valid_accounts = 1 out of 1
+27 Feb 17:01 JSPHelper INFO  - CLIENT LOG: logging into account # 0
+27 Feb 17:01 JSPHelper INFO  - NEW Request: http://localhost:8080/muse/ajax/doLogin.jsp params: login -> viharipiratla password -> *** accountIdx -> 0 
+27 Feb 17:02 JSPHelper INFO  - CLIENT LOG: received resp for login 0:[object Object]
+27 Feb 17:02 JSPHelper INFO  - CLIENT LOG: all responses received
+27 Feb 17:02 JSPHelper INFO  - CLIENT LOG: download attachments is on
+27 Feb 17:02 JSPHelper INFO  - NEW Request: http://localhost:8080/muse/ajax/doSimpleFlow.jsp params: downloadAttachments -> true 
+27 Feb 17:02 JSPHelper INFO  - Running inside container: Apache Tomcat/7.0.30
+27 Feb 17:02 JSPHelper INFO  - Running on jetty: :::SV240:::false:::
+27 Feb 17:02 JSPHelper INFO  - request parameter encoding is UTF-8
+27 Feb 17:02 FileBlobStore INFO  - Opening file repository in /usr/share/tomcat7/.muse/user/blobs/
+27 Feb 17:02 FileBlobStore INFO  - File repository in /usr/share/tomcat7/.muse/user/blobs/ has :::SV9:::281::: entries
+27 Feb 17:02 ImapPopEmailStore INFO  - Opening folder [...............l in r/o mode...
+27 Feb 17:02 ImapPopEmailStore INFO  - Opened folder [...............l message count :::SV53:::924:::
+27 Feb 17:02 EmailFetcherThread INFO  - MT: cached dir: /usr/share/tomcat7/.muse/user attachmentsDir: null
+27 Feb 17:02 MuseEmailFetcher INFO  - Memory status before fetching emails: 29 MB free, 19 MB used, 998 MB max, 48 MB total
+27 Feb 17:02 EmailFetcherThread INFO  - Starting run on object: :::SV63:::Fetcher for store: IMAP/POP message store with protocol="imaps" server="imap.gmail.com" port="-1" userName="viharipiratla" 
+Fields=edu.stanford.muse.email.MTEmailFetcher: log=[org.apache.commons.logging.impl.Log4JLogger@8bed46] serialVersionUID=1 emailStore=[IMAP/POP message store with protocol="imaps" server="imap.gmail.com" port="-1" userName="viharipiratla" ] isCancelled=false executorService=null folderInfos=java.util.ArrayList{size:1 } defaultFolderName=null N_THREADS=1 nTotalMessagesInAllFolders=0 last_N_msgs=-1 nMessagesInDoneFolders=0 nSuccessMessagesInDoneFolders=0 nErrorsInDoneFolders=0 addressBook=[1 people, 1 email addrs, (1.0/contact), 0 names, (0.0/contact) 
+1 own emails: v.....................m &bull; 
+0 own names: ] startTimeMillis=0 cacheDir=[/usr/share/tomcat7/.muse/user] attachmentsDir=null downloadMessages=true downloadAttachments=true filter=[] dataStore=[Data store with 281 unique blobs] readFoldersThread=null aggregateThread=null threads=null :::
+27 Feb 17:02 EmailFetcherThread INFO  - Folder descriptions: viharipiratla@gmail.com:[Gmail]/Sent Mail
+27 Feb 17:02 ImapPopEmailStore INFO  - Opening folder F....y in r/o mode...
+27 Feb 17:02 ImapPopEmailStore INFO  - Opened folder F....y message count :::SV53:::2:::
+27 Feb 17:02 ImapPopEmailStore INFO  - Opening folder I...X in r/o mode...
+27 Feb 17:02 ImapPopEmailStore INFO  - Opened folder I...X message count :::SV53:::3285:::
+27 Feb 17:02 ImapPopEmailStore INFO  - Opening folder M....f in r/o mode...
+27 Feb 17:02 ImapPopEmailStore INFO  - Opened folder M....f message count :::SV53:::2:::
+27 Feb 17:02 ImapPopEmailStore INFO  - Opening folder M.............h in r/o mode...
+27 Feb 17:02 ImapPopEmailStore INFO  - Opened folder M.............h message count :::SV53:::48:::
+27 Feb 17:02 ImapPopEmailStore INFO  - Opening folder P......l in r/o mode...
+27 Feb 17:02 ImapPopEmailStore INFO  - Opened folder P......l message count :::SV53:::0:::
+27 Feb 17:02 ImapPopEmailStore INFO  - Opening folder R......s in r/o mode...
+27 Feb 17:02 ImapPopEmailStore INFO  - Opened folder R......s message count :::SV53:::0:::
+27 Feb 17:02 ImapPopEmailStore INFO  - Opening folder T....l in r/o mode...
+27 Feb 17:02 ImapPopEmailStore INFO  - Opened folder T....l message count :::SV53:::0:::
+27 Feb 17:02 ImapPopEmailStore INFO  - Opening folder W..k in r/o mode...
+27 Feb 17:02 ImapPopEmailStore INFO  - Opened folder W..k message count :::SV53:::0:::
+27 Feb 17:02 ImapPopEmailStore INFO  - Opening folder [..............l in r/o mode...
+27 Feb 17:02 ImapPopEmailStore INFO  - Opened folder [..............l message count :::SV53:::4235:::
+27 Feb 17:02 ImapPopEmailStore INFO  - Opening folder [............s in r/o mode...
+27 Feb 17:02 ImapPopEmailStore INFO  - Opened folder [............s message count :::SV53:::81:::
+27 Feb 17:02 ImapPopEmailStore INFO  - Opening folder [...............t in r/o mode...
+27 Feb 17:02 ImapPopEmailStore INFO  - Opened folder [...............t message count :::SV53:::2958:::
+27 Feb 17:02 ImapPopEmailStore INFO  - Opening folder [...............l in r/o mode...
+27 Feb 17:02 ImapPopEmailStore INFO  - Opened folder [...............l message count :::SV53:::924:::
+27 Feb 17:02 ImapPopEmailStore INFO  - Opening folder [..........m in r/o mode...
+27 Feb 17:02 ImapPopEmailStore INFO  - Opened folder [..........m message count :::SV53:::26:::
+27 Feb 17:03 ImapPopEmailStore INFO  - Opening folder [.............d in r/o mode...
+27 Feb 17:03 ImapPopEmailStore INFO  - Opened folder [.............d message count :::SV53:::8:::
+27 Feb 17:03 ImapPopEmailStore INFO  - Opening folder [...........h in r/o mode...
+27 Feb 17:03 ImapPopEmailStore INFO  - Opened folder [...........h message count :::SV53:::247:::
+27 Feb 17:03 ImapPopEmailStore INFO  - Opening folder p...........................c.in in r/o mode...
+27 Feb 17:03 ImapPopEmailStore INFO  - Opened folder p...........................c.in message count :::SV53:::523:::
+27 Feb 17:03 EmailFetcherThread INFO  - Total messages in :::SV65:::1::: folder(s): :::SV66:::924:::
+27 Feb 17:03 EmailFetcherThread INFO  - EmailFetcher: cache dir = /usr/share/tomcat7/.muse/user
+27 Feb 17:03 EmailFetcherThread INFO  - starting thread to fetch from folder [Gmail]/Sent Mail message #s [1..925)
+27 Feb 17:03 ImapPopEmailStore INFO  - Opening folder [...............l in r/o mode...
+27 Feb 17:03 EmailFetcherThread INFO  - Fetching contacts for messages from [1 to 925)
+27 Feb 17:03 EmailFetcherThread INFO  - headers cache has :::SV43:::924::: entries, contents cache has :::SV44:::924::: entries
+27 Feb 17:03 EmailFetcherThread INFO  - [Gmail]/Sent Mail.:::SV38:::1:::-923 cached
+27 Feb 17:03 EmailFetcherThread INFO  - EmailFetcherThread: :::SV46:::0::: of :::SV47:::924::: messages uncached
+27 Feb 17:03 FileBlobStore INFO  - packed datastore: :::SV11:::Data store with 281 unique blobs:::
+27 Feb 17:03 EmailFetcherThread INFO  - Fetch stats for folder [Gmail]/Sent Mail: edu.stanford.muse.email.EmailFetcherStats: serialVersionUID=1 nMessagesProcessed=0 nUncachedMessagesFetched=0 nCachedMessages=924 nErrors=0 nTotalMessages=924 nUncachedMessagesFilteredOut=0 
+27 Feb 17:03 EmailFetcherThread INFO  - Aggregate fetch stats so far: edu.stanford.muse.email.EmailFetcherStats: serialVersionUID=1 nMessagesProcessed=0 nUncachedMessagesFetched=0 nCachedMessages=924 nErrors=0 nTotalMessages=924 nUncachedMessagesFilteredOut=0 
+27 Feb 17:03 MuseEmailFetcher INFO  - Memory status after fetching emails: 28 MB free, 21 MB used, 998 MB max, 49 MB total
+27 Feb 17:03 MuseEmailFetcher INFO  - Pre-filter: :::SV77:::924::: messages
+27 Feb 17:03 MuseEmailFetcher INFO  - Post-filter: :::SV78:::924::: messages
+27 Feb 17:03 EmailUtils INFO  - 
+
+-----------------------Detecting duplicates-------------------
+
+
+27 Feb 17:03 EmailUtils INFO  - Duplicate messages:
+	:::SV226:::[Gmail]/Sent Mail Msg#636 (Subject:null) date 15 May 2012 [1 attachment(s)]:::
+	:::SV227:::[Gmail]/Sent Mail Msg#345 (Subject:null) date 15 May 2012 [1 attachment(s)]:::
+27 Feb 17:03 EmailUtils INFO  - Removed duplicates from :::SV228:::924::: messages: 1 removed, :::SV229:::923::: left
+27 Feb 17:03 MuseEmailFetcher INFO  - Fetcher stats: :::SV79:::Date: 2013-02-27.17:03:18
+selected_folders: 0
+message_filter: 
+selected_messages: 923 original: 924 post_filtering: 924 dups: 1
+sent_messages: 923 received_messages: 50
+first_date: 2010-12-26 last_date: 2013-02-25 span_in_months: 26
+fetch_time_in_secs: 74
+:::
+27 Feb 17:03 MuseEmailFetcher INFO  - Address book stats: :::SV80:::145:::
+27 Feb 17:03 JSPHelper INFO  - :::SV248:::60::: contacts will be ignored because they are below threshold of :::SV249:::1:::
+27 Feb 17:03 Grouper INFO  - -----------------------------------------------   GROUPER  -----------------------------------------------
+
+27 Feb 17:03 Grouper INFO  - Starting grouping with :::SV93:::98::: starting unique (weighted) groups, err weight = :::SV94:::0.4:::
+27 Feb 17:03 GroupsGraph INFO  - Setting up edges between :::SV82:::98::: nodes
+27 Feb 17:03 GroupsGraph INFO  - :::SV84:::76::: edges set up: 8 milliseconds
+27 Feb 17:03 Grouper INFO  - Unique moves :::SV85:::98::: moves
+27 Feb 17:03 Grouper INFO  - Initialized :::SV103:::98::: nodes, and :::SV104:::98::: node --> move hashes
+27 Feb 17:03 Grouper INFO  - edge ends in graph: :::SV105:::152:::
+27 Feb 17:03 Grouper INFO  - Done initializing :::SV106:::98::: moves
+27 Feb 17:03 Grouper INFO  - hierarchy: #root groups = :::SV121:::12:::
+27 Feb 17:03 Grouper INFO  - Grouper output: :::SV97:::19::: groups, :::SV98:::12::: root groups
+27 Feb 17:03 IndexEmailDriver INFO  - Index options are: :::SV139:::0:::
+27 Feb 17:03 EmailUtils INFO  - 
+
+-----------------------Detecting duplicates-------------------
+
+
+27 Feb 17:03 EmailUtils INFO  - Removed duplicates from :::SV228:::923::: messages: 0 removed, :::SV229:::923::: left
+27 Feb 17:03 IndexEmailDriver INFO  - :::SV142:::923::: documents after removing duplicates
+27 Feb 17:03 IndexEmailDriver INFO  - :::SV143:::923::: documents after filtering
+27 Feb 17:03 IndexEmailDriver INFO  - :::SV144:::27::: clusters of documents
+27 Feb 17:03 IndexEmailDriver INFO  - :::SV145:::923::: documents in :::SV146:::27::: time clusters, :::SV147:::0::: non-empty
+27 Feb 17:03 IndexEmailDriver INFO  - NER Terms only
+27 Feb 17:03 Indexer INFO  - Processing :::SV158:::923::: documents
+27 Feb 17:03 Indexer INFO  - Memory status before indexing :::SV159:::923::: documents: 88 MB free, 56 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - :::SV173:::0::: NER types
+27 Feb 17:03 Indexer INFO  - Indexing :::SV160:::923::: documents in :::SV161:::27::: clusters
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::1::: documents in document cluster #:::SV163:::0:::: December 2010
+27 Feb 17:03 Languages INFO  - :::SV195:::38::: scripts, :::SV196:::20::: languages, :::SV197:::38::: patterns
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::0 (Subject:December 2010) with 1 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::1::: of :::SV166:::923::: documents in :::SV167:::1::: (non-zero) multi-docs, total text length :::SV168:::1086::: chars, :::SV169:::0::: names. 86 MB free, 58 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::3::: documents in document cluster #:::SV163:::1:::: January 2011
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::1 (Subject:January 2011) with 3 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::4::: of :::SV166:::923::: documents in :::SV167:::2::: (non-zero) multi-docs, total text length :::SV168:::2242::: chars, :::SV169:::9::: names. 87 MB free, 57 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::2::: documents in document cluster #:::SV163:::2:::: February 2011
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::2 (Subject:February 2011) with 2 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::6::: of :::SV166:::923::: documents in :::SV167:::3::: (non-zero) multi-docs, total text length :::SV168:::2505::: chars, :::SV169:::9::: names. 87 MB free, 57 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::1::: documents in document cluster #:::SV163:::3:::: March 2011
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::3 (Subject:March 2011) with 1 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::7::: of :::SV166:::923::: documents in :::SV167:::4::: (non-zero) multi-docs, total text length :::SV168:::3403::: chars, :::SV169:::40::: names. 87 MB free, 57 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::2::: documents in document cluster #:::SV163:::4:::: April 2011
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::4 (Subject:April 2011) with 2 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::9::: of :::SV166:::923::: documents in :::SV167:::5::: (non-zero) multi-docs, total text length :::SV168:::4205::: chars, :::SV169:::40::: names. 86 MB free, 58 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::1::: documents in document cluster #:::SV163:::5:::: May 2011
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::5 (Subject:May 2011) with 1 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::10::: of :::SV166:::923::: documents in :::SV167:::6::: (non-zero) multi-docs, total text length :::SV168:::4424::: chars, :::SV169:::40::: names. 86 MB free, 58 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::0::: documents in document cluster #:::SV163:::6:::: June 2011
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::6 (Subject:June 2011) with 0 docs:::
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::9::: documents in document cluster #:::SV163:::7:::: July 2011
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::7 (Subject:July 2011) with 9 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::19::: of :::SV166:::923::: documents in :::SV167:::8::: (non-zero) multi-docs, total text length :::SV168:::7359::: chars, :::SV169:::44::: names. 86 MB free, 58 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::6::: documents in document cluster #:::SV163:::8:::: August 2011
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::8 (Subject:August 2011) with 6 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::25::: of :::SV166:::923::: documents in :::SV167:::9::: (non-zero) multi-docs, total text length :::SV168:::15116::: chars, :::SV169:::48::: names. 86 MB free, 58 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::27::: documents in document cluster #:::SV163:::9:::: September 2011
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::9 (Subject:September 2011) with 27 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::52::: of :::SV166:::923::: documents in :::SV167:::10::: (non-zero) multi-docs, total text length :::SV168:::23307::: chars, :::SV169:::73::: names. 86 MB free, 58 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::37::: documents in document cluster #:::SV163:::10:::: October 2011
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::10 (Subject:October 2011) with 37 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::89::: of :::SV166:::923::: documents in :::SV167:::11::: (non-zero) multi-docs, total text length :::SV168:::40957::: chars, :::SV169:::96::: names. 86 MB free, 58 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::34::: documents in document cluster #:::SV163:::11:::: November 2011
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::11 (Subject:November 2011) with 34 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::123::: of :::SV166:::923::: documents in :::SV167:::12::: (non-zero) multi-docs, total text length :::SV168:::54040::: chars, :::SV169:::148::: names. 86 MB free, 58 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::47::: documents in document cluster #:::SV163:::12:::: December 2011
+27 Feb 17:03 Indexer WARN  - DATA WARNING:Document too long, size 250,604 bytes, dropping it. Begins with: [Gmail]/Sent Mail Msg#150 (Subject:null) date 18 December 2011try on this!!
+
+-- 
+Vihari Piratla.
+http://about.me/viharipiratla
+
+*Holo...
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::12 (Subject:December 2011) with 47 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::170::: of :::SV166:::923::: documents in :::SV167:::13::: (non-zero) multi-docs, total text length :::SV168:::78533::: chars, :::SV169:::220::: names. 86 MB free, 58 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::12::: documents in document cluster #:::SV163:::13:::: January 2012
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::13 (Subject:January 2012) with 12 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::182::: of :::SV166:::923::: documents in :::SV167:::14::: (non-zero) multi-docs, total text length :::SV168:::84858::: chars, :::SV169:::239::: names. 86 MB free, 58 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::25::: documents in document cluster #:::SV163:::14:::: February 2012
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::14 (Subject:February 2012) with 25 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::207::: of :::SV166:::923::: documents in :::SV167:::15::: (non-zero) multi-docs, total text length :::SV168:::91197::: chars, :::SV169:::267::: names. 86 MB free, 58 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::26::: documents in document cluster #:::SV163:::15:::: March 2012
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::15 (Subject:March 2012) with 26 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::233::: of :::SV166:::923::: documents in :::SV167:::16::: (non-zero) multi-docs, total text length :::SV168:::98755::: chars, :::SV169:::293::: names. 86 MB free, 58 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::67::: documents in document cluster #:::SV163:::16:::: April 2012
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::16 (Subject:April 2012) with 67 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::300::: of :::SV166:::923::: documents in :::SV167:::17::: (non-zero) multi-docs, total text length :::SV168:::116553::: chars, :::SV169:::351::: names. 86 MB free, 58 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::76::: documents in document cluster #:::SV163:::17:::: May 2012
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::17 (Subject:May 2012) with 76 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::376::: of :::SV166:::923::: documents in :::SV167:::18::: (non-zero) multi-docs, total text length :::SV168:::134586::: chars, :::SV169:::413::: names. 86 MB free, 58 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::81::: documents in document cluster #:::SV163:::18:::: June 2012
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::18 (Subject:June 2012) with 81 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::457::: of :::SV166:::923::: documents in :::SV167:::19::: (non-zero) multi-docs, total text length :::SV168:::158316::: chars, :::SV169:::486::: names. 86 MB free, 58 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::77::: documents in document cluster #:::SV163:::19:::: July 2012
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::19 (Subject:July 2012) with 77 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::534::: of :::SV166:::923::: documents in :::SV167:::20::: (non-zero) multi-docs, total text length :::SV168:::188826::: chars, :::SV169:::574::: names. 86 MB free, 58 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::55::: documents in document cluster #:::SV163:::20:::: August 2012
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::20 (Subject:August 2012) with 55 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::589::: of :::SV166:::923::: documents in :::SV167:::21::: (non-zero) multi-docs, total text length :::SV168:::220258::: chars, :::SV169:::638::: names. 86 MB free, 58 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::53::: documents in document cluster #:::SV163:::21:::: September 2012
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::21 (Subject:September 2012) with 53 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::642::: of :::SV166:::923::: documents in :::SV167:::22::: (non-zero) multi-docs, total text length :::SV168:::235315::: chars, :::SV169:::699::: names. 85 MB free, 59 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::46::: documents in document cluster #:::SV163:::22:::: October 2012
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::22 (Subject:October 2012) with 46 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::688::: of :::SV166:::923::: documents in :::SV167:::23::: (non-zero) multi-docs, total text length :::SV168:::274595::: chars, :::SV169:::737::: names. 85 MB free, 59 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::83::: documents in document cluster #:::SV163:::23:::: November 2012
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::23 (Subject:November 2012) with 83 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::771::: of :::SV166:::923::: documents in :::SV167:::24::: (non-zero) multi-docs, total text length :::SV168:::294435::: chars, :::SV169:::812::: names. 85 MB free, 59 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::67::: documents in document cluster #:::SV163:::24:::: December 2012
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::24 (Subject:December 2012) with 67 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::838::: of :::SV166:::923::: documents in :::SV167:::25::: (non-zero) multi-docs, total text length :::SV168:::328313::: chars, :::SV169:::914::: names. 85 MB free, 59 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::50::: documents in document cluster #:::SV163:::25:::: January 2013
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::25 (Subject:January 2013) with 50 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::888::: of :::SV166:::923::: documents in :::SV167:::26::: (non-zero) multi-docs, total text length :::SV168:::384733::: chars, :::SV169:::964::: names. 85 MB free, 59 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - -----------------------------
+27 Feb 17:03 Indexer INFO  - Indexing :::SV162:::35::: documents in document cluster #:::SV163:::26:::: February 2013
+27 Feb 17:03 Indexer INFO  - Finished indexing multi doc :::SV164:::26 (Subject:February 2013) with 35 docs:::
+27 Feb 17:03 Indexer INFO  - Current stats:No stats yet for Lucene indexer
+27 Feb 17:03 Indexer INFO  - Memory status after indexing :::SV165:::923::: of :::SV166:::923::: documents in :::SV167:::27::: (non-zero) multi-docs, total text length :::SV168:::401324::: chars, :::SV169:::997::: names. 85 MB free, 59 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - Memory status after releasing classifier: 118 MB free, 26 MB used, 998 MB max, 144 MB total
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::0 (Subject:December 2010) with 1 docs::: total #postings = :::SV185:::0:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::1 (Subject:January 2011) with 3 docs::: total #postings = :::SV185:::9:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::2 (Subject:February 2011) with 2 docs::: total #postings = :::SV185:::0:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::3 (Subject:March 2011) with 1 docs::: total #postings = :::SV185:::31:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::4 (Subject:April 2011) with 2 docs::: total #postings = :::SV185:::0:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::5 (Subject:May 2011) with 1 docs::: total #postings = :::SV185:::0:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::6 (Subject:June 2011) with 0 docs::: total #postings = :::SV185:::0:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::7 (Subject:July 2011) with 9 docs::: total #postings = :::SV185:::4:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::8 (Subject:August 2011) with 6 docs::: total #postings = :::SV185:::4:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::9 (Subject:September 2011) with 27 docs::: total #postings = :::SV185:::17:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::10 (Subject:October 2011) with 37 docs::: total #postings = :::SV185:::12:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::11 (Subject:November 2011) with 34 docs::: total #postings = :::SV185:::30:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::12 (Subject:December 2011) with 47 docs::: total #postings = :::SV185:::28:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::13 (Subject:January 2012) with 12 docs::: total #postings = :::SV185:::13:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::14 (Subject:February 2012) with 25 docs::: total #postings = :::SV185:::11:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::15 (Subject:March 2012) with 26 docs::: total #postings = :::SV185:::12:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::16 (Subject:April 2012) with 67 docs::: total #postings = :::SV185:::23:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::17 (Subject:May 2012) with 76 docs::: total #postings = :::SV185:::27:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::18 (Subject:June 2012) with 81 docs::: total #postings = :::SV185:::26:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::19 (Subject:July 2012) with 77 docs::: total #postings = :::SV185:::26:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::20 (Subject:August 2012) with 55 docs::: total #postings = :::SV185:::21:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::21 (Subject:September 2012) with 53 docs::: total #postings = :::SV185:::14:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::22 (Subject:October 2012) with 46 docs::: total #postings = :::SV185:::17:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::23 (Subject:November 2012) with 83 docs::: total #postings = :::SV185:::20:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::24 (Subject:December 2012) with 67 docs::: total #postings = :::SV185:::53:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::25 (Subject:January 2013) with 50 docs::: total #postings = :::SV185:::11:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::26 (Subject:February 2013) with 35 docs::: total #postings = :::SV185:::11:::
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::0 (Subject:December 2010) with 1 docs::: has :::SV179:::0::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::0::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::0::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - December 2010 - :::SV187:::1::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::1 (Subject:January 2011) with 3 docs::: has :::SV179:::9::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::8::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::8::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - January 2011 - :::SV187:::3::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::2 (Subject:February 2011) with 2 docs::: has :::SV179:::0::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::0::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::8::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - February 2011 - :::SV187:::2::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::3 (Subject:March 2011) with 1 docs::: has :::SV179:::31::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::17::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - March 2011 - :::SV187:::1::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::4 (Subject:April 2011) with 2 docs::: has :::SV179:::0::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::0::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::17::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - April 2011 - :::SV187:::2::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::5 (Subject:May 2011) with 1 docs::: has :::SV179:::0::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::0::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::17::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - May 2011 - :::SV187:::1::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::6 (Subject:June 2011) with 0 docs::: has :::SV179:::0::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::0::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::17::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - June 2011 - :::SV187:::0::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::7 (Subject:July 2011) with 9 docs::: has :::SV179:::4::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::3::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::19::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - July 2011 - :::SV187:::9::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::8 (Subject:August 2011) with 6 docs::: has :::SV179:::4::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::4::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::22::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - August 2011 - :::SV187:::6::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::9 (Subject:September 2011) with 27 docs::: has :::SV179:::17::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::31::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - September 2011 - :::SV187:::27::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::10 (Subject:October 2011) with 37 docs::: has :::SV179:::12::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::39::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - October 2011 - :::SV187:::37::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::11 (Subject:November 2011) with 34 docs::: has :::SV179:::30::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::47::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - November 2011 - :::SV187:::34::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::12 (Subject:December 2011) with 47 docs::: has :::SV179:::28::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::54::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - December 2011 - :::SV187:::47::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::13 (Subject:January 2012) with 12 docs::: has :::SV179:::13::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::61::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - January 2012 - :::SV187:::12::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::14 (Subject:February 2012) with 25 docs::: has :::SV179:::11::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::70::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - February 2012 - :::SV187:::25::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::15 (Subject:March 2012) with 26 docs::: has :::SV179:::12::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::78::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - March 2012 - :::SV187:::26::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::16 (Subject:April 2012) with 67 docs::: has :::SV179:::23::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::86::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - April 2012 - :::SV187:::67::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::17 (Subject:May 2012) with 76 docs::: has :::SV179:::27::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::93::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - May 2012 - :::SV187:::76::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::18 (Subject:June 2012) with 81 docs::: has :::SV179:::26::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::101::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - June 2012 - :::SV187:::81::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::19 (Subject:July 2012) with 77 docs::: has :::SV179:::26::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::110::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - July 2012 - :::SV187:::77::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::20 (Subject:August 2012) with 55 docs::: has :::SV179:::21::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::119::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - August 2012 - :::SV187:::55::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::21 (Subject:September 2012) with 53 docs::: has :::SV179:::14::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::126::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - September 2012 - :::SV187:::53::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::22 (Subject:October 2012) with 46 docs::: has :::SV179:::17::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::135::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - October 2012 - :::SV187:::46::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::23 (Subject:November 2012) with 83 docs::: has :::SV179:::20::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::143::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - November 2012 - :::SV187:::83::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::24 (Subject:December 2012) with 67 docs::: has :::SV179:::53::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::152::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - December 2012 - :::SV187:::67::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::25 (Subject:January 2013) with 50 docs::: has :::SV179:::11::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::160::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - January 2013 - :::SV187:::50::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::26 (Subject:February 2013) with 35 docs::: has :::SV179:::11::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::167::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - February 2013 - :::SV187:::35::: documents, :::SV188:::27::: postings
+27 Feb 17:03 IndexEmailDriver INFO  - own_email_address: 1 own_names: 3
+contacts: 145 non_zero_contacts: 
+
+27 Feb 17:03 IndexEmailDriver INFO  - No stats yet for Lucene indexer
+27 Feb 17:03 IndexEmailDriver INFO  - :::SV148:::1084::: links
+27 Feb 17:03 IndexEmailDriver INFO  - Indexer took 20 seconds
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::0 (Subject:December 2010) with 1 docs::: total #postings = :::SV185:::0:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::1 (Subject:January 2011) with 3 docs::: total #postings = :::SV185:::9:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::2 (Subject:February 2011) with 2 docs::: total #postings = :::SV185:::0:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::3 (Subject:March 2011) with 1 docs::: total #postings = :::SV185:::31:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::4 (Subject:April 2011) with 2 docs::: total #postings = :::SV185:::0:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::5 (Subject:May 2011) with 1 docs::: total #postings = :::SV185:::0:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::6 (Subject:June 2011) with 0 docs::: total #postings = :::SV185:::0:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::7 (Subject:July 2011) with 9 docs::: total #postings = :::SV185:::4:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::8 (Subject:August 2011) with 6 docs::: total #postings = :::SV185:::4:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::9 (Subject:September 2011) with 27 docs::: total #postings = :::SV185:::17:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::10 (Subject:October 2011) with 37 docs::: total #postings = :::SV185:::12:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::11 (Subject:November 2011) with 34 docs::: total #postings = :::SV185:::30:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::12 (Subject:December 2011) with 47 docs::: total #postings = :::SV185:::28:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::13 (Subject:January 2012) with 12 docs::: total #postings = :::SV185:::13:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::14 (Subject:February 2012) with 25 docs::: total #postings = :::SV185:::11:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::15 (Subject:March 2012) with 26 docs::: total #postings = :::SV185:::12:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::16 (Subject:April 2012) with 67 docs::: total #postings = :::SV185:::23:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::17 (Subject:May 2012) with 76 docs::: total #postings = :::SV185:::27:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::18 (Subject:June 2012) with 81 docs::: total #postings = :::SV185:::26:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::19 (Subject:July 2012) with 77 docs::: total #postings = :::SV185:::26:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::20 (Subject:August 2012) with 55 docs::: total #postings = :::SV185:::21:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::21 (Subject:September 2012) with 53 docs::: total #postings = :::SV185:::14:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::22 (Subject:October 2012) with 46 docs::: total #postings = :::SV185:::17:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::23 (Subject:November 2012) with 83 docs::: total #postings = :::SV185:::20:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::24 (Subject:December 2012) with 67 docs::: total #postings = :::SV185:::53:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::25 (Subject:January 2013) with 50 docs::: total #postings = :::SV185:::11:::
+27 Feb 17:03 Indexer INFO  - Finished with multi doc :::SV184:::26 (Subject:February 2013) with 35 docs::: total #postings = :::SV185:::11:::
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::0 (Subject:December 2010) with 1 docs::: has :::SV179:::0::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::0::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::0::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - December 2010 - :::SV187:::1::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::1 (Subject:January 2011) with 3 docs::: has :::SV179:::9::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::8::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::8::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - January 2011 - :::SV187:::3::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::2 (Subject:February 2011) with 2 docs::: has :::SV179:::0::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::0::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::8::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - February 2011 - :::SV187:::2::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::3 (Subject:March 2011) with 1 docs::: has :::SV179:::31::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::17::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - March 2011 - :::SV187:::1::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::4 (Subject:April 2011) with 2 docs::: has :::SV179:::0::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::0::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::17::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - April 2011 - :::SV187:::2::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::5 (Subject:May 2011) with 1 docs::: has :::SV179:::0::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::0::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::17::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - May 2011 - :::SV187:::1::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::6 (Subject:June 2011) with 0 docs::: has :::SV179:::0::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::0::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::17::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - June 2011 - :::SV187:::0::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::7 (Subject:July 2011) with 9 docs::: has :::SV179:::4::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::3::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::19::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - July 2011 - :::SV187:::9::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::8 (Subject:August 2011) with 6 docs::: has :::SV179:::4::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::4::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::22::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - August 2011 - :::SV187:::6::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::9 (Subject:September 2011) with 27 docs::: has :::SV179:::17::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::31::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - September 2011 - :::SV187:::27::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::10 (Subject:October 2011) with 37 docs::: has :::SV179:::12::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::39::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - October 2011 - :::SV187:::37::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::11 (Subject:November 2011) with 34 docs::: has :::SV179:::30::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::47::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - November 2011 - :::SV187:::34::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::12 (Subject:December 2011) with 47 docs::: has :::SV179:::28::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::54::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - December 2011 - :::SV187:::47::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::13 (Subject:January 2012) with 12 docs::: has :::SV179:::13::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::61::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - January 2012 - :::SV187:::12::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::14 (Subject:February 2012) with 25 docs::: has :::SV179:::11::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::70::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - February 2012 - :::SV187:::25::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::15 (Subject:March 2012) with 26 docs::: has :::SV179:::12::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::78::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - March 2012 - :::SV187:::26::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::16 (Subject:April 2012) with 67 docs::: has :::SV179:::23::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::86::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - April 2012 - :::SV187:::67::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::17 (Subject:May 2012) with 76 docs::: has :::SV179:::27::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::93::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - May 2012 - :::SV187:::76::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::18 (Subject:June 2012) with 81 docs::: has :::SV179:::26::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::101::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - June 2012 - :::SV187:::81::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::19 (Subject:July 2012) with 77 docs::: has :::SV179:::26::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::110::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - July 2012 - :::SV187:::77::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::20 (Subject:August 2012) with 55 docs::: has :::SV179:::21::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::119::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - August 2012 - :::SV187:::55::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::21 (Subject:September 2012) with 53 docs::: has :::SV179:::14::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::126::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - September 2012 - :::SV187:::53::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::22 (Subject:October 2012) with 46 docs::: has :::SV179:::17::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::135::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - October 2012 - :::SV187:::46::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::23 (Subject:November 2012) with 83 docs::: has :::SV179:::20::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::143::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - November 2012 - :::SV187:::83::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::24 (Subject:December 2012) with 67 docs::: has :::SV179:::53::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::152::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - December 2012 - :::SV187:::67::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::25 (Subject:January 2013) with 50 docs::: has :::SV179:::11::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::160::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - January 2013 - :::SV187:::50::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Indexer INFO  - mdoc :::SV178:::26 (Subject:February 2013) with 35 docs::: has :::SV179:::11::: postings
+27 Feb 17:03 Indexer INFO  - :::SV182:::9::: terms (:::SV183:::0::: pruned)
+27 Feb 17:03 Indexer INFO  - :::SV186:::167::: unique important terms so far
+27 Feb 17:03 Indexer INFO  - February 2013 - :::SV187:::35::: documents, :::SV188:::27::: postings
+27 Feb 17:03 Sessions INFO  - Saving session to file /usr/share/tomcat7/.muse/user/sessions/Sent messages for viharipiratla@gmail.com.session.v2
+27 Feb 17:03 Sessions INFO  - saving key: fullEmailDocs
+27 Feb 17:03 Sessions INFO  - saving key: addressBook
+27 Feb 17:03 Sessions INFO  - saving key: rootDir
+27 Feb 17:03 Sessions INFO  - saving key: luceneIndexer
+27 Feb 17:03 Sessions INFO  - saving key: statusProvider
+27 Feb 17:03 Sessions INFO  - saving key: emailDocs
+27 Feb 17:03 Sessions INFO  - saving key: groupAssigner
+27 Feb 17:03 Sessions INFO  - saving key: userKey
+27 Feb 17:03 Sessions INFO  - saving key: indexDriver
+27 Feb 17:03 Sessions INFO  - saving key: attachmentsStore
+27 Feb 17:03 Sessions INFO  - saving key: cacheDir
+27 Feb 17:03 Sessions INFO  - Session saved to file /usr/share/tomcat7/.muse/user/sessions/Sent messages for viharipiratla@gmail.com.session.v2 size: 325 KB
+27 Feb 17:03 JSPHelper INFO  - NEW Request: http://localhost:8080/muse/info
+27 Feb 17:03 JSPHelper INFO  - STATS: 145 people, 150 email addrs, (1.0/contact), 102 names, (0.7/contact) 
+1 own emails: viharipiratla@gmail.com &bull; 
+3 own names: Vihari Piratla  &bull; Vihari  &bull; Vihari Vihari  &bull; 
+27 Feb 17:03 JSPHelper INFO  - Group STATS: 1. suragenius+1 (2 members, assigned to 40 messages)
+2. sarita+1 (2 members, assigned to 31 messages)
+3. sarita (individual, assigned to 66 messages)
+4. anil (individual, assigned to 53 messages)
+5. suragenius (individual, assigned to 43 messages)
+6. saini.sachinkumarsaini.sachin (individual, assigned to 42 messages)
+7. azb162 (individual, assigned to 49 messages)
+8. saikiranboga110792 (individual, assigned to 30 messages)
+9. vln_piratla (individual, assigned to 21 messages)
+10. suragenius+3 (4 members, assigned to 10 messages)
+11. hangal (individual, assigned to 49 messages)
+12. banerjee.somdutta (individual, assigned to 19 messages)
+13. vivekvishwakarma001+1 (2 members, assigned to 27 messages)
+14. anuragjakhotia (individual, assigned to 15 messages)
+15. nvenkataabhishek (individual, assigned to 12 messages)
+16. tag (individual, assigned to 13 messages)
+17. anil+1 (2 members, assigned to 9 messages)
+18. suruchi.s+2 (3 members, assigned to 6 messages)
+19. antragrover+1 (2 members, assigned to 14 messages)
+374 of 923 messages not assigned to any group (40%)
+
+27 Feb 17:04 JSPHelper INFO  - Word candidate: vihari piratla - occurs 462 times (3rd party: 462)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: vihari piratla
+27 Feb 17:04 JSPHelper INFO  - Word candidate: iit mandi - occurs 18 times (3rd party: 18)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: sudheendra hangal - occurs 14 times (3rd party: 14)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: sudheendra hangal
+27 Feb 17:04 JSPHelper INFO  - Word candidate: vihari - occurs 10 times (3rd party: null)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: india - occurs 10 times (3rd party: 10)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: iarc - occurs 9 times (3rd party: 9)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: rma - occurs 9 times (3rd party: 9)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: uav - occurs 8 times (3rd party: 8)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: imu - occurs 7 times (3rd party: 7)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: intel - occurs 7 times (3rd party: 7)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: gsa - occurs 7 times (3rd party: 7)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: gensec - occurs 6 times (3rd party: 6)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: indian institute of technology-mandi iarc application - occurs 6 times (3rd party: 6)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: indian institute of technology-mandi iarc application
+27 Feb 17:04 JSPHelper INFO  - Word candidate: ros mikrokopter - occurs 6 times (3rd party: 6)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: ros mikrokopter
+27 Feb 17:04 JSPHelper INFO  - Word candidate: pid - occurs 5 times (3rd party: 5)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: pwm - occurs 5 times (3rd party: 5)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: esc - occurs 5 times (3rd party: 5)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: google - occurs 4 times (3rd party: 4)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: somdutta banerjee - occurs 4 times (3rd party: 4)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: somdutta banerjee
+27 Feb 17:04 JSPHelper INFO  - Word candidate: leds - occurs 4 times (3rd party: 4)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: lan - occurs 4 times (3rd party: 4)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: ros - occurs 4 times (3rd party: 4)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: llc - occurs 4 times (3rd party: null)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: iit mandi team entry - occurs 4 times (3rd party: 4)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: iit mandi team entry
+27 Feb 17:04 JSPHelper INFO  - Word candidate: computer vision - occurs 4 times (3rd party: 4)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: computer vision
+27 Feb 17:04 JSPHelper INFO  - Word candidate: team lucifer - occurs 4 times (3rd party: 4)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: seaview - occurs 4 times (3rd party: 4)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: yahoo - occurs 3 times (3rd party: 3)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: ascitech - occurs 3 times (3rd party: 3)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: international aerial robotics competition - occurs 3 times (3rd party: 3)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: international aerial robotics competition
+27 Feb 17:04 JSPHelper INFO  - Word candidate: ajinkya kulkarni - occurs 3 times (3rd party: 3)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: ajinkya kulkarni
+27 Feb 17:04 JSPHelper INFO  - Word candidate: bldc - occurs 3 times (3rd party: 3)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: socket programming - occurs 3 times (3rd party: 3)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: socket programming
+27 Feb 17:04 JSPHelper INFO  - Word candidate: gsa summit goa - occurs 3 times (3rd party: 3)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: gsa summit goa
+27 Feb 17:04 JSPHelper INFO  - Word candidate: microsoft research - occurs 3 times (3rd party: 3)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: microsoft research
+27 Feb 17:04 JSPHelper INFO  - Word candidate: microsoft - occurs 3 times (3rd party: 3)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: haa - occurs 3 times (3rd party: 3)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: gmail - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: cse - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: ieee - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: ransac - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: sachin saini - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: gpu - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: anand dhandhania - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: anand dhandhania
+27 Feb 17:04 JSPHelper INFO  - Word candidate: jayesh - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: iam - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: ravi kanth - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: arduino duemilanove - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: arduino duemilanove
+27 Feb 17:04 JSPHelper INFO  - Word candidate: arduino - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: pete dokter sparkfun electronics - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: pete dokter sparkfun electronics
+27 Feb 17:04 JSPHelper INFO  - Word candidate: dr. bharat singh rajpurohit - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: dr. bharat singh rajpurohit
+27 Feb 17:04 JSPHelper INFO  - Word candidate: ieee india - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: prem kumar - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: guwahati - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: nanna - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: advantech india aonline - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: advantech india aonline
+27 Feb 17:04 JSPHelper INFO  - Word candidate: ihs - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: sachin - occurs 2 times (3rd party: null)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: belgium - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: sachin kumar - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: vin - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: shimla - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: nic - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: zcov - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: tx - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: tx
+27 Feb 17:04 JSPHelper INFO  - Word candidate: international aerial robotics teams - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: international aerial robotics teams
+27 Feb 17:04 JSPHelper INFO  - Word candidate: inline - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: internship application - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: internship application
+27 Feb 17:04 JSPHelper INFO  - Word candidate: asia - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: delhi - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: gesture recognition - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: gesture recognition
+27 Feb 17:04 JSPHelper INFO  - Word candidate: hci - occurs 2 times (3rd party: 2)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: google inc. - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: hotmail - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: california - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: aol - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: wenfei liu - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: peisen huang - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: stony brook - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: valls miro - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: weizhen zhou - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: corke - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: roberts - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: dissanayake - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: localization system for mobile robots yu zhou - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: localization system for mobile robots yu zhou
+27 Feb 17:04 JSPHelper INFO  - Word candidate: mechatronics & intelligent syst - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: mechatronics & intelligent syst
+27 Feb 17:04 JSPHelper INFO  - Word candidate: robotic embedded syst - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: robotic embedded syst
+27 Feb 17:04 JSPHelper INFO  - Word candidate: southern california univ. - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: southern california univ.
+27 Feb 17:04 JSPHelper INFO  - Word candidate: univ. of technol - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: univ. of technol
+27 Feb 17:04 JSPHelper INFO  - Word candidate: uav hrabar - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: los angeles - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: state univ. - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: new york - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: sukhatme - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: g.s. - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: lab. - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: mech - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: sydney - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: s. - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: s.
+27 Feb 17:04 JSPHelper INFO  - Word candidate: p. - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: p.
+27 Feb 17:04 JSPHelper INFO  - Word candidate: k. - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: k.
+27 Feb 17:04 JSPHelper INFO  - Word candidate: j. - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: j.
+27 Feb 17:04 JSPHelper INFO  - Word candidate: ca - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: ca
+27 Feb 17:04 JSPHelper INFO  - Word candidate: usa - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: g. - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: g.
+27 Feb 17:04 JSPHelper INFO  - Word candidate: nsw - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: ins - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: tol& - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: t& - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: t&
+27 Feb 17:04 JSPHelper INFO  - Word candidate: hello ravikanth - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: hello ravikanth
+27 Feb 17:04 JSPHelper INFO  - Word candidate: saurabh ladha - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: saurabh ladha
+27 Feb 17:04 JSPHelper INFO  - Word candidate: ravikanth - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: asitech - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: p.vihari - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: rto - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: gonsalves - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: m.abhilash - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: mit - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: bsr - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: context of physiology - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: context of physiology
+27 Feb 17:04 JSPHelper INFO  - Word candidate: preethi john - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: mathworks - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: advanced routing under linux - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: advanced routing under linux
+27 Feb 17:04 JSPHelper INFO  - Word candidate: fpga - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: hirose - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: sony - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: flycapture sdk - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: flycapture sdk
+27 Feb 17:04 JSPHelper INFO  - Word candidate: triclops sdk - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: interface**mega pixel - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: interface**mega pixel
+27 Feb 17:04 JSPHelper INFO  - Word candidate: hfov - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: gpio - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: grasshopper - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: bw - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: bw
+27 Feb 17:04 JSPHelper INFO  - Word candidate: fps - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: fov - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: usb - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: lynn - occurs 1 time (3rd party: null)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: andrew howard - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: andrew howard
+27 Feb 17:04 JSPHelper INFO  - Word candidate: larry mathies - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: larry mathies
+27 Feb 17:04 JSPHelper INFO  - Word candidate: john - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: m.garibaldi - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: mars exploration rovers - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: mars exploration rovers
+27 Feb 17:04 JSPHelper INFO  - Word candidate: rms - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: adt - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: uml - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: intel embedded - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: intel embedded
+27 Feb 17:04 JSPHelper INFO  - Word candidate: pci - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: tanmai - occurs 1 time (3rd party: null)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: ravi - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: io - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: io
+27 Feb 17:04 JSPHelper INFO  - Word candidate: inka pid - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: abhishek - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: asci - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: cuvi - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: tarvata - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: addremovept && - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: addremovept &&
+27 Feb 17:04 JSPHelper INFO  - Word candidate: lukas-kanade - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: termcriteria - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: && - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: &&
+27 Feb 17:04 JSPHelper INFO  - Word candidate: nuvvu - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: orey - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: rgbd slam - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: rgbd - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: anurag jakhotia - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: anurag jakhotia
+27 Feb 17:04 JSPHelper INFO  - Word candidate: pvl narayana - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: hdfc - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: stewart - occurs 1 time (3rd party: null)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: sowmya - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: aieee - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: mama - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: nms - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: meersman - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: navathe - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: interative classroom solution - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: interative classroom solution
+27 Feb 17:04 JSPHelper INFO  - Word candidate: broken teeth - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: genemala - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: cmos - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: ranjodh - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: kanpur - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: bhuvaneswar - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: roorkee - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: kharaghpur - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: indore - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: wookong multirotor - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: wookong multirotor
+27 Feb 17:04 JSPHelper INFO  - Word candidate: ic - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: ic
+27 Feb 17:04 JSPHelper INFO  - Word candidate: timothy a. gonsalves - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: timothy a. gonsalves
+27 Feb 17:04 JSPHelper INFO  - Word candidate: saviour - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: chandigarh - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: vihari piratla cse - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: vihari piratla cse
+27 Feb 17:04 JSPHelper INFO  - Word candidate: pinni - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: mandi - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: bldc motors - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: tadeparti - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: lidar - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: technik - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: mosfet - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: paypal - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: nex robotics pvt. ltd. - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: nex robotics pvt. ltd.
+27 Feb 17:04 JSPHelper INFO  - Word candidate: icp - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: tatkal - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: sai priya gardens - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: sai priya gardens
+27 Feb 17:04 JSPHelper INFO  - Word candidate: v. narendranath c. - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: v. narendranath c.
+27 Feb 17:04 JSPHelper INFO  - Word candidate: madhurawada - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: visakhapatnam - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: visakhapatnam
+27 Feb 17:04 JSPHelper INFO  - Word candidate: auav iit mandi - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: auav iit mandi
+27 Feb 17:04 JSPHelper INFO  - Word candidate: kerela - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: nalam venkata abhishek - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: nalam venkata abhishek
+27 Feb 17:04 JSPHelper INFO  - Word candidate: vedula bhavani - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: vedula bhavani
+27 Feb 17:04 JSPHelper INFO  - Word candidate: aknu - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: sacin - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: jee - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: sata - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: psu - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: hott - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: fri - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: iit - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: fc - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: fc
+27 Feb 17:04 JSPHelper INFO  - Word candidate: grand forks - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: millennial vision - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: millennial vision
+27 Feb 17:04 JSPHelper INFO  - Word candidate: seva kendra - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: shimla psk - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: i.e. research execom convener - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: i.e. research execom convener
+27 Feb 17:04 JSPHelper INFO  - Word candidate: ros comaptible - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: ros comaptible
+27 Feb 17:04 JSPHelper INFO  - Word candidate: sao - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: u.s. - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: flightcontrol - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: flightcontrol
+27 Feb 17:04 JSPHelper INFO  - Word candidate: mikrokopter - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: geen led - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: mktool - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: fwd - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: gnd - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: faculty discussion board - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: faculty discussion board
+27 Feb 17:04 JSPHelper INFO  - Word candidate: samuel sir - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: jk - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: jk
+27 Feb 17:04 JSPHelper INFO  - Word candidate: google search - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: google search
+27 Feb 17:04 JSPHelper INFO  - Word candidate: google image - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: gtalk - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: ingo busker registergericht aurich - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: ingo busker registergericht aurich
+27 Feb 17:04 JSPHelper INFO  - Word candidate: holger buss - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: raiffeisenbank moormerland - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: raiffeisenbank moormerland
+27 Feb 17:04 JSPHelper INFO  - Word candidate: lothar freudenberg - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: lothar freudenberg
+27 Feb 17:04 JSPHelper INFO  - Word candidate: flachsmeerstrasse - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: flachsmeerstrasse
+27 Feb 17:04 JSPHelper INFO  - Word candidate: moormerland - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: konto - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: hisystems gmbh flachsmeerstrasse - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: hisystems gmbh flachsmeerstrasse
+27 Feb 17:04 JSPHelper INFO  - Word candidate: moormerland germany - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: moormerland germany
+27 Feb 17:04 JSPHelper INFO  - Word candidate: atmega - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: lio - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: dennis garrelts - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: dennis garrelts
+27 Feb 17:04 JSPHelper INFO  - Word candidate: vivek vishwakarma - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: vivek vishwakarma
+27 Feb 17:04 JSPHelper INFO  - Word candidate: nikhil chhabra - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: nikhil chhabra
+27 Feb 17:04 JSPHelper INFO  - Word candidate: gsa summit - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: institute and google - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: institute and google
+27 Feb 17:04 JSPHelper INFO  - Word candidate: google map maker - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: google map maker
+27 Feb 17:04 JSPHelper INFO  - Word candidate: google apps - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: lothar - occurs 1 time (3rd party: null)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: human computer interaction - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: human computer interaction
+27 Feb 17:04 JSPHelper INFO  - Word candidate: shashwat agarwal - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: shashwat agarwal
+27 Feb 17:04 JSPHelper INFO  - Word candidate: dipanshu karla parvathi anantha - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: dipanshu karla parvathi anantha
+27 Feb 17:04 JSPHelper INFO  - Word candidate: parvathi anantha - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: parvathi anantha
+27 Feb 17:04 JSPHelper INFO  - Word candidate: dipanshu karla - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: dipanshu karla
+27 Feb 17:04 JSPHelper INFO  - Word candidate: agniv pal chaudhari vivek arora - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: agniv pal chaudhari vivek arora
+27 Feb 17:04 JSPHelper INFO  - Word candidate: nov - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: acm icpc mega warm up contest invite - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: acm icpc mega warm up contest invite
+27 Feb 17:04 JSPHelper INFO  - Word candidate: vihari vihari - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: vihari vihari
+27 Feb 17:04 JSPHelper INFO  - Word candidate: bfs - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: dfs - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: msr - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: dots - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: google summer of code - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: google summer of code
+27 Feb 17:04 JSPHelper INFO  - Word candidate: dr.sarita azad - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: dr.sarita azad
+27 Feb 17:04 JSPHelper INFO  - Word candidate: ankit - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: project glass of google - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: project glass of google
+27 Feb 17:04 JSPHelper INFO  - Word candidate: kgp nandan kanan - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: kgp nandan kanan
+27 Feb 17:04 JSPHelper INFO  - Word candidate: ndls - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: andol - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: pop assignment - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: pop assignment
+27 Feb 17:04 JSPHelper INFO  - Word candidate: rube goldberg - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: rube goldberg
+27 Feb 17:04 JSPHelper INFO  - Word candidate: isaac newton - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: andhra  pradesh - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: andhra  pradesh
+27 Feb 17:04 JSPHelper INFO  - Word candidate: arunachal pradesh - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: arunachal pradesh
+27 Feb 17:04 JSPHelper INFO  - Word candidate: himachal pradesh - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: himachal pradesh
+27 Feb 17:04 JSPHelper INFO  - Word candidate: madhya pradesh - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: madhya pradesh
+27 Feb 17:04 JSPHelper INFO  - Word candidate: uttar  pradesh - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: uttar  pradesh
+27 Feb 17:04 JSPHelper INFO  - Word candidate: bihar - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: chhatisgarh - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: haryana - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: karnataka - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: kerala - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: maharashtra - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: meghalaya - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: mizoram - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: pondicherry - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: punjab - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: sikkim - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: andaman  & nicobar - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: andaman  & nicobar
+27 Feb 17:04 JSPHelper INFO  - Word candidate: daman & diu - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: jammu  & kashmir - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: jammu  & kashmir
+27 Feb 17:04 JSPHelper INFO  - Word candidate: n haveli - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: nagaland - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: orissa - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: tripura - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: iassim - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: lassim - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: microsoft kinect - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: microsoft kinect
+27 Feb 17:04 JSPHelper INFO  - Word candidate: pietro - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: carnegie - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: toefl - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: toefel - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: gre - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: john hopkins - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: university of cambridge uk - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: university of cambridge uk
+27 Feb 17:04 JSPHelper INFO  - Word candidate: national university singapore - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: national university singapore
+27 Feb 17:04 JSPHelper INFO  - Word candidate: cornell - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: installer - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: microsoft community - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: microsoft community
+27 Feb 17:04 JSPHelper INFO  - Word candidate: programming interview questions and solutions - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: programming interview questions and solutions
+27 Feb 17:04 JSPHelper INFO  - Word candidate: coding interview - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: coding interview
+27 Feb 17:04 JSPHelper INFO  - Word candidate: teammates - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: hp deskjet d1668 - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: hp deskjet d1668
+27 Feb 17:04 JSPHelper INFO  - Word candidate: jan - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: application developer intern - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: application developer intern
+27 Feb 17:04 JSPHelper INFO  - Word candidate: rmse - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: automated deployment of cloud infrastructure for testing - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: automated deployment of cloud infrastructure for testing
+27 Feb 17:04 JSPHelper INFO  - Word candidate: altair intern application - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: altair intern application
+27 Feb 17:04 JSPHelper INFO  - Word candidate: gui-driven software applications - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: gui-driven software applications
+27 Feb 17:04 JSPHelper INFO  - Word candidate: roddam narasimha - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: roddam narasimha
+27 Feb 17:04 JSPHelper INFO  - Word candidate: padma vibushan - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: padma vibushan
+27 Feb 17:04 JSPHelper INFO  - Word candidate: vihari piratla r - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: vihari piratla r
+27 Feb 17:04 JSPHelper INFO  - Word candidate: andhra pradesh - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: andhra pradesh
+27 Feb 17:04 JSPHelper INFO  - Word candidate: korukonda rd - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: rajahmundry - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Word candidate: ramesh busavalla - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: ramesh busavalla
+27 Feb 17:04 JSPHelper INFO  - Word candidate: altair engineering bangalore - occurs 1 time (3rd party: 1)
+27 Feb 17:04 JSPHelper INFO  - Dropping name due to length: altair engineering bangalore
+27 Feb 17:04 JSPHelper INFO  - Word candidate: muse login - occurs 1 time (3rd party: 1)
+27 Feb 17:04 Crossword INFO  - :::SV270:::308::: candidates, :::SV271:::2507::: candidate prefixes
+27 Feb 17:04 Crossword INFO  - placing 0 across. viharipiratla  .. at 0,0 at (0,0) across
+27 Feb 17:04 Crossword INFO  - placing 0 down. iitmandi  .. at 1,0 at (1,0) down
+27 Feb 17:04 Crossword INFO  - prefix:suffix relationship between vihari - and - viharipiratla
+27 Feb 17:04 Crossword INFO  - placing 0 across. india  .. at 0,5 at (0,5) across
+27 Feb 17:04 Crossword INFO  - placing 0 across. iarc  .. at 1,7 at (1,7) across
+27 Feb 17:04 Crossword INFO  - placing 0 across. rma  .. at 0,3 at (0,3) across
+27 Feb 17:04 Crossword INFO  - placing 0 down. imu  .. at 5,0 at (5,0) down
+27 Feb 17:04 Crossword INFO  - placing 0 across. uav  .. at 5,2 at (5,2) across
+27 Feb 17:04 Crossword INFO  - placing 0 down. gsa  .. at 4,3 at (4,3) down
+27 Feb 17:04 Crossword INFO  - prefix:suffix relationship between indianinstituteoftechnologymandiiarcapplication - and - india
+27 Feb 17:04 Crossword INFO  - placing 0 down. leds  .. at 11,0 at (11,0) down
+27 Feb 17:04 Crossword INFO  - placing 0 across. gensec  .. at 8,3 at (8,3) across
+27 Feb 17:04 Crossword INFO  - placing 0 down. esc  .. at 9,3 at (9,3) down
+27 Feb 17:04 Crossword INFO  - placing 0 down. ros  .. at 3,7 at (3,7) down
+27 Feb 17:04 Crossword INFO  - prefix:suffix relationship between rosmikrokopter - and - ros
+27 Feb 17:04 Crossword INFO  - placing 0 across. llc  .. at 7,5 at (7,5) across
+27 Feb 17:04 Crossword INFO  - placing 0 down. lan  .. at 7,5 at (7,5) down
+27 Feb 17:04 Crossword INFO  - placing 0 across. intel  .. at 6,7 at (6,7) across
+27 Feb 17:04 Crossword INFO  - prefix:suffix relationship between iitmanditeamentry - and - iitmandi
+27 Feb 17:04 Crossword INFO  - placing 0 across. seaview  .. at 3,9 at (3,9) across
+27 Feb 17:04 Crossword INFO  - placing 0 down. yahoo  .. at 5,8 at (5,8) down
+27 Feb 17:04 Crossword INFO  - placing 0 down. ascitech  .. at 13,1 at (13,1) down
+27 Feb 17:04 Crossword INFO  - placing 0 across. google  .. at 3,11 at (3,11) across
+27 Feb 17:04 Crossword INFO  - prefix:suffix relationship between gsasummitgoa - and - gsa
+27 Feb 17:04 Crossword INFO  - placing 0 across. cse  .. at 11,6 at (11,6) across
+27 Feb 17:04 Crossword INFO  - placing 0 down. gpu  .. at 3,11 at (3,11) down
+27 Feb 17:04 Crossword INFO  - placing 0 across. ihs  .. at 12,8 at (12,8) across
+27 Feb 17:04 Crossword INFO  - placing 0 down. ieee  .. at 12,8 at (12,8) down
+27 Feb 17:04 Crossword INFO  - prefix:suffix relationship between ieeeindia - and - ieee
+27 Feb 17:04 Crossword INFO  - placing 0 down. sachin  .. at 14,8 at (14,8) down
+27 Feb 17:04 Crossword INFO  - prefix:suffix relationship between sachinsaini - and - sachin
+27 Feb 17:04 Crossword INFO  - prefix:suffix relationship between sachinkumar - and - sachin
+27 Feb 17:04 Crossword INFO  - placing 0 across. vin  .. at 12,13 at (12,13) across
+27 Feb 17:04 Crossword INFO  - placing 0 down. inline  .. at 7,9 at (7,9) down
+27 Feb 17:04 Crossword INFO  - placing 0 across. jayesh  .. at 4,14 at (4,14) across
+27 Feb 17:04 Crossword INFO  - prefix:suffix relationship between googleinc - and - google
+27 Feb 17:04 Crossword INFO  - placing 0 down. aol  .. at 3,0 at (3,0) down
+27 Feb 17:04 Crossword INFO  - prefix:suffix relationship between uavhrabar - and - uav
+27 Feb 17:04 Crossword INFO  - placing 0 across. mech  .. at 11,11 at (11,11) across
+27 Feb 17:04 Crossword INFO  - placing 0 down. adt  .. at 6,2 at (6,2) down
+27 Feb 17:04 Crossword INFO  - prefix:suffix relationship between intelembedded - and - intel
+27 Feb 17:04 Crossword INFO  - prefix:suffix relationship between asci - and - ascitech
+27 Feb 17:04 Crossword INFO  - prefix:suffix relationship between viharipiratlacse - and - viharipiratla
+27 Feb 17:04 Crossword INFO  - placing 0 across. icp  .. at 1,12 at (1,12) across
+27 Feb 17:04 Crossword INFO  - placing 0 down. pid  .. at 1,11 at (1,11) down
+27 Feb 17:04 Crossword INFO  - prefix:suffix relationship between iit - and - iitmandi
+27 Feb 17:04 Crossword INFO  - prefix:suffix relationship between roscomaptible - and - ros
+27 Feb 17:04 Crossword INFO  - prefix:suffix relationship between googlesearch - and - google
+27 Feb 17:04 Crossword INFO  - prefix:suffix relationship between googleimage - and - google
+27 Feb 17:04 Crossword INFO  - prefix:suffix relationship between gsasummit - and - gsa
+27 Feb 17:04 Crossword INFO  - prefix:suffix relationship between googlemapmaker - and - google
+27 Feb 17:04 Crossword INFO  - prefix:suffix relationship between googleapps - and - google
+27 Feb 17:04 Crossword INFO  - prefix:suffix relationship between googlesummerofcode - and - google
+27 Feb 17:04 Crossword INFO  - prefix:suffix relationship between viharipiratlar - and - viharipiratla
+27 Feb 17:04 Crossword INFO  - clue for vihari piratla (score :::SV272:::4.16:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::175::: in doc #:::SV275:::4:::::::SV276:::I am ______________, a 3rd year CSE U.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for vihari piratla (score :::SV272:::-17.92:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::7::: in doc #:::SV275:::16:::::::SV276:::Thank you,  --  ______________.:::
+27 Feb 17:04 Crossword INFO  - clue for uav (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::6::: in doc #:::SV275:::1:::::::SV276:::arnumber=1544998&abstractAccess=no&userType=inst Combined optic-flow and stereo-based navigation of urban canyons for a ___ Hrabar, S.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for uav (score :::SV272:::7.52:::, docscore: :::SV273:::5.0:::) at sentence# :::SV274:::21::: in doc #:::SV275:::2:::::::SV276:::Our broad problem statement is that we have to make an autonomous ___ that will follow a given vehicle.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for uav (score :::SV272:::-4.98:::, docscore: :::SV273:::3.0:::) at sentence# :::SV274:::2::: in doc #:::SV275:::8:::::::SV276:::We here are a team participating in IARC (International Aerial Robotics Competition) to be held in august 2012, and we want the product specified for the ___ that we are making.:::
+27 Feb 17:04 Crossword INFO  - clue for rma (score :::SV272:::3.48:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::2:::::::SV276:::Is the address written at the end of the ___ document is the address where we need to send the component?:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for rma (score :::SV272:::3.62:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::4:::::::SV276:::I hope you guyz will take care of all these issues along with those mentioned in the ___ document.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for gensec (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::0:::::::SV276:::Hello Pulkit, I am Vihari, ______ for S&T cell in IIT Mandi.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for gensec (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::1:::::::SV276:::Hello Naveen, I am Vihari, ______ for S&T cell in IIT Mandi.:::
+27 Feb 17:04 Crossword INFO  - clue for gensec (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::2:::::::SV276:::Hello  Ranjodh, I am Vihari, ______ for S&T cell in IIT Mandi.:::
+27 Feb 17:04 Crossword INFO  - clue for gensec (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::3:::::::SV276:::Hello Prem Kumar, I am Vihari, ______ for S&T cell in IIT Mandi.:::
+27 Feb 17:04 Crossword INFO  - clue for gensec (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::4:::::::SV276:::Hello Ajinkya Kulkarni, I am Vihari, ______ for S&T cell in IIT Mandi.:::
+27 Feb 17:04 Crossword INFO  - clue for gensec (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::5:::::::SV276:::Hello Dixit, I am Vihari, ______ for S&T cell in IIT Mandi.:::
+27 Feb 17:04 Crossword INFO  - clue for india (score :::SV272:::-42.92:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::29::: in doc #:::SV275:::3:::::::SV276:::in    Dear young budding engineering and science students,  Warm Greetings from IEEE _____ to the AIyeHum2012 aspirants!:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for india (score :::SV272:::3.4:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::5:::::::SV276:::What is the courier service that you use to _____?:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for india (score :::SV272:::19.18:::, docscore: :::SV273:::16.0:::) at sentence# :::SV274:::10::: in doc #:::SV275:::6:::::::SV276:::The overall TB prevalence rate in _____ is 544 per one lakh population while in Manipur, it is 1,107 per one lakh people.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for india (score :::SV272:::5.7799997:::, docscore: :::SV273:::3.0:::) at sentence# :::SV274:::6::: in doc #:::SV275:::8:::::::SV276:::Which you may get in _____ itself but you need to tailor it somehow to make things happen.:::
+27 Feb 17:04 Crossword INFO  - clue for india (score :::SV272:::-42.92:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::29::: in doc #:::SV275:::9:::::::SV276:::in    Dear young budding engineering and science students,  Warm Greetings from IEEE _____ to the AIyeHum2012 aspirants!:::
+27 Feb 17:04 Crossword INFO  - clue for india (score :::SV272:::2.62:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::7::: in doc #:::SV275:::10:::::::SV276:::The only advantage we have with this is that it is of _____.:::
+27 Feb 17:04 Crossword INFO  - clue for india (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::11:::::::SV276:::Hello, I am from _____ and I want to order stuff worth 500 dollars from mikrokopter.:::
+27 Feb 17:04 Crossword INFO  - clue for india (score :::SV272:::2.04:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::11:::::::SV276:::Can u explain me how many days would it take for it to arrive in _____ and are you going to take care of customs in my country.:::
+27 Feb 17:04 Crossword INFO  - clue for india (score :::SV272:::3.8600001:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::2::: in doc #:::SV275:::18:::::::SV276:::I am from _____ and can you tell me the least time it takes to get this into my hands.:::
+27 Feb 17:04 Crossword INFO  - clue for cse (score :::SV272:::2.8600001:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::0:::::::SV276:::___ roll numbers(20-30):::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for cse (score :::SV272:::-26.7:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::2::: in doc #:::SV275:::1:::::::SV276:::Tech ___, IIT Mandi,  *Life is like a Dream, you will realize its a dream only when you come out of that dream.:::
+27 Feb 17:04 Crossword INFO  - clue for cse (score :::SV272:::2.08:::, docscore: :::SV273:::10.0:::) at sentence# :::SV274:::5::: in doc #:::SV275:::2:::::::SV276:::Tech ___, IIT Mandi, 8086404994.:::
+27 Feb 17:04 Crossword INFO  - clue for cse (score :::SV272:::-14.76:::, docscore: :::SV273:::3.0:::) at sentence# :::SV274:::7::: in doc #:::SV275:::3:::::::SV276:::Vihari Piratla, B10025, ___, iit mandi.:::
+27 Feb 17:04 Crossword INFO  - clue for cse (score :::SV272:::-6.92:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::8::: in doc #:::SV275:::4:::::::SV276:::Tech ___, IIT Mandi, 8086404994.:::
+27 Feb 17:04 Crossword INFO  - clue for cse (score :::SV272:::-6.92:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::5:::::::SV276:::Tech ___, IIT Mandi, 8086404994.:::
+27 Feb 17:04 Crossword INFO  - clue for cse (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::4::: in doc #:::SV275:::7:::::::SV276:::Tech ___, IIT Mandi.:::
+27 Feb 17:04 Crossword INFO  - clue for cse (score :::SV272:::-18.84:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::8:::::::SV276:::sir, we the group of ___ with roll numbers b10021-b10030 are submitting you the term paper on die casting in this mail.:::
+27 Feb 17:04 Crossword INFO  - clue for cse (score :::SV272:::-10.0:::, docscore: :::SV273:::3.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::9:::::::SV276:::Tech ___, IIT Mandi.:::
+27 Feb 17:04 Crossword INFO  - clue for cse (score :::SV272:::-5.92:::, docscore: :::SV273:::3.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::10:::::::SV276:::Tech ___, IIT Mandi, 8086404994.:::
+27 Feb 17:04 Crossword INFO  - clue for cse (score :::SV272:::-7.92:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::11::: in doc #:::SV275:::11:::::::SV276:::Tech ___, IIT Mandi, 8086404994.:::
+27 Feb 17:04 Crossword INFO  - clue for cse (score :::SV272:::3.1:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::4::: in doc #:::SV275:::12:::::::SV276:::Vihari Piratla ___ under graduate.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for cse (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::5::: in doc #:::SV275:::13:::::::SV276:::Tech ___, IIT Mandi.:::
+27 Feb 17:04 Crossword INFO  - clue for cse (score :::SV272:::-7.92:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::6::: in doc #:::SV275:::14:::::::SV276:::Tech ___, IIT Mandi, 8086404994.:::
+27 Feb 17:04 Crossword INFO  - clue for cse (score :::SV272:::-27.7:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::9::: in doc #:::SV275:::15:::::::SV276:::Tech ___, IIT Mandi,  *Life is like a Dream, you will realize its a dream only when you come out of that dream.:::
+27 Feb 17:04 Crossword INFO  - clue for cse (score :::SV272:::-10.0:::, docscore: :::SV273:::3.0:::) at sentence# :::SV274:::14::: in doc #:::SV275:::16:::::::SV276:::Tech ___, IIT Mandi.:::
+27 Feb 17:04 Crossword INFO  - clue for iarc (score :::SV272:::-1.36:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::16::: in doc #:::SV275:::0:::::::SV276:::Re: Fees payment for ____-2012  Today I received notification that your Application Fee has arrived, so I will update the website this weekend to reflect the fact that your team is now OFFICIAL.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for iarc (score :::SV272:::3.42:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::10::: in doc #:::SV275:::1:::::::SV276:::Upon receipt of your Application Fee, your team will become OFFICIAL and will be listed at the ____ website.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for iarc (score :::SV272:::3.8400002:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::30::: in doc #:::SV275:::6:::::::SV276:::I with a team at iit mandi are trying to participate in ____ next tear.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for iarc (score :::SV272:::2.82:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::31::: in doc #:::SV275:::6:::::::SV276:::First of all congratulations for topping the ____ competition in 2011 and wish you a very good luck for completing the mission6 next year.:::
+27 Feb 17:04 Crossword INFO  - clue for iarc (score :::SV272:::-7.6:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::10::: in doc #:::SV275:::8:::::::SV276:::Upon receipt of your Application Fee, your team will become OFFICIAL and will be listed at the ____ website.:::
+27 Feb 17:04 Crossword INFO  - clue for iarc (score :::SV272:::-1.14:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::9:::::::SV276:::Som, I was searching for the teams that used stereo cameras in real time in the competition and came across these videos of mit presentation at ____ for mission 5 (ours is mission 6).:::
+27 Feb 17:04 Crossword INFO  - clue for iarc (score :::SV272:::-5.98:::, docscore: :::SV273:::3.0:::) at sentence# :::SV274:::2::: in doc #:::SV275:::10:::::::SV276:::We here are a team participating in ____ (International Aerial Robotics Competition) to be held in august 2012, and we want the product specified for the UAV that we are making.:::
+27 Feb 17:04 Crossword INFO  - clue for iarc (score :::SV272:::-0.34:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::2::: in doc #:::SV275:::12:::::::SV276:::Yes there is a team from IITM we are in contact with them and we found about TeamiFor on ____ website and also can you explain us how you approached intel and convinced them to sponsor your team.:::
+27 Feb 17:04 Crossword INFO  - clue for iarc (score :::SV272:::-8.38:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::15:::::::SV276:::Sir, Can you update me with how many more days the payment for ____ competition process may take.:::
+27 Feb 17:04 Crossword INFO  - clue for iarc (score :::SV272:::-18.82:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::16:::::::SV276:::Timely Goals : Project ____  Jul 10th: Should be ready with all the code that is necessary, including the master node.:::
+27 Feb 17:04 Crossword INFO  - clue for iarc (score :::SV272:::2.78:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::19:::::::SV276:::Sir, these are the account details of the account in to which ____ fee has to transferred.:::
+27 Feb 17:04 Crossword INFO  - clue for intel (score :::SV272:::3.5:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::0:::::::SV276:::Sachin update me with the status of _____ power cable.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for intel (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::1:::::::SV276:::My chat with _____ chat:::
+27 Feb 17:04 Crossword INFO  - clue for intel (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::20::: in doc #:::SV275:::2:::::::SV276:::_____.:::
+27 Feb 17:04 Crossword INFO  - clue for intel (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::8::: in doc #:::SV275:::5:::::::SV276:::_____.:::
+27 Feb 17:04 Crossword INFO  - clue for intel (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::10::: in doc #:::SV275:::5:::::::SV276:::_____.:::
+27 Feb 17:04 Crossword INFO  - clue for intel (score :::SV272:::-8.7:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::14::: in doc #:::SV275:::5:::::::SV276:::We can even ask for technical support from _____ people or there is a community forum , where people can help us.:::
+27 Feb 17:04 Crossword INFO  - clue for intel (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::6::: in doc #:::SV275:::7:::::::SV276:::_____.:::
+27 Feb 17:04 Crossword INFO  - clue for intel (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::4::: in doc #:::SV275:::9:::::::SV276:::_____.:::
+27 Feb 17:04 Crossword INFO  - clue for intel (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::8::: in doc #:::SV275:::9:::::::SV276:::_____.:::
+27 Feb 17:04 Crossword INFO  - clue for intel (score :::SV272:::13.38:::, docscore: :::SV273:::12.0:::) at sentence# :::SV274:::6::: in doc #:::SV275:::11:::::::SV276:::Finalize something abt _____ board we are having.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for intel (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::13:::::::SV276:::_____.:::
+27 Feb 17:04 Crossword INFO  - clue for intel (score :::SV272:::3.98:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::2::: in doc #:::SV275:::14:::::::SV276:::First complete the _____ task, so that we can order ask that that is required.:::
+27 Feb 17:04 Crossword INFO  - clue for intel (score :::SV272:::14.98:::, docscore: :::SV273:::12.0:::) at sentence# :::SV274:::8::: in doc #:::SV275:::17:::::::SV276:::We even ordered a board (_____ atom N450) which is already shipped to IIT Mandi.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for intel (score :::SV272:::2.42:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::7::: in doc #:::SV275:::18:::::::SV276:::So what we have done is gone through the embedded board planner of _____ and tried adding the slots we need.:::
+27 Feb 17:04 Crossword INFO  - clue for intel (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::9::: in doc #:::SV275:::18:::::::SV276:::_____.:::
+27 Feb 17:04 Crossword INFO  - clue for intel (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::14::: in doc #:::SV275:::18:::::::SV276:::_____.:::
+27 Feb 17:04 Crossword INFO  - clue for intel (score :::SV272:::2.8:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::17::: in doc #:::SV275:::18:::::::SV276:::how to communicate this to _____ for us to have the board we desired?:::
+27 Feb 17:04 Crossword INFO  - clue for intel (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::4::: in doc #:::SV275:::19:::::::SV276:::_____.:::
+27 Feb 17:04 Crossword INFO  - clue for ihs (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::13::: in doc #:::SV275:::0:::::::SV276:::So I wrote ___.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for seaview (score :::SV272:::-0.8:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::7::: in doc #:::SV275:::0:::::::SV276:::I can see normal behavior in tomcat as that of jlnp but I have absolutely no idea if _______ is receiving the log messages and where is going to be the location of run.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for seaview (score :::SV272:::3.62:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::11::: in doc #:::SV275:::0:::::::SV276:::I tried to figure it out myself but I couldn't, Some documentation on _______ software would help.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for seaview (score :::SV272:::3.8200002:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::1:::::::SV276:::_______ doesn't seem like capturing all the logs as can be seen in 284.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for seaview (score :::SV272:::3.42:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::5:::::::SV276:::I am including the _______ folder and also routine.:::
+27 Feb 17:04 Crossword INFO  - clue for seaview (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::5:::::::SV276:::_______.:::
+27 Feb 17:04 Crossword INFO  - clue for seaview (score :::SV272:::-7.64:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::7:::::::SV276:::I am getting "Unable to load _______ info" error even after specifying the absolute path to _______ directory.:::
+27 Feb 17:04 Crossword INFO  - clue for seaview (score :::SV272:::3.48:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::8:::::::SV276:::What have you logged in the case of muse with _______?:::
+27 Feb 17:04 Crossword INFO  - clue for seaview (score :::SV272:::2.04:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::5::: in doc #:::SV275:::9:::::::SV276:::I felt that _______ page before;:::
+27 Feb 17:04 Crossword INFO  - clue for seaview (score :::SV272:::2.6:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::12:::::::SV276:::Somehow, I don't know why _______ is not generating _______.:::
+27 Feb 17:04 Crossword INFO  - clue for seaview (score :::SV272:::2.62:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::13:::::::SV276:::For the past few days I have been researching on the kind of bugs that can be detected by _______.:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::5::: in doc #:::SV275:::0:::::::SV276:::______.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::11::: in doc #:::SV275:::0:::::::SV276:::______.:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::17::: in doc #:::SV275:::0:::::::SV276:::______.:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::2.5:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::5::: in doc #:::SV275:::1:::::::SV276:::Gmail is ______'s free email service, built on the idea that email can be intuitive, efficient, and fun.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::-27.52:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::6::: in doc #:::SV275:::1:::::::SV276:::Gmail has:   *Less spam* Keep unwanted messages out of your inbox with ______'s innovative technology.:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::14::: in doc #:::SV275:::1:::::::SV276:::______.:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::17::: in doc #:::SV275:::1:::::::SV276:::______.:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::20::: in doc #:::SV275:::1:::::::SV276:::______.:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::-16.5:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::2:::::::SV276:::The parcel will be coming from ______ hyderabad and destined to Vihari Piratla R no 202 Dashir hostel.:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::-7.4:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::8::: in doc #:::SV275:::3:::::::SV276:::After 10 years I see myself as a researcher working in Software giants like Microsoft, ______ and making my research and voice being heard out loud.:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::2.52:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::8::: in doc #:::SV275:::4:::::::SV276:::Plan is to spread the word through extensive use of ______ products during and in the course of events.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::6.96:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::5:::::::SV276:::As a ______ ambassador of IIT Mandi, I was invited for the GSA summit at Goa.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::-7.46:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::5:::::::SV276:::In this Summit, ______ briefed me along with other GSA's my motive as a GSA and explained how the relation between Institute and ______ is going to be.:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::-7.2200003:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::4::: in doc #:::SV275:::5:::::::SV276:::They have explained how vital is ______ now in our lives and briefed about many more products of ______ like ______ Apps, ______ Map Maker.:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::-8.58:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::5::: in doc #:::SV275:::5:::::::SV276:::Both ______ and Institute are looking forward for a very healthy relation, hope that I can bridge this gap.:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::11.36:::, docscore: :::SV273:::10.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::6:::::::SV276:::My favorite one is Is ______'s self driving car.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::7.22:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::7:::::::SV276:::Check these out ______ position locators!:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::8:::::::SV276:::Hello mam, Is ______ coming for internships?:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::3.6399999:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::9:::::::SV276:::Mam, I am selected as ______ Student Ambassador of IIT Mandi.:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::27::: in doc #:::SV275:::9:::::::SV276:::______.:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::2.18:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::2::: in doc #:::SV275:::10:::::::SV276:::I am leaving for goa for ______ Summit.:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::-10.0:::, docscore: :::SV273:::10.0:::) at sentence# :::SV274:::5::: in doc #:::SV275:::11:::::::SV276:::______.:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::7.86:::, docscore: :::SV273:::5.0:::) at sentence# :::SV274:::12::: in doc #:::SV275:::12:::::::SV276:::This may have lot of applicability in  some applications like Project Glass of ______.:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::2.8600001:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::12::: in doc #:::SV275:::13:::::::SV276:::anyway we can meet on ______ tomorrow, tell me sometime other than 4-6pm.:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::14:::::::SV276:::Hello mam, As a ______ ambassador of IIT Mandi I will be attending the ______ summit from 7th to 9th of this month to be held in goa.:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::2::: in doc #:::SV275:::16:::::::SV276:::______.:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::-8.92:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::18:::::::SV276:::Respected Madam, I have responded to one of your previous mails and applied for ______ Student Ambassador(GSA) of IIT mandi.:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::5.7799997:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::2::: in doc #:::SV275:::18:::::::SV276:::I am selected as the GSA of IIT Mandi and attended a summit in goa on ______'s Invitation.:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::3.08:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::18:::::::SV276:::As a GSA my job (in short) is to be a liaison between ______ and our institute and to plan and host few events in the campus.:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::2.58:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::4::: in doc #:::SV275:::18:::::::SV276:::I thank the institute and ______ for giving me this opportunity and I try achieve your expectations.:::
+27 Feb 17:04 Crossword INFO  - clue for google (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::2::: in doc #:::SV275:::19:::::::SV276:::______.:::
+27 Feb 17:04 Crossword INFO  - clue for mech (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::22::: in doc #:::SV275:::0:::::::SV276:::of ____.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for jayesh (score :::SV272:::-8.22:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::1:::::::SV276:::OK I will say no to ______(I dont mean you want him to be removed, what i mean is we are all unsatisfied with him) and will talk to deepak.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for iit mandi (score :::SV272:::-5.92:::, docscore: :::SV273:::3.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::0:::::::SV276:::Tech CSE, _________, 8086404994.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for iit mandi (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::1:::::::SV276:::Hello Dixit, I am Vihari, Gensec for S&T cell in _________.:::
+27 Feb 17:04 Crossword INFO  - clue for iit mandi (score :::SV272:::-7.92:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::11::: in doc #:::SV275:::3:::::::SV276:::Tech CSE, _________, 8086404994.:::
+27 Feb 17:04 Crossword INFO  - clue for iit mandi (score :::SV272:::13.04:::, docscore: :::SV273:::12.0:::) at sentence# :::SV274:::2::: in doc #:::SV275:::4:::::::SV276:::Iam a cs undergrad at _________.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for iit mandi (score :::SV272:::3.8600001:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::5:::::::SV276:::Here in I enclose the paper corresponding to the team entry of _________.:::
+27 Feb 17:04 Crossword INFO  - clue for iit mandi (score :::SV272:::1.0799999:::, docscore: :::SV273:::10.0:::) at sentence# :::SV274:::5::: in doc #:::SV275:::10:::::::SV276:::Tech CSE, _________, 8086404994.:::
+27 Feb 17:04 Crossword INFO  - clue for iit mandi (score :::SV272:::-7.92:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::8::: in doc #:::SV275:::11:::::::SV276:::Tech CSE, _________, 8086404994.:::
+27 Feb 17:04 Crossword INFO  - clue for iit mandi (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::12:::::::SV276:::Hello  Ranjodh, I am Vihari, Gensec for S&T cell in _________.:::
+27 Feb 17:04 Crossword INFO  - clue for iit mandi (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::15:::::::SV276:::Hello Ravikanth, My name is Vihari, I am computer science under graduate at _________.:::
+27 Feb 17:04 Crossword INFO  - clue for iit mandi (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::16:::::::SV276:::Hello Sir, I am a student of _________ CS and trying to approach Shimla PSK for tatkal passport.:::
+27 Feb 17:04 Crossword INFO  - clue for iit mandi (score :::SV272:::-8.92:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::17:::::::SV276:::Respected Madam, I have responded to one of your previous mails and applied for Google Student Ambassador(GSA) of _________.:::
+27 Feb 17:04 Crossword INFO  - clue for iit mandi (score :::SV272:::5.7799997:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::2::: in doc #:::SV275:::17:::::::SV276:::I am selected as the GSA of _________ and attended a summit in goa on Google's Invitation.:::
+27 Feb 17:04 Crossword INFO  - clue for imu (score :::SV272:::3.6799998:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::2::: in doc #:::SV275:::2:::::::SV276:::In MIT ppt I have observed them using ___ with visual odometry.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for imu (score :::SV272:::14.26:::, docscore: :::SV273:::12.0:::) at sentence# :::SV274:::21::: in doc #:::SV275:::3:::::::SV276:::let me tell u the importance of making it real time and whats the purpose of this visual odometry when there is ___.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for imu (score :::SV272:::14.82:::, docscore: :::SV273:::12.0:::) at sentence# :::SV274:::29::: in doc #:::SV275:::3:::::::SV276:::Now answering the second question why visual odometry when we have ___.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for imu (score :::SV272:::-0.02:::, docscore: :::SV273:::12.0:::) at sentence# :::SV274:::30::: in doc #:::SV275:::3:::::::SV276:::___ unlike wheel encoders yield a large error in the computation of distance moved bcoz computation of this involves double integration, hence this involves large drift in errors.:::
+27 Feb 17:04 Crossword INFO  - clue for imu (score :::SV272:::-0.6:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::7::: in doc #:::SV275:::4:::::::SV276:::like how velocity is estimated from the ___ readings and pose estimated from visual odometry and using pid would help it navigate to the goal I.e. way points.:::
+27 Feb 17:04 Crossword INFO  - clue for ascitech (score :::SV272:::-13.139999:::, docscore: :::SV273:::5.0:::) at sentence# :::SV274:::31::: in doc #:::SV275:::0:::::::SV276:::The we shifted to mikrokopter " Ravi kanth and consider this, this is how ravikanth replied to me when I asked him about the ________.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for ascitech (score :::SV272:::3.3:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::2::: in doc #:::SV275:::1:::::::SV276:::Unlike ________ microkopter is cheaper and the algorithm is all open source, so we are free to experiment with it.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for ascitech (score :::SV272:::-13.139999:::, docscore: :::SV273:::5.0:::) at sentence# :::SV274:::9::: in doc #:::SV275:::2:::::::SV276:::The we shifted to mikrokopter " Ravi kanth and consider this, this is how ravikanth replied to me when I asked him about the ________.:::
+27 Feb 17:04 Crossword INFO  - clue for gsa (score :::SV272:::2.98:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::10::: in doc #:::SV275:::0:::::::SV276:::Welcome to the ___ community.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for gsa (score :::SV272:::-6.38:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::12::: in doc #:::SV275:::0:::::::SV276:::I am wondering if you can make it to the ___ summit since getting to Goa is difficult from Mandi.:::
+27 Feb 17:04 Crossword INFO  - clue for gsa (score :::SV272:::5.96:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::1:::::::SV276:::As a Google ambassador of IIT Mandi, I was invited for the ___ summit at Goa.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for gsa (score :::SV272:::-7.46:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::1:::::::SV276:::In this Summit, Google briefed me along with other ___'s my motive as a ___ and explained how the relation between Institute and Google is going to be.:::
+27 Feb 17:04 Crossword INFO  - clue for gsa (score :::SV272:::-8.92:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::3:::::::SV276:::Respected Madam, I have responded to one of your previous mails and applied for Google Student Ambassador(___) of IIT mandi.:::
+27 Feb 17:04 Crossword INFO  - clue for gsa (score :::SV272:::5.7799997:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::2::: in doc #:::SV275:::3:::::::SV276:::I am selected as the ___ of IIT Mandi and attended a summit in goa on Google's Invitation.:::
+27 Feb 17:04 Crossword INFO  - clue for gsa (score :::SV272:::3.08:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::3:::::::SV276:::As a ___ my job (in short) is to be a liaison between Google and our institute and to plan and host few events in the campus.:::
+27 Feb 17:04 Crossword INFO  - clue for gsa (score :::SV272:::-0.72:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::5::: in doc #:::SV275:::10:::::::SV276:::I have some events in mind even b4 applying as a ___(technical ones) Right now I am trying to get the feedback from my institute on the event that I wanted to host.:::
+27 Feb 17:04 Crossword INFO  - clue for esc (score :::SV272:::3.22:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::0:::::::SV276:::We have connected only one ___ right now.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for esc (score :::SV272:::-8.98:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::2::: in doc #:::SV275:::1:::::::SV276:::like what all solderings to be made, what all jumpers to be set and what all parameters that are to be made for ___ programmer.:::
+27 Feb 17:04 Crossword INFO  - clue for lan (score :::SV272:::-0.06:::, docscore: :::SV273:::3.0:::) at sentence# :::SV274:::2::: in doc #:::SV275:::0:::::::SV276:::What we have discovered is that when we connect ___ through our laptops we can see the blinking green and orange locations at the ___ and also laptop has discovered this connection.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for lan (score :::SV272:::-0.06:::, docscore: :::SV273:::3.0:::) at sentence# :::SV274:::2::: in doc #:::SV275:::1:::::::SV276:::What we have discovered is that when we connect ___ through our laptops we can see the blinking green and orange locations at the ___ and also laptop has discovered this connection.:::
+27 Feb 17:04 Crossword INFO  - clue for lan (score :::SV272:::-0.06:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::2:::::::SV276:::What we have discovered is that when we connect ___ through our laptops we can see the blinking green and orange locations at the ___ and also laptop has discovered this connection.:::
+27 Feb 17:04 Crossword INFO  - clue for lan (score :::SV272:::-0.06:::, docscore: :::SV273:::3.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::3:::::::SV276:::What we have discovered is that when we connect ___ through our laptops we can see the blinking green and orange locations at the ___ and also laptop has discovered this connection.:::
+27 Feb 17:04 Crossword INFO  - clue for ros (score :::SV272:::5.96:::, docscore: :::SV273:::3.0:::) at sentence# :::SV274:::5::: in doc #:::SV275:::2:::::::SV276:::We managed to do all this with the help of ___(a distributed computing platform).:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for ros (score :::SV272:::-10.0:::, docscore: :::SV273:::3.0:::) at sentence# :::SV274:::2::: in doc #:::SV275:::3:::::::SV276:::___.:::
+27 Feb 17:04 Crossword INFO  - clue for ros (score :::SV272:::-10.0:::, docscore: :::SV273:::3.0:::) at sentence# :::SV274:::5::: in doc #:::SV275:::3:::::::SV276:::___.:::
+27 Feb 17:04 Crossword INFO  - clue for ros (score :::SV272:::2.38:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::4:::::::SV276:::Planar segmentation code, make it ___ compatible.:::
+27 Feb 17:04 Crossword INFO  - clue for ros (score :::SV272:::2.3600001:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::8::: in doc #:::SV275:::5:::::::SV276:::Even I am not clear of this, so please go through the ___ node that we were using to see how they have done it.:::
+27 Feb 17:04 Crossword INFO  - clue for ros (score :::SV272:::-10.0:::, docscore: :::SV273:::3.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::7:::::::SV276:::Hello sir, We are CS students of IIT and are using this ___ Mikrokopter Node on Mikrokopter platform.:::
+27 Feb 17:04 Crossword INFO  - clue for yahoo (score :::SV272:::-2.3400002:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::0:::::::SV276:::yep, I want to unsub  On Thu, Mar 22, 2012 at 8:25 PM, _____!:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for yahoo (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::9::: in doc #:::SV275:::0:::::::SV276:::_____.:::
+27 Feb 17:04 Crossword INFO  - clue for yahoo (score :::SV272:::2.5:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::1:::::::SV276:::Can you please send the mails to this account rather than _____ from now on, My _____ account went dead.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for yahoo (score :::SV272:::8.18:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::2::: in doc #:::SV275:::2:::::::SV276:::On Wed, Jun 27, 2012 at 5:20 PM, _____!:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for yahoo (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::10::: in doc #:::SV275:::2:::::::SV276:::_____.:::
+27 Feb 17:04 Crossword INFO  - clue for yahoo (score :::SV272:::-8.74:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::2::: in doc #:::SV275:::3:::::::SV276:::You can go through the report starting from page 7 and use only this mail to reply me, my _____ mail became a mess.:::
+27 Feb 17:04 Crossword INFO  - clue for yahoo (score :::SV272:::8.5:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::10::: in doc #:::SV275:::4:::::::SV276:::You can even import your contacts and email from _____!:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::24::: in doc #:::SV275:::0:::::::SV276:::____.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::-42.92:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::29::: in doc #:::SV275:::0:::::::SV276:::in    Dear young budding engineering and science students,  Warm Greetings from ____ India to the AIyeHum2012 aspirants!:::
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::2.54:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::32::: in doc #:::SV275:::0:::::::SV276:::If yes, your project can be funded and mentored by ____.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::3.54:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::42::: in doc #:::SV275:::0:::::::SV276:::More details about ____ EPICS can be found in this link.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::51::: in doc #:::SV275:::0:::::::SV276:::____.:::
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::53::: in doc #:::SV275:::0:::::::SV276:::____.:::
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::56::: in doc #:::SV275:::0:::::::SV276:::____.:::
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::60::: in doc #:::SV275:::0:::::::SV276:::____.:::
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::65::: in doc #:::SV275:::0:::::::SV276:::____.:::
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::67::: in doc #:::SV275:::0:::::::SV276:::____.:::
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::70::: in doc #:::SV275:::0:::::::SV276:::____.:::
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::-8.36:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::1:::::::SV276:::Sir, these are the ____ journals which are outside our subscription and I thought to be helpful.:::
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::1:::::::SV276:::____.:::
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::15::: in doc #:::SV275:::1:::::::SV276:::____.:::
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::26::: in doc #:::SV275:::1:::::::SV276:::____.:::
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::2.94:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::2:::::::SV276:::The potential embeded wireless transmission that we can employ use ____ 802.:::
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::24::: in doc #:::SV275:::5:::::::SV276:::____.:::
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::-42.92:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::29::: in doc #:::SV275:::5:::::::SV276:::in    Dear young budding engineering and science students,  Warm Greetings from ____ India to the AIyeHum2012 aspirants!:::
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::2.54:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::32::: in doc #:::SV275:::5:::::::SV276:::If yes, your project can be funded and mentored by ____.:::
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::3.54:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::42::: in doc #:::SV275:::5:::::::SV276:::More details about ____ EPICS can be found in this link.:::
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::51::: in doc #:::SV275:::5:::::::SV276:::____.:::
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::53::: in doc #:::SV275:::5:::::::SV276:::____.:::
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::56::: in doc #:::SV275:::5:::::::SV276:::____.:::
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::60::: in doc #:::SV275:::5:::::::SV276:::____.:::
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::65::: in doc #:::SV275:::5:::::::SV276:::____.:::
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::67::: in doc #:::SV275:::5:::::::SV276:::____.:::
+27 Feb 17:04 Crossword INFO  - clue for ieee (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::70::: in doc #:::SV275:::5:::::::SV276:::____.:::
+27 Feb 17:04 Crossword INFO  - clue for sachin (score :::SV272:::3.04:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::5:::::::SV276:::Things that ______ needs to do..:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for sachin (score :::SV272:::3.5:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::7:::::::SV276:::______ update me with the status of Intel power cable.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for sachin (score :::SV272:::14.32:::, docscore: :::SV273:::12.0:::) at sentence# :::SV274:::2::: in doc #:::SV275:::11:::::::SV276:::______, let me know the status of the website.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for sachin (score :::SV272:::3.6:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::17:::::::SV276:::and this supply is 5V itself as the technicians said ______.:::
+27 Feb 17:04 Crossword INFO  - clue for pid (score :::SV272:::-0.6:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::7::: in doc #:::SV275:::0:::::::SV276:::like how velocity is estimated from the imu readings and pose estimated from visual odometry and using ___ would help it navigate to the goal I.e. way points.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for pid (score :::SV272:::4.1:::, docscore: :::SV273:::3.0:::) at sentence# :::SV274:::2::: in doc #:::SV275:::1:::::::SV276:::So, lets maintain a distance of 15cms (which our sensors and the ___ can manage and we are still unique in the competition).:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for pid (score :::SV272:::13.68:::, docscore: :::SV273:::12.0:::) at sentence# :::SV274:::22::: in doc #:::SV275:::2:::::::SV276:::The answer for real time performance is it will be hand in hand with control equation like ___.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for pid (score :::SV272:::13.52:::, docscore: :::SV273:::12.0:::) at sentence# :::SV274:::28::: in doc #:::SV275:::2:::::::SV276:::for this there should be some feedback control like ___.:::
+27 Feb 17:04 Crossword INFO  - clue for pid (score :::SV272:::4.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::1::: in doc #:::SV275:::3:::::::SV276:::Nenu madras ki 23-24 th velthanemo and ___ values tune cheyyataniki net enduku.:::
+27 Feb 17:04 Crossword INFO  - clue for pid (score :::SV272:::3.1599998:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::2::: in doc #:::SV275:::3:::::::SV276:::Inka ___ values tune yenduku cheyyala?:::
+27 Feb 17:04 Crossword INFO  - clue for gpu (score :::SV272:::-10.0:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::3::: in doc #:::SV275:::0:::::::SV276:::___4vision.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for gpu (score :::SV272:::2.6:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::5::: in doc #:::SV275:::2:::::::SV276:::So for the present we continue without ___'s I mean onboard.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:04 Crossword INFO  - clue for gpu (score :::SV272:::2.94:::, docscore: :::SV273:::1.0:::) at sentence# :::SV274:::10::: in doc #:::SV275:::3:::::::SV276:::___ Programming in MATLAB.:::
+27 Feb 17:04 Crossword INFO  - Prev. clue: New high!
+27 Feb 17:10 JSPHelper INFO  - Running inside container: Apache Tomcat/7.0.30
+27 Feb 17:10 JSPHelper INFO  - Running on jetty: :::SV240:::false:::
+27 Feb 17:10 JSPHelper INFO  - NEW Request: http://localhost:8080/muse/browse params: docId -> [Gmail]/Sent Mail-707 
+27 Feb 17:10 JSPHelper INFO  - Browsing 1 pages in dataset docset-bb20b460
+27 Feb 17:10 JSPHelper INFO  - CLIENT LOG: done appending div
+27 Feb 17:10 JSPHelper INFO  - CLIENT LOG: setting click handler
+27 Feb 17:10 JSPHelper INFO  - CLIENT LOG: starting jog with settings.page_selector .page jog_contents_selector #jog_contents settings.paging_info [object Object]
+27 Feb 17:10 JSPHelper INFO  - CLIENT LOG: 1 pages found
+27 Feb 17:10 JSPHelper INFO  - CLIENT LOG: 0 pages already present
+27 Feb 17:10 JSPHelper INFO  - CLIENT LOG: setting up sections
+27 Feb 17:10 JSPHelper INFO  - CLIENT LOG: 1 sections found with a total of 1 pages
+27 Feb 17:10 JSPHelper INFO  - CLIENT LOG: setting up documents
+27 Feb 17:10 JSPHelper INFO  - CLIENT LOG: 1 documents found with a total of 1 pages
+27 Feb 17:10 JSPHelper INFO  - CLIENT LOG: 1 pages set up
+27 Feb 17:10 JSPHelper INFO  - CLIENT LOG: setting up paging
+27 Feb 17:10 JSPHelper INFO  - CLIENT LOG: jog disabled = true
+27 Feb 17:10 JSPHelper INFO  - CLIENT LOG: jog dial disabled!!
+27 Feb 17:10 JSPHelper INFO  - NEW Request: http://localhost:8080/muse/ajax/jogPageIn.jsp params: datasetId -> docset-bb20b460 endPage -> 0 startPage -> 0 
+27 Feb 17:10 JSPHelper INFO  - COMPLETED Request: http://localhost:8080/muse/ajax/jogPageIn.jsp params: datasetId -> docset-bb20b460 endPage -> 0 startPage -> 0 
+27 Feb 17:10 JSPHelper INFO  - CLIENT LOG: key code is 18
+27 Feb 17:10 JSPHelper INFO  - CLIENT LOG: key code is 17
+27 Feb 17:10 JSPHelper INFO  - CLIENT LOG: ok we have page 0 4689 chars
