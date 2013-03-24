@@ -69,23 +69,28 @@ function makeArrayOf(value, length) {
 }
 
 var rad_sum = 0;
-var dim = makeArrayOf(0,ips.length)
+//var dim = makeArrayOf(0,ips.length)
 function extract_summary(){
     var exclude = -1;
     //logs variable is from SEAVIEW/run.logs.js and info from SEAVIEW/info.js
     logs.map(function(d){if (d.right!=exclude){mean[d.right]+=d.left;count[d.right]++;}});
     mean.map(function(d,i){if(count[i]>0)mean[i]/=count[i];});
     logs.map(function(d){if(d.right!=exclude&&count[d.right]>0){cov[d.right]+=((d.left-mean[d.right])*(d.left-mean[d.right]));}})
-    logs.map(function(d){if(d.right!=exclude)dim[d.right]=d.right})
+    //logs.map(function(d){if(d.right!=exclude)dim[d.right]=d.right})
     //cov.map(function(d,i){if(mean[i]>0&&count[i]>0){d=(Math.sqrt(d)/(count[i]));/*d/=mean[i]*/}})
     /*for(var i=0;i<cov.length;i++)
 	if(mean[i]>0&&count[i]>0){cov[i]=Math.sqrt(cov[i]);}
     //mean.filter(function(d){return d>0?true:false})
     var mx_cnt = d3.max(count);*/
+
+    var log_cnt = 0;
+    mean.map(function(d,i){if((count[i]>0)&&(ips[i].valueSig==("I"||"J"||"S"||"Z"||"D"||"F")))log_cnt++;})
     for(var i=0;i<mean.length;i++){
-	com.push([mean[i],Math.pow(count[i]/(mx_cnt),0.5) /*This is the factor for radius.*/,dim[i]])
-	rad_sum += Math.pow(count[i]/mx_cnt,0.5);
+	var r = (w-padding)/(2*(log_cnt+1));
+	com.push([mean[i],(r)/*This is the factor for radius.*/,i])
+	rad_sum += r;
     }
+    console.log("Log count is "+log_cnt);
     
     com = com.filter(function(d,i){return (count[i]/*&&com[i][0]*/>0)?true:false;})
     
@@ -105,6 +110,7 @@ extract_summary();
 var mx = com
 com = com.sort(function(a,b){return (ips[a[2]]["dimensionID"]-ips[b[2]]["dimensionID"]);})
 dataset = com
+
 var xScale = d3.scale.linear().clamp(true)
     .domain([padding, w - padding * 2])
     .range([padding, w - padding * 2]).nice();
@@ -175,10 +181,10 @@ var cols = d3.scale.category20();//["red","blue","green","teal","steelblue"];
 
 var xval=[];
 var c = 20;
-//xval is to set each x value such that none of the circles overlap
+//xval is set such that none of the circles overlap
 for (var i=dataset.length-1;i>=0;i--){
     if(i<(dataset.length-1)){
-	c+=(rScale(dataset[i+1][1])+rScale(dataset[i][1]))
+	c+=dataset[i+1][1]+dataset[i][1]/*(rScale(dataset[i+1][1])+rScale(dataset[i][1]))Again if all the circles's radius is same then no rScale.*/
 	xval.push(c)
     }
     else
@@ -266,7 +272,9 @@ enter
     .attr("cx", function(d,i){
 	return xScale(xval[i]);})
     .attr("r", function(d,i) {
-	return rScale(d[1]);});
+	return d[1]/*rScale(d[1]);*No scaling is required when the radius is uniform*/});
+
+console.log(xval);
 
 sel.append("g")
     .attr("transform", "translate(0," + (h - padding) + ")")
