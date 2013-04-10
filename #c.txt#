@@ -1,0 +1,474 @@
+// TouchScreenProjector.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <conio.h>
+#include <Windows.h>
+#include <opencv/cv.h>
+#include <opencv/highgui.h>
+#include <math.h>
+
+void sleep(long d)
+{
+clock_t start=clock();
+
+while(clock() - start < d);
+}
+
+inline IplImage* getThreshold(IplImage* src){
+
+        IplImage* Temp = cvCreateImage(cvGetSize(src),8,3);
+        cvCvtColor(src,Temp,CV_BGR2HSV);
+
+        IplImage* ThreshImage = cvCreateImage(cvGetSize(src),8,1);
+        //cvShowImage("HSV",Temp);
+
+        cvInRangeS(Temp,cvScalar(0, 0, 120), cvScalar(20,255,100000),ThreshImage);
+
+        cvReleaseImage(&Temp);
+        return(ThreshImage);
+        //cvDestroyWindow("HSV");
+}
+
+
+CvPoint drdots[4] = {{40,40},{1250,40},{40,760},{1250,760}};
+CvPoint dots[4] = {{40,40},{1250,40},{40,760},{1250,760}};
+CvPoint cal[4];
+float a1,b1,c1,a2,b2,c2,a3,b3;
+
+int calibrate(void){
+        cvNamedWindow("Calibration",CV_WINDOW_AUTOSIZE);
+        cvMoveWindow("Calibration",0,0);
+        cvSetWindowProperty("Calibration",CV_WINDOW_FULLSCREEN,CV_WINDOW_FULLSCREEN);
+        //HWND win_handle = FindWindow(0,L"Calibration");
+
+        //SetWindowLong(win_handle,GWL_STYLE,GetWindowLong(win_handle,GWL_EXSTYLE)|WS_EX_TOPMOST);
+
+        printf( "running calibration\n" );
+        CvCapture* capture = 0;
+        capture = cvCaptureFromCAM(0);
+        CvSize sz;
+        sz.width = 1280;sz.height = 800;
+
+        IplImage* show = cvCreateImage(sz,8,3);
+        IplImage *frame = NULL;
+        IplImage* ThreshImage = NULL;
+        CvPoint pt;
+
+        cvCircle(show,dots[0],5,cvScalar(255,255,255),1,8,0);
+        cvCircle(show,dots[1],5,cvScalar(255,255,255),1,8,0);
+        cvCircle(show,dots[2],5,cvScalar(255,255,255),1,8,0);
+        cvCircle(show,dots[3],5,cvScalar(255,255,255),1,8,0);
+        cvShowImage("Calibration",show);
+        cvWaitKey(20);
+
+        while(-1){
+                ThreshImage = NULL;
+                frame = cvQueryFrame(capture);
+                
+                if(!frame){
+                        printf("Unable to capture the frame...\n");
+                        break;
+                }
+                
+                ThreshImage = getThreshold(frame);
+
+                CvMoments *Moments = (CvMoments*)malloc(sizeof(CvMoments));
+
+                cvMoments(ThreshImage,Moments,1);
+                
+                double m10 = cvGetSpatialMoment(Moments,1,0);
+                
+                double m01 = cvGetSpatialMoment(Moments,0,1);
+                
+                double m00      = cvGetCentralMoment(Moments,0,0);
+
+            pt.x = m10/m00;
+                pt.y = m01/m00;
+                if((pt.x >cvGetSize(frame).width/2)||(pt.y > cvGetSize(frame).height/2))
+                        continue;
+                else if((pt.x>0)&&(pt.y>0)) break;
+
+        }
+
+        cal[0].x = pt.x;
+        cal[0].y = pt.y;
+        cvCircle(show,dots[0],20,cvScalar(0,255,255),1,8,0);
+        cvShowImage("Calibration",show);
+        cvWaitKey(2);
+
+        while(-1){
+                ThreshImage = NULL;
+                frame = cvQueryFrame(capture);
+                
+                if(!frame){
+                        printf("Unable to capture the frame...\n");
+                        break;
+                }
+                
+                ThreshImage = getThreshold(frame);
+
+                CvMoments *Moments = (CvMoments*)malloc(sizeof(CvMoments));
+
+                cvMoments(ThreshImage,Moments,1);
+                
+                double m10 = cvGetSpatialMoment(Moments,1,0);
+                
+                double m01 = cvGetSpatialMoment(Moments,0,1);
+                
+                double m00      = cvGetCentralMoment(Moments,0,0);
+
+            pt.x = m10/m00;
+                pt.y = m01/m00;
+                if((pt.x <cvGetSize(frame).width/2)||(pt.y > cvGetSize(frame).height/2))
+                        continue;
+                else if((pt.x>0)&&(pt.y>0)) break;
+
+        }
+
+        cal[1].x = pt.x;
+        cal[1].y = pt.y;
+        cvCircle(show,dots[1],20,cvScalar(0,255,255),1,8,0);
+        cvShowImage("Calibration",show);
+        cvWaitKey(2);
+
+        while(-1){
+                ThreshImage = NULL;
+                frame = cvQueryFrame(capture);
+                
+                if(!frame){
+                        printf("Unable to capture the frame...\n");
+                        break;
+                }
+                
+                ThreshImage = getThreshold(frame);
+
+                CvMoments *Moments = (CvMoments*)malloc(sizeof(CvMoments));
+
+                cvMoments(ThreshImage,Moments,1);
+                
+                double m10 = cvGetSpatialMoment(Moments,1,0);
+                
+                double m01 = cvGetSpatialMoment(Moments,0,1);
+                
+                double m00      = cvGetCentralMoment(Moments,0,0);
+
+            pt.x = m10/m00;
+                pt.y = m01/m00;
+                if((pt.x >cvGetSize(frame).width/2)||(pt.y < cvGetSize(frame).height/2))
+                        continue;
+                else if((pt.x>0)&&(pt.y>0)) break;
+
+        }
+
+        cal[2].x = pt.x;
+        cal[2].y = pt.y;
+        cvCircle(show,dots[2],20,cvScalar(0,255,255),1,8,0);
+        cvShowImage("Calibration",show);
+        cvWaitKey(2);
+
+        while(-1){
+                ThreshImage = NULL;
+                frame = cvQueryFrame(capture);
+                
+                if(!frame){
+                        printf("Unable to capture the frame...\n");
+                        break;
+                }
+                
+                ThreshImage = getThreshold(frame);
+
+                CvMoments *Moments = (CvMoments*)malloc(sizeof(CvMoments));
+
+                cvMoments(ThreshImage,Moments,1);
+                
+                double m10 = cvGetSpatialMoment(Moments,1,0);
+                
+                double m01 = cvGetSpatialMoment(Moments,0,1);
+                
+                double m00      = cvGetCentralMoment(Moments,0,0);
+
+            pt.x = m10/m00;
+                pt.y = m01/m00;
+                if((pt.x < cvGetSize(frame).width/2)||(pt.y < cvGetSize(frame).height/2))
+                        continue;
+                else if((pt.x>0)&&(pt.y>0)){
+                        printf("%lf,%lf\n",pt.x,pt.y);
+                        break;
+                }
+
+        }
+
+        cal[3].x = pt.x;
+        cal[3].y = pt.y;
+        cvCircle(show,dots[3],20,cvScalar(0,255,255),1,8,0);
+        cvShowImage("Calibration",show);
+        cvWaitKey(2);
+
+        float matrix[8][8] = { 
+                { -1, -1, -1, -1, 0, 0, 0, 0 },
+            {   -cal[0].x, -cal[1].x, -cal[2].x, -cal[3].x, 0, 0, 0, 0 },
+                { -cal[0].y, -cal[1].y, -cal[2].y, -cal[3].y, 0,0,0,0 },
+                { 0,0,0,0,-1,-1,-1,-1 },
+                { 0,0,0,0, -cal[0].x, -cal[1].x, -cal[2].x, -cal[3].x },
+                { 0,0,0,0, -cal[0].y, -cal[1].y, -cal[2].y, -cal[3].y },
+                { cal[0].x * dots[0].x, cal[1].x * dots[1].x, cal[2].x * dots[2].x, cal[3].x * dots[3].x, cal[0].x * dots[0].y, cal[1].x * dots[1].y, cal[2].x * dots[2].y, cal[3].x * dots[3].y },
+                { cal[0].y * dots[0].x, cal[1].y * dots[1].x, cal[2].y * dots[2].x, cal[3].y * dots[3].x, cal[0].y * dots[0].y, cal[1].y * dots[1].y, cal[2].y * dots[2].y, cal[3].y * dots[3].y },
+        };
+
+
+        float bb[8] = { -dots[0].x, -dots[1].x, -dots[2].x, -dots[3].x, -dots[0].y, -dots[1].y, -dots[2].y, -dots[3].y };
+
+// gau�-elimination
+
+        for( int j = 1; j < 4; j ++ )
+        {
+
+                for( int i = 1; i < 8; i ++ )
+                {
+                        matrix[i][j] = - matrix[i][j] + matrix[i][0];
+                }
+                bb[j] = -bb[j] + bb[0];
+                matrix[0][j] = 0;
+
+        }
+
+
+        for( int i = 2; i < 8; i ++ )
+        {
+                matrix[i][2] = -matrix[i][2] / matrix[1][2] * matrix[1][1] + matrix[i][1];
+        }
+        bb[2] = - bb[2] / matrix[1][2] * matrix[1][1] + bb[1];
+        matrix[1][2] = 0;
+
+
+        for( int i = 2; i < 8; i ++ )
+        {
+                matrix[i][3] = -matrix[i][3] / matrix[1][3] * matrix[1][1] + matrix[i][1];
+        }
+        bb[3] = - bb[3] / matrix[1][3] * matrix[1][1] + bb[1];
+        matrix[1][3] = 0;
+
+
+        for( int i = 3; i < 8; i ++ )
+        {
+                matrix[i][3] = -matrix[i][3] / matrix[2][3] * matrix[2][2] + matrix[i][2];
+        }
+        bb[3] = - bb[3] / matrix[2][3] * matrix[2][2] + bb[2];
+        matrix[2][3] = 0;
+
+        for( int j = 5; j < 8; j ++ )
+                {
+                for( int i = 4; i < 8; i ++ )
+                        {
+                        matrix[i][j] = -matrix[i][j] + matrix[i][4];
+                        }
+                bb[j] = -bb[j] + bb[4];
+                matrix[3][j] = 0;
+                }
+
+
+        for( int i = 5; i < 8; i ++ )
+        {
+                matrix[i][6] = -matrix[i][6] / matrix[4][6] * matrix[4][5] + matrix[i][5];
+        }
+
+        bb[6] = - bb[6] / matrix[4][6] * matrix[4][5] + bb[5];
+        matrix[4][6] = 0;
+
+
+        for( int i = 5; i < 8; i ++ )
+        {
+            matrix[i][7] = -matrix[i][7] / matrix[4][7] * matrix[4][5] + matrix[i][5];
+        }
+        bb[7] = - bb[7] / matrix[4][7] * matrix[4][5] + bb[5];
+        matrix[4][7] = 0;
+        
+        for( int i = 6; i < 8; i ++ )
+        {
+                matrix[i][7] = -matrix[i][7] / matrix[5][7] * matrix[5][6] + matrix[i][6];
+        }
+        bb[7] = - bb[7] / matrix[5][7] * matrix[5][6] + bb[6];
+        matrix[5][7] = 0;
+
+
+
+        matrix[7][7] = - matrix[7][7]/matrix[6][7]*matrix[6][3] + matrix[7][3];
+        bb[7] = -bb[7]/matrix[6][7]*matrix[6][3] + bb[3];
+        matrix[6][7] = 0;
+
+
+        printf( "data dump" );
+        /*for( int i = 0; i < 8 ; i ++ )
+        {
+                for( int j= 0; j < 8 ; j ++ )
+                {
+                        printf( matrix[i][j] );
+                }
+        println("");
+        }*/
+
+        printf( "bb" );
+        for( int j= 0; j < 8 ; j ++ )
+        {
+                 printf( "%lf\t", bb[j] );
+        }
+
+        printf("\n");
+        printf("Cal:\n");
+
+        for( int j= 0; j < 4 ; j ++ )
+        {
+                 printf( "%lf,%lf\t", cal[j].x,cal[j].y );
+        }
+
+        printf("\n");
+
+        b3 =  bb[7] /matrix[7][7];
+        a3 = (bb[3]-(matrix[7][3]*b3))/matrix[6][3];
+        b2 = (bb[6]-(matrix[7][6]*b3+matrix[6][6]*a3))/matrix[5][6];
+        a2 = (bb[5]-(matrix[7][5]*b3+matrix[6][5]*a3+matrix[5][5]*b2))/matrix[4][5];
+        c2 = (bb[4]-(matrix[7][4]*b3+matrix[6][5]*a3+matrix[5][4]*b2+matrix[4][4]*a2))/matrix[3][4];
+        b1 = (bb[2]-(matrix[7][2]*b3+matrix[6][2]*a3+matrix[5][2]*b2+matrix[4][2]*a2+matrix[3][2]*c2))/matrix[2][2];
+        a1 = (bb[1]-(matrix[7][1]*b3+matrix[6][1]*a3+matrix[5][1]*b2+matrix[4][1]*a2+matrix[3][1]*c2+matrix[2][1]*b1))/matrix[1][1];
+        c1 = (bb[0]-(matrix[7][0]*b3+matrix[6][0]*a3+matrix[5][0]*b2+matrix[4][0]*a2+matrix[3][0]*c2+matrix[2][0]*b1+matrix[1][0]*a1))/matrix[0][0];
+
+        cvDestroyWindow("Calibration");
+
+        if(  b3 != b3 ) return 1;
+        if( b2 != b2 ) return 1;
+        if( a2 != a2 ) return 1;
+        if( c2 != c2 ) return 1;
+        if( a3 != a3 ) return 1;
+        if( b1 != b1 ) return 1;
+        if( a1 != a1 ) return 1;
+        if( c1 != c1 ) return 1;
+        printf( "calibrated OK" );
+        //cvReleaseImage(&show);
+        return 0;
+        }
+
+        POINT correctIt(float X, float Y )
+{
+        float corrX = (a1 * X + b1 * Y + c1 ) / (a3 * X + b3 * Y + 1 );
+        float corrY = (a2 * X + b2 * Y + c2 ) / (a3 * X + b3 * Y + 1 );
+
+        POINT corr;
+        corr.x = corrX;
+        corr.y = corrY+20;
+
+        //println( (int)corrX + ":" + (int)corrY );
+        return corr;
+}
+
+int main(){
+
+        CvCapture* capture = 0;
+        capture = cvCaptureFromCAM(0);
+        
+        /*POINT p;
+        GetCursorPos(&p);
+        p.x += 500;
+        p.y += 500;
+        SetCursorPos(p.x,p.y);*/
+        
+        //mouse_event(0x0002/*MOUSEEVENTF_LEFTDOWN*/,0,0,0,0);
+ 
+    // Couldn't get a device? Throw an error and quit
+    if(!capture)
+    {
+        printf("Could not initialize capturing...\n");
+        return -1;
+    }
+
+        IplImage* dframe;
+        double x = 0,y = 0;
+        dframe = cvQueryFrame(capture);
+
+        CvSize sz;
+        //sz.height =;sz.width = 1280;
+        //IplImage* TrajectoryImage = cvCreateImage(cvGetSize(dframe),8,3);
+        
+        int count1 = 1,count2 = 1,count3 = 1,count4 = 1;
+        double a;double b,xd,yd;
+        CvSize tr,tl,br,bl;
+        CvSize size = cvGetSize(dframe);
+
+        //sleep(14000);
+        //keybd_event("^(2)",0,0,0);
+
+        calibrate();
+                
+        cvNamedWindow("Debug1",0);
+        cvNamedWindow("Debug2",0);
+//      cvNamedWindow("Debug3",0);
+        POINT corr = {0,0};
+        int count = 0;
+        
+        while(TRUE){
+                IplImage* ThreshImage ;
+                IplImage* frame ;
+                frame = cvQueryFrame(capture);
+                
+                if(!frame){
+                        printf("Unable to capture the frame...\n");
+                        break;
+                }
+                
+                ThreshImage = getThreshold(frame);
+
+                CvMoments *Moments = (CvMoments*)malloc(sizeof(CvMoments));
+
+                cvMoments(ThreshImage,Moments,1);
+                //Here in we are extracting the moments from the binary image that has been thresholded. 
+
+                double m10 = cvGetSpatialMoment(Moments,1,0);
+                //We are here extracting the x mean refer http://en.wikipedia.org/wiki/Moment_%28mathematics%29. But is not normalized.
+
+                double m01 = cvGetSpatialMoment(Moments,0,1);
+                //Extracting the mean of y over here...
+
+                double m00      = cvGetCentralMoment(Moments,0,0);
+
+                POINT last = corr;
+            
+                double lastx = x;
+                double lasty = y;
+                x = m10/m00;
+                y = m01/m00;
+
+                corr = correctIt(x,y);
+
+                //This is to normalize.
+
+                if(last.x>0 && last.y>0 && corr.x>0 && corr.y>0&&((corr.x-last.x)<100)&&((corr.y-last.y)<100)){
+                        //cvLine(TrajectoryImage, cvPoint(x, y), cvPoint(lastx, lasty), cvScalar(255,255,0), 5);
+                        POINT p;
+                        GetCursorPos(&p);
+                        p.x = corr.x;
+                        p.y = corr.y;
+                        SetCursorPos(p.x,p.y);
+                        
+                        /*mouse_event(MOUSEEVENTF_LEFTDOWN, 10, 10, 0, 0);
+                        sleep(15);
+                        mouse_event(MOUSEEVENTF_LEFTUP, 10, 10, 0, 0);*/
+                        mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+                        
+                        //
+                }
+
+                int c = cvWaitKey(10);
+      //  if(c=='c')
+                //      cvZero(TrajectoryImage);
+
+                cvShowImage("Debug1",ThreshImage);              
+                //cvShowImage("Debug2",TrajectoryImage);                
+//              cvShowImage("Debug3",frame);    
+                cvWaitKey(1);
+                
+                cvReleaseImage(&ThreshImage);
+                delete Moments;
+                //cvReleaseImage(&frame);
+                }
+}

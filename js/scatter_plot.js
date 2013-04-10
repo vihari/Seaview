@@ -1,3 +1,4 @@
+var st = new Date().getTime()
 var w = window.innerWidth;
 //var w = 10000;
 var h = window.innerHeight;
@@ -75,42 +76,34 @@ function extract_summary(){
     //logs variable is from SEAVIEW/run.logs.js and info from SEAVIEW/info.js
     logs.map(function(d){if (d.right!=exclude){mean[d.right]+=d.left;count[d.right]++;}});
     mean.map(function(d,i){if(count[i]>0)mean[i]/=count[i];});
-    logs.map(function(d){if(d.right!=exclude&&count[d.right]>0){cov[d.right]+=((d.left-mean[d.right])*(d.left-mean[d.right]));}})
-    //logs.map(function(d){if(d.right!=exclude)dim[d.right]=d.right})
-    //cov.map(function(d,i){if(mean[i]>0&&count[i]>0){d=(Math.sqrt(d)/(count[i]));/*d/=mean[i]*/}})
-    /*for(var i=0;i<cov.length;i++)
-	if(mean[i]>0&&count[i]>0){cov[i]=Math.sqrt(cov[i]);}
-    //mean.filter(function(d){return d>0?true:false})
-    var mx_cnt = d3.max(count);*/
 
     var log_cnt = 0;
     mean.map(function(d,i){if((count[i]>0)&&(ips[i].valueSig==("I"||"J"||"S"||"Z"||"D"||"F")))log_cnt++;})
     for(var i=0;i<mean.length;i++){
-	var r = (w-padding)/(2*(log_cnt+1));
+	var r = (w-2*padding)/(2*(log_cnt+1));
 	com.push([mean[i],(r)/*This is the factor for radius.*/,i])
 	rad_sum += r;
     }
-    console.log("Log count is "+log_cnt);
+    //    console.log("Log count is "+log_cnt);
     
-    com = com.filter(function(d,i){return (count[i]/*&&com[i][0]*/>0)?true:false;})
+    //filter all those vars that were logged and also is a numerical.
+    //those types which may be objects but are implicitly numerical are ignored.
+    com = com.filter(function(d,i){return ((count[i]/*&&com[i][0]*/>0)&&(ips[d[2]].valueSig == ("I"||"J"||"S"||"Z"||"D"||"F")))?true:false;})
     
-    //filter only numericals based on their existance in run.logs.js
-    com = com.filter(function(d,i){
-	//This is to filter only numericals.
-	return(ips[d[2]].valueSig == ("I"||"J"||"S"||"Z"||"D"||"F"));
-	//No objects.
-    });
-//    cov = cov.filter(function(d,i){return mean[i]>0?true:false})
-//    mean = mean.filter(function(d){return(d>0?true:false)})
-    //for(var i=0;i<com.length;i++)
-//	if(com[i][1]<1)com[i][1]=0;
 }
 
+var start_time = new Date().getTime();
 extract_summary();
+var end_time = new Date().getTime();
+console.log("Extraction time "+(end_time-start_time));
 var mx = com
+var start_time = new Date().getTime();
 com = com.sort(function(a,b){return (ips[a[2]]["dimensionID"]-ips[b[2]]["dimensionID"]);})
+var end_time = new Date().getTime();
+console.log("sorting: "+(end_time-start_time));
 dataset = com
 
+var start_time = new Date().getTime();
 var xScale = d3.scale.linear().clamp(true)
     .domain([padding, w - padding * 2])
     .range([padding, w - padding * 2]).nice();
@@ -198,6 +191,7 @@ dataset.map(function(d){m.push(d);})
 xval.map(function(d){x.push(d);})
 xval.map(function(d){x.push(d);})
 
+var start_time = new Date().getTime();
 if(isLarge(h)){
     sel.selectAll("line")
 	.data(m)
@@ -256,6 +250,8 @@ else{
 	.on("mouseout", function(d, i) { downlight( d, i, this ); });
 }
 
+console.log("Line insertions: "+(new Date().getTime()-start_time));
+var start_time = new Date().getTime();
 var circle = sel.selectAll("circle")
     .data(dataset);
 
@@ -273,8 +269,7 @@ enter
 	return xScale(xval[i]);})
     .attr("r", function(d,i) {
 	return d[1]/*rScale(d[1]);*No scaling is required when the radius is uniform*/});
-
-console.log(xval);
+console.log("Circle insertion: "+(new Date().getTime()-start_time));
 
 sel.append("g")
     .attr("transform", "translate(0," + (h - padding) + ")")
@@ -285,8 +280,8 @@ sel.append("g")
 sel.append("g")
     .attr("transform", "translate(" + (w-2*padding) + ",0)")
     .call(yAxis2);
-console.log("w "+w)
 
+console.log("Time b4 line 281: "+(new Date().getTime()-st));
 $('circle').tipsy({ 
     gravity: $.fn.tipsy.autoWE,
     html: true, 
@@ -323,4 +318,8 @@ $('circle').tipsy({
 	    return message; 
     }
 });
+var end_time = new Date().getTime();
+console.log("All the remaining stuff: "+(end_time-start_time));
+
+console.log("Total time: "+(new Date().getTime()-st));
 

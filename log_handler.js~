@@ -1,3 +1,5 @@
+document.getElementById('fileinput').addEventListener('change',readMultipleFiles, false);
+
 var file_content
 var UniqueDims;
 var UniqueUnits;
@@ -175,339 +177,6 @@ function clear_all(className) {
     }
 }
 
-function filterBy(obj,parameter,parameter_plot,ModePlot,ModeSelect){
-    var logs = file_content.split('</br>');
-    var ToDisplay = "";
-    var first = true;
-    var ip_num;
-    var log;
-    var log_ip;
-    if(ModePlot&&(parameter_plot=="bar")){
-	dataset = []
-	for(var i=0;i<logs.length;i++){
-	    if(logs[i].search(/:::SV[0-9]*:::(?:(?!:::).)*:::/)>-1){
-		var st = logs[i].match(/:::SV[0-9]*:::(?:(?!:::).)*:::/g);
-		st = st.toString();
-		iter = st.split(',');
-		for(var j=0;j<iter.length;j++){
-		    var tags = iter[j].split(":::");
-		    if(tags.length<3)
-			continue;
-		    if(first){
-			first = false
-		    }
-		    ip_num = parseInt(tags[1].slice(2,tags[1].length));
-		    for(var s=0;s<ips.length;s++){
-			log = ips[s];
-			if(log.IPNum == ip_num){
-			    break;
-			}
-		    }
-		    if(log==obj){
-			log_ip = log;
-			dataset.push(parseInt(tags[2]));
-		    }
-		}
-	    }
-	}
-	var elem=document.getElementById("plot");  
-	if(elem.checked){
-	    if(document.getElementById('barchart').style.height=="0px")
-		document.getElementById('barchart').style.height = "210px";
-	    localStorage.setItem("data",dataset);
-	    if(document.getElementById("plot").checked){
-		document.getElementById("iframe_plot").height="206px";
-		document.getElementById("iframe_plot").src="bar.html";
-	    }
-	}
-	document.getElementById("file_name").innerHTML = obj.className;
-	localStorage.setItem("file",obj.className);
-	//ear_all('bar');	
-	//rChart(DimColors[obj.dimensionID]);
-	if(!ModeSelect)
-	    return;
-    }
-    if(!ModeSelect)
-	return;
-    //clear_all('bar');	
-    //document.getElementById('barchart').style.height = "0px";
-    for(var i=0;i<logs.length;i++){
-	if(logs[i].search(/SV[0-9]*/)>-1){
-	    var st = logs[i].match(/SV[0-9]*/g)
-	    st = st.toString();
-	    iter = st.split(',')
-	    for(var j=0;j<iter.length;j++){
-		var ip_num = parseInt(iter[j].slice(2,iter[j].length));
-		var log;
-		for(var s=0;s<ips.length;s++){
-		    log = ips[s];
-		    if(log.IPNum == ip_num){
-			break;
-		    }
-		}
-		if(parameter=="class")
-		    if(log.className==obj.className)
-			ToDisplay+=logs[i]+"</br>";
-
-		if(parameter=="method")
-		    if(log.methodName==obj.methodName)
-			ToDisplay+=logs[i]+"</br>";
-		
-		if(parameter=="dim"){
-		    if(log.dimensionID==obj.dimensionID){
-			ToDisplay+=logs[i]+"</br>";
-		    }	
-		}
-		if(parameter=="unit"){
-		    if(log.unit_num==obj.unit_num){
-			ToDisplay+=logs[i]+"</br>";
-		    }	
-		}
-		if(parameter=="same"){
-		    if(log==obj){
-			ToDisplay+=logs[i]+"</br>";
-		    }	
-		}
-		if(parameter=="sig"){
-		    if(log.valueSig==obj.valueSig){
-			ToDisplay+=logs[i]+"</br>";
-		    }	
-		}
-	    }
-	}
-    }
-    colorizeDims(ToDisplay);
-    
-}
-function group(j){
-    var sel = document.getElementById("action_select");
-    var value = sel.options[sel.selectedIndex].value;
-    var sel = document.getElementById("graph_type");
-    var value_plot = sel.options[sel.selectedIndex].value;
-    var ModePlot = document.getElementById("plot_mode").checked;
-    var ModeSelect = document.getElementById("select_mode").checked;
-    filterBy(ips[j],value,value_plot,ModePlot,ModeSelect);
-}
-function toggleSV(obj){
-    if(obj.checked){
-	HideSV = true;
-	colorizeDims(UnderDisplay);
-    }
-    else{
-	HideSV = false;
-	colorizeDims(UnderDisplay);
-    }
-}
-function toggleInfo(obj){
-    if(obj.checked){
-	HideInfo = true;
-	colorizeDims(UnderDisplay);
-    }
-    else{
-	HideInfo = false;
-	colorizeDims(UnderDisplay);
-    }
-}
-function toggleInstrumented(obj){
-    if(obj.checked){
-	var logs = file_content.split("</br>");
-	for(var i=0,line;i<logs.length;i++){
-            line = logs[i];
-            if(line.search("::SV")>-1)
-		filtered_content+=line+"</br>";
-	}
-	document.getElementById("file").innerHTML = filtered_content;
-	colorizeDims(filtered_content);
-    }
-    else{
-	document.getElementById("file").innerHTML = file_content;
-	colorizeDims(file_content);
-    }
-}
-
-function readMultipleFiles(evt) {
-    //Retrieve all the files from the FileList object
-    st=new Date().getTime();
-    var files = evt.target.files; 
-    if (files) {
-	for (var i=0, f; f=files[i]; i++) {
-	    console.log(f)
-	    var r = new FileReader();
-	    r.onload = (function(f) {
-		return function(e) {
-		    var contents = e.target.result;
-		    contents = contents.split("\n")
-		    file_content = contents;
-		};
-	    })(f);
-	    r.readAsText(f);
-	    
-	}   
-    } else {
-	alert("Failed to load files"); 
-    }
-    et=new Date().getTime();
-    console.log("Time to load the file is "+(et-st));
-    setTimeout(function(){updateT()},1000);
-}
-
-function writeToFile(content){
-//    var blob = new Blob(["Hello, world!"], {type: "text/plain;charset=utf-8"});
-  //  saveAs(blob, "hello world.txt");
-    var fileW = new window.FileWriter("log.html") ;
-    fileW.open() ; 
-    fileW.write(content); 
-//    fileWriter.writeLine("Another line") ; 
-    fileW.close() ;
-
-}
-function uniqueDims(){
-    var logs = file_content.split("</br>");
-    var dims = [2];
-    dims.shift();
-    for(var i=0,line;i<logs.length;i++){
-	line = logs[i];
-	var st,ip_num;
-	if(line.search("::SV")>-1){
-	    //This reg exp can handle more than one match in the same line
-	    st = line.match(/::SV[0-9]*::/g);
-	    st = st.toString();
-	    var iter = st.split(',');
-	    for(var m=0,str;m<iter.length;m++){
-		str=iter[m];
-		var ne = str.slice(4,str.length-2);
-		ip_num = parseInt(ne);
-		for(var j=0,log;j<ips.length;j++){
-		    log = ips[j];
-		    if(log.IPNum == ip_num){
-			dims.push(log.dimensionID);
-		    }
-		}
-	    }
-	}
-    }
-    UniqueDims = dims.filter(function(elem, pos) {
-	return dims.indexOf(elem) == pos;
-    })
-    uniqueUnits();
-}
-
-function uniqueUnits(){
-    var logs = file_content.split("</br>");
-    var dims = [2];
-    dims.shift();
-    for(var i=0,line;i<logs.length;i++){
-	line = logs[i];
-	var st,ip_num;
-	if(line.search("::SV")>-1){
-	    //This reg exp can handle more than one match in the same line
-	    st = line.match(/::SV[0-9]*::/g);
-	    st = st.toString();
-	    var iter = st.split(',');
-	    for(var m=0,str;m<iter.length;m++){
-		str=iter[m];
-		var ne = str.slice(4,str.length-2);
-		ip_num = parseInt(ne);
-		for(var j=0,log;j<ips.length;j++){
-		    log = ips[j];
-		    if(log.IPNum == ip_num){
-			dims.push(log.unit_num);
-		    }
-		}
-	    }
-	}
-    }
-    UniqueUnits = dims.filter(function(elem, pos) {
-	return dims.indexOf(elem) == pos;
-    })
-    dimColors()
-}
-
-function dimColors(){
-    if(UniqueDims.length>100)
-	alert("Hey the number of dimensions is too many! I can colorize the values but you can barely distinguish colors;So it is recommended to use grouping rather than relying on coloring");
-    for(var i=0;i<UniqueDims.length;i++){
-	DimColors.push('#'+(0x1000000+(Math.random())*0xFFFFFF).toString(16).substr(1,6));
-    }
-    if(ShowInstrumented)
-	toggleInstrumented(document.getElementById("filter"));
-    DimColors = [];
-    col = d3.scale.category10();
-    for(var i=0;i<UniqueDims.length;i++)
-	DimColors.push(col(i));
-    colorizeDims(UnderDisplay);   
-}
-
-function handle_storage(e){
-    //alert("called_handle")
-    if(!e)
-	e=window.event;
-    if(e.key=="log_file"){
-	highlight_line(e.newValue);
-    }
-}
-
-function highlight_line(ip){
-    ip=parseInt(ip)
-    console.log("called")
-    //alert("called")
-    var logs = filtered_content.split("</br>");
-    colorizeDims(filtered_content);
-    var ToDisplay="";
-    var Found = true;
-    var found = false;
-    for(var i=0,line;i<logs.length;i++){
-	line = logs[i];
-	var st,ip_num;
-	if(line.search(/:::SV[0-9]*:::.*:::/)>-1){
-	    //This reg expression can even recognize more than one instrumented logs in the same line 
-	    st = line.match(/:::SV[0-9]*:::(?:(?!:::).)*:::/g);
-	    st = st.toString();
-	    var iter = st.split(',');
-	    for(var j=0;j<iter.length;j++){
-		var tag = iter[j];
-		var sv = tag.split(":::");
-		if(sv.length<3)
-		    continue;
-		var ip_num = parseInt(sv[1].slice(2,sv[1].length));
-		if(ip_num == ip){
-		    found = true;
-		    break;
-		}
-		else{
-		    continue;
-		}
-	    }
-	    if(found){
-		var id = "line"+i;
-		var elem = document.getElementById(id);
-		elem.className = "selected";
-		var position = 0;
-		position = elem.offsetTop;//offset().to
-		var windowHeight = 300;//$(window).height();
-		d3.select("#"+id).transition()
-		    .delay(750)
-		    .style("background-color", "green");
-		d3.select("#"+id).transition()
-		    .delay(750)
-		    .style("background-color", "white");
-		
-		//elem.style.color = "white";
-		//elem.style.backgroundColor = "black";
-
-		if(position>100)
-		    $("#log").scrollTop(position-100);	
-		else
-		    $("#log").scrollTop(100-position);	
-		found = false;
-		break;
-	    }
-	}
-    }
-    //    colorizeDims(ToDisplay);
-    //   document.getElementById("file").innerHTML=ToDisplay;
-}
-
 function colorizeDims(log){
     line = log;
     var st,ip_num;
@@ -563,6 +232,33 @@ function colorizeDims(log){
     }
     return line;
 }
+
+function readMultipleFiles(evt) {
+    //Retrieve all the files from the FileList object
+    st=new Date().getTime();
+    var files = evt.target.files; 
+    if (files) {
+	for (var i=0, f; f=files[i]; i++) {
+	    console.log(f)
+	    var r = new FileReader();
+	    r.onload = (function(f) {
+		return function(e) {
+		    var contents = e.target.result;
+		    contents = contents.split("\n")
+		    file_content = contents;
+		};
+	    })(f);
+	    r.readAsText(f);
+	    
+	}   
+    } else {
+	alert("Failed to load files"); 
+    }
+    et=new Date().getTime();
+    console.log("Time to load the file is "+(et-st));
+    setTimeout(function(){updateT()},1000);
+}
+
 function updateT(){
     var dataView;
     var grid;
@@ -613,10 +309,19 @@ function updateT(){
     }
 
     function renderColor(cellNode, row, dataContext, colDef) {
+	/*var vals = [
+	    dataContext["n1"],
+	    dataContext["n2"],
+	    dataContext["n3"],
+	    dataContext["n4"],
+	    dataContext["n5"]
+	];*/
+		
 	$(cellNode).html(colorizeDims(dataContext["log"]));
+		//$(cellNode).empty().sparkline(vals, {width: "100%"});
     }
 
-    var columns = [{id: "l", name: "log", field: "log",width: 1000, rerenderOnResize: false, asyncPostRender: renderColor}];
+    var columns = [{id: "l", name: "log", field: "log",width: 600, rerenderOnResize: false, asyncPostRender: renderColor}];
 
     var options = {
 	editable: false,
@@ -624,6 +329,10 @@ function updateT(){
 	enableCellNavigation: true,
 	enableAsyncPostRender: true
     };
+
+    var percentCompleteThreshold = 0;
+    var prevPercentCompleteThreshold = 0;
+    var h_runfilters = null;
 
     function myFilter(item, args) {
 	if($('#filter').is(':checked')){
@@ -647,7 +356,7 @@ function updateT(){
 	file_content.map(function(d,i){data[i]=new DataItem(i,d);/*console.log(data[i]);*/});
 
 	dataView = new Slick.Data.DataView({ inlineFilters: true });
-	grid = new Slick.Grid("#log", dataView, columns, options);
+	grid = new Slick.Grid("#myGrid", dataView, columns, options);
 	var pager = new Slick.Controls.Pager(dataView, grid, $("#pager"));
 	
 	// wire up model events to drive the grid

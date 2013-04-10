@@ -1,6 +1,27 @@
 <meta charset="utf-8">
 <head><title>Seaview</title>
-<style type="text/css">
+  <link rel="stylesheet" href="SlickGrid-master/slick.grid.css" type="text/css"/>
+  <style type="text/css">
+
+  html, body {
+  margin: 0;
+  padding: 0;
+  backround-color: White;
+  }
+  
+  body {
+  font: 11px Helvetica, Arial, sans-serif;
+  }
+  
+  #log {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /*height:700px;*/
+  }
+
   div.bar {
   display: inline-block;
   width: 20px;
@@ -8,20 +29,37 @@
   margin-right: 2px;
   background-color: teal;
   }
-  div{
-  resize:both
-  }
+  
   .selected{
-  background:yellow;
+    background:yellow;
   }
 </style>
 </head>
 
-<!--<link href="jquery/jquery-ui.css" rel="stylesheet" type="text/css"/>-->
+<!--<link href="jquery/jquery-ui.css" rel="stylesheet" --
+  --type="text/css"/>-->
 <script src="jquery/jquery-1.6.2.min.js"></script>
 <script src="jquery/jquery-ui.min.js"></script>
 <link href="style/default.css" type="text/css" rel="stylesheet"></link>
-<script type="text/javascript" src="js/color.js"></script>
+<script type="text/javascript" src="js/log_handler.js"></script>
+<script src="SlickGrid-master/plugins/slick.autotooltips.js"></script>
+
+<script type="text/javascript" src="SEAVIEW/info.js"></script>
+<script type="text/javascript" src="SEAVIEW/run.logs.js"></script>
+<script type="text/javascript" src="d3/d3.v3.min.js"></script>
+<script type="text/javascript" src="js/bar_chart.js"></script>
+
+<script src="SlickGrid-master/lib/jquery-1.7.min.js"></script>
+<script src="SlickGrid-master/lib/jquery-ui-1.8.16.custom.min.js"></script>
+<script src="SlickGrid-master/lib/jquery.event.drag-2.2.js"></script>
+
+<script src="SlickGrid-master/slick.core.js"></script>
+<script src="SlickGrid-master/slick.editors.js"></script>
+<script src="SlickGrid-master/slick.formatters.js"></script>
+<script src="SlickGrid-master/slick.grid.js"></script>
+<script src="SlickGrid-master/slick.dataview.js"></script>
+<script src="SlickGrid-master/controls/slick.pager.js"></script>
+
 <script>  
   if (window.addEventListener) {
   //window.addEventListener("storage", handle_storage, false);
@@ -30,10 +68,6 @@
   window.attachEvent("onstorage", handle_storage);
   };
 </script>
-<script type="text/javascript" src="SEAVIEW/info.js"></script>
-<script type="text/javascript" src="SEAVIEW/run.logs.js"></script>
-<script type="text/javascript" src="d3/d3.v3.min.js"></script>
-<script type="text/javascript" src="js/bar_chart.js"></script>
 
 <body style="background-color:#FFFFFF">
   <input type="checkbox" class="menu-nav-check" id="menu-nav-check"/>
