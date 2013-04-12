@@ -536,11 +536,14 @@ function updateT(){
 	enableAddRow: false,
 	enableCellNavigation: true,
 	enableAsyncPostRender: true,
+<<<<<<< HEAD
 	rowHeight:30,
 	
 	//text wraping options.
 	enableWrap:true,
 	wrapAfter:100
+=======
+>>>>>>> 1cc87b8b4f9aa0ef7ecc21e689340f22f1e2c2dc
     };
 
     var percentCompleteThreshold = 0;
