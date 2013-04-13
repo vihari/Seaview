@@ -314,6 +314,7 @@
     }
 
     function mapRowsToIds(rowArray) {
+      //console.log();
       var ids = [];
       for (var i = 0; i < rowArray.length; i++) {
         if (rowArray[i] < rows.length) {

@@ -78,8 +78,8 @@ $(document).ready(function() {
     });
     $("#log").height((window.innerHeight-nonesize)+"px")
     console.log(window.innerHeight);
-    $( "#barchart" ).resizable({      
-    });
+    $( "#barchart" ).resizable({});
+
     $("#barchart").bind("resize", function (event, ui) {
         var setHeight = document.getElementById('barchart').style.height;
 	document.getElementById('iframe_plot').style.height = setHeight;
@@ -536,14 +536,11 @@ function updateT(){
 	enableAddRow: false,
 	enableCellNavigation: true,
 	enableAsyncPostRender: true,
-<<<<<<< HEAD
 	rowHeight:30,
 	
 	//text wraping options.
 	enableWrap:true,
 	wrapAfter:100
-=======
->>>>>>> 1cc87b8b4f9aa0ef7ecc21e689340f22f1e2c2dc
     };
 
     var percentCompleteThreshold = 0;
@@ -583,6 +580,7 @@ function updateT(){
 	});
 
 	dataView.onRowsChanged.subscribe(function (e, args) {
+	    //grid.log(dataView.getItemByIdx(23));
 	    grid.invalidateRows(args.rows);
 	    grid.render();
 	});
