@@ -44,6 +44,7 @@ $(document).ready(function() {
 	    $("#code_area").attr("width","100%")
 	}
     });
+
     $("#plot").change(function(){
 	if((this.checked)&&!($("#code").attr('checked')?true:false)){
 	    $("#log").css("top",plotsize+"px");
@@ -58,6 +59,7 @@ $(document).ready(function() {
 	    $("#log").height((window.innerHeight-nonesize)+"px")
 	}
     });
+
     $("#code").change(function(){
 	if(this.checked){
 	    $("#log").css("top",codesize+"px");
@@ -76,8 +78,10 @@ $(document).ready(function() {
 	    $("#log").height((window.innerHeight-plotsize)+"px")
 	}
     });
+
     $("#log").height((window.innerHeight-nonesize)+"px")
     console.log(window.innerHeight);
+
     $( "#barchart" ).resizable({});
 
     $("#barchart").bind("resize", function (event, ui) {
@@ -536,7 +540,7 @@ function updateT(){
 	enableAddRow: false,
 	enableCellNavigation: true,
 	enableAsyncPostRender: true,
-	rowHeight:30,
+	rowHeight:20,
 	
 	//text wraping options.
 	enableWrap:true,
@@ -569,6 +573,8 @@ function updateT(){
 	file_content.map(function(d,i){data[i]=new DataItem(i,d);/*console.log(data[i]);*/});
 
 	dataView = new Slick.Data.DataView({ inlineFilters: true });
+	dataView.setPagingOptions({pageSize:25});
+	
 	grid = new Slick.Grid("#log", dataView, columns, options);
 	grid.registerPlugin(new Slick.AutoTooltips());
 	var pager = new Slick.Controls.Pager(dataView, grid, $("#pager"));
@@ -584,7 +590,7 @@ function updateT(){
 	    grid.invalidateRows(args.rows);
 	    grid.render();
 	});
-
+	
 
 	function filterAndUpdate() {
 	    //var isNarrowing = percentCompleteThreshold > prevPercentCompleteThreshold;
