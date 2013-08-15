@@ -3,8 +3,6 @@
   <link rel="stylesheet" href="SlickGrid-master/slick.grid.css"
   type="text/css"/>
   <link rel="stylesheet" href="SlickGrid-master/controls/slick.pager.css" type="text/css"/>
-  <!--<link rel="stylesheet" href="SlickGrid-master/examples/examples.css"
-  type="text/css"/>-->
   <link rel="stylesheet" href="SlickGrid-master/css/smoothness/jquery-ui-1.8.16.custom.css" type="text/css"/>
   <style type="text/css">
 
@@ -24,7 +22,6 @@
     left: 0;
     right: 0;
     bottom: 0;
-    /*height:700px;*/
   }
 
   div.bar {
@@ -41,11 +38,11 @@
 </style>
 </head>
 
-<!--<link href="jquery/jquery-ui.css" rel="stylesheet" --
-  --type="text/css"/>-->
 <script src="jquery/jquery-1.6.2.min.js"></script>
 <script src="jquery/jquery-ui.min.js"></script>
-<link href="style/default.css" type="text/css" rel="stylesheet"></link>
+<link href="style/default.css" type="text/css"
+      rel="stylesheet"></link>
+<script type="text/javascript" src="Stacktrace/stacktrace-min-0.4.js"></script>
 <script type="text/javascript" src="js/log_handler.js"></script>
 <script src="SlickGrid-master/plugins/slick.autotooltips.js"></script>
 
@@ -70,7 +67,6 @@
 
 <script>  
   if (window.addEventListener) {
-  //window.addEventListener("storage", handle_storage, false);
   window.addEventListener("storage",handle_storage,false);
   } else {
   window.attachEvent("onstorage", handle_storage);
@@ -98,10 +94,8 @@
 	<td style="height:200px;text-align:top;">
 	  <div class="plot" id="barchart">
 	    <iframe width="100%" height = "200px" src = "" id="iframe_plot"> </iframe>
-	    <!-- //206px;-->
 	  </div>
 	</td>
-	<!--<iframe width="100%" height="(screen.height-300)px" src=""></iframe>-->
 	<script type="text/javascript" src="SEAVIEW/info.js"></script>
 	<td style="top:200px">
 	  <div id="log" class="logs" >

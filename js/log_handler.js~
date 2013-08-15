@@ -44,6 +44,7 @@ $(document).ready(function() {
 	    $("#code_area").attr("width","100%")
 	}
     });
+
     $("#plot").change(function(){
 	if((this.checked)&&!($("#code").attr('checked')?true:false)){
 	    $("#log").css("top",plotsize+"px");
@@ -58,6 +59,7 @@ $(document).ready(function() {
 	    $("#log").height((window.innerHeight-nonesize)+"px")
 	}
     });
+
     $("#code").change(function(){
 	if(this.checked){
 	    $("#log").css("top",codesize+"px");
@@ -76,10 +78,16 @@ $(document).ready(function() {
 	    $("#log").height((window.innerHeight-plotsize)+"px")
 	}
     });
+
+    $("#filter").change(function(){
+	return filterAndUpdate();
+    });
+
     $("#log").height((window.innerHeight-nonesize)+"px")
     console.log(window.innerHeight);
-    $( "#barchart" ).resizable({      
-    });
+
+    $( "#barchart" ).resizable({});
+
     $("#barchart").bind("resize", function (event, ui) {
         var setHeight = document.getElementById('barchart').style.height;
 	document.getElementById('iframe_plot').style.height = setHeight;
@@ -468,8 +476,6 @@ function readMultipleFiles(evt) {
 }
 
 function updateT(){
-    var dataView;
-    var grid;
     var data = [];
     var once=true;
     
@@ -536,11 +542,12 @@ function updateT(){
 	enableAddRow: false,
 	enableCellNavigation: true,
 	enableAsyncPostRender: true,
+	rowHeight:35,
+	
+	//text wraping options.
+	enableWrap:true,
+	wrapAfter:80
     };
-
-    var percentCompleteThreshold = 0;
-    var prevPercentCompleteThreshold = 0;
-    var h_runfilters = null;
 
     function myFilter(item, args) {
 	if($('#filter').is(':checked')){
@@ -564,7 +571,13 @@ function updateT(){
 	file_content.map(function(d,i){data[i]=new DataItem(i,d);/*console.log(data[i]);*/});
 
 	dataView = new Slick.Data.DataView({ inlineFilters: true });
+	dataView.setRefreshHints({
+	    isFilterUnchanged: false
+	});
+	dataView.setPagingOptions({pageSize:25});
+	
 	grid = new Slick.Grid("#log", dataView, columns, options);
+	grid.log=true;
 	grid.registerPlugin(new Slick.AutoTooltips());
 	var pager = new Slick.Controls.Pager(dataView, grid, $("#pager"));
 	
@@ -575,36 +588,11 @@ function updateT(){
 	});
 
 	dataView.onRowsChanged.subscribe(function (e, args) {
+	    //grid.log(dataView.getItemByIdx(23));
 	    grid.invalidateRows(args.rows);
 	    grid.render();
 	});
-
-
-	function filterAndUpdate() {
-	    //var isNarrowing = percentCompleteThreshold > prevPercentCompleteThreshold;
-	    //var isExpanding = percentCompleteThreshold < prevPercentCompleteThreshold;
-	    var renderedRange = grid.getRenderedRange();
-
-	    dataView.setFilterArgs();
-	    if($('#filter').is(':checked'))
-		dataView.setRefreshHints({
-		    ignoreDiffsBefore: renderedRange.top,
-		    ignoreDiffsAfter: renderedRange.bottom + 1,
-		    isFilterNarrowing: true,
-		    isFilterExpanding: false
-		});
-	    else if(filtered)
-		dataView.setRefreshHints({
-		    ignoreDiffsBefore: renderedRange.top,
-		    ignoreDiffsAfter: renderedRange.bottom + 1,
-		    isFilterNarrowing: false,
-		    isFilterExpanding: true
-		});
-	    dataView.refresh();
-
-	    //prevPercentCompleteThreshold = percentCompleteThreshold;
-	}
-
+	
 	// initialize the model after all the events have been hooked up
 	dataView.beginUpdate();
 	dataView.setItems(data);
@@ -612,6 +600,29 @@ function updateT(){
 	//dataView.setFilterArgs(0);
 	dataView.endUpdate();
     })
+}
+
+function filterAndUpdate() {
+    dataView.setFilterArgs();
+    if($('#filter').is(':checked'))
+	dataView.setRefreshHints({
+	    ignoreDiffsBefore: renderedRange.top,
+	    ignoreDiffsAfter: renderedRange.bottom + 1,
+	    isFilterNarrowing: true,
+	    isFilterExpanding: false,
+	    isFilterUnchanged: false
+	});
+    else if(filtered)
+	dataView.setRefreshHints({
+	    ignoreDiffsBefore: renderedRange.top,
+	    ignoreDiffsAfter: renderedRange.bottom + 1,
+	    isFilterNarrowing: false,
+	    isFilterExpanding: true,
+	    isFilterUnchanged: false
+	});
+    dataView.refresh();
+
+    //prevPercentCompleteThreshold = percentCompleteThreshold;
 }
 
 function handle_storage(e){

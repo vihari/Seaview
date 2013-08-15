@@ -1726,7 +1726,6 @@ if (typeof Slick === "undefined") {
 	    var len=data.getLength();
 	    
 	    //TODO: put binary search over here, to make the access operations efficient.
-	    //console.log(top);
 	    if(sumSizesInitialized)
 		for(var i=0;i<len;i++){
 		    var cmp;
@@ -1745,10 +1744,6 @@ if (typeof Slick === "undefined") {
 		b=40;
 	    }
 
-	    //t=(t==-1)?0:t;
-	    //b=(b==-1)?0:b;
-	    //console.log("top"+t+"  bottom"+b);
-	    //console.log(t,b);
 	    return {
 		top: Math.floor((viewportTop + offset) / options.rowHeight),
 		bottom: Math.ceil((viewportTop + offset + viewportH) / options.rowHeight),
@@ -2023,9 +2018,8 @@ if (typeof Slick === "undefined") {
     
 	    if(options.enableWrap){
 		var h = -1;
-		console.log($("div.grid-canvas"));
 		$("div.ui-widget-content").each(function(i){
-		    if($(this).css){
+		   if($(this).css){
 			var height_str=$(this).css('top');
 			var len=height_str.length;
 			height_str=height_str.substr(0,(len-2));
@@ -2033,7 +2027,6 @@ if (typeof Slick === "undefined") {
 			h=Math.max(h,height);
 		    }
 		});
-		console.log("height is: "+h);
 		$($canvas).height(10000);
 		$('#log').height(h+100);
 		$($viewport).height(10000);
@@ -2106,7 +2099,6 @@ if (typeof Slick === "undefined") {
 	    }
 
 	    trigger(self.onScroll, {scrollLeft: scrollLeft, scrollTop: scrollTop});
-//	    console.log(sumSizes);
 	}
 
 	function asyncPostProcessRows() {

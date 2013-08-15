@@ -56,6 +56,10 @@ if (typeof Slick === "undefined") {
     function SlickGrid(container, data, columns, options) {
 	
 	rowSizes=new Array(data.length);
+	//array to store the length of heights 
+	sumSize=0;
+	sumSizes=new Array(data.length);
+	sumSizesInitialized=false;
 	rowSizes[0]=0;
 	numRows=0;
 
@@ -78,7 +82,7 @@ if (typeof Slick === "undefined") {
 	    asyncEditorLoadDelay: 100,
 	    forceFitColumns: false,
 	    enableAsyncPostRender: false,
-	    asyncPostRenderDelay: 50,
+	    asyncPostRenderDelay: 0,
 	    autoHeight: false,
 	    editorLock: Slick.GlobalEditorLock,
 	    showHeaderRow: false,
@@ -262,9 +266,10 @@ if (typeof Slick === "undefined") {
 		$headerRowScroller.hide();
 	    }
 
-	    $viewport = $("<div class='slick-viewport' style='width:100%;overflow:auto;outline:0;position:relative;;'>").appendTo($container);
+	    $viewport = $("<div class='slick-viewport' style='width:100%;overflow:hidden;outline:0;position:relative;;'>").appendTo($container);
 	    $viewport.css("overflow-y", options.autoHeight ? "hidden" : "auto");
-
+	    //$viewport.css("overflow-y", "scroll");
+	    
 	    $canvas = $("<div class='grid-canvas' />").appendTo($viewport);
 
 	    $focusSink2 = $focusSink.clone().appendTo($container);
@@ -1375,37 +1380,42 @@ if (typeof Slick === "undefined") {
 
 	function appendRowHtml(stringArray, row, range) {
 	    var d = getDataItem(row);
+	    var visibleRange = getVisibleRange();
+	    if(visibleRange.top==-1)
+		visibleRange.top=0;
 	    var dataLoading = row < getDataLength() && !d;
 	    var rowCss = "slick-row" +
 		(dataLoading ? " loading" : "") +
 		(row === activeRow ? " active" : "") +
 		(row % 2 == 1 ? " odd" : " even");
-
+	    
 	    var metadata = data.getItemMetadata && data.getItemMetadata(row);
-
+	    
 	    if (metadata && metadata.cssClasses) {
 		rowCss += " " + metadata.cssClasses;
 	    }
-
+	    
 	    if(options.enableWrap){
-		var d = getDataItem(row);
+		sumSizesInitialized=true;
+		var h = options.rowHeight*(Math.floor(Math.max(1,d.log.length/parseInt(options.wrapAfter,10))));
 		var id=d.id;
-		var visibleRange = getVisibleRange();
 		var rowNum = data.getRowById(d.id);
-
+		
 		var t=0;
 		var offset=0;
-		for(var i=0;i<visibleRange.top;i++)
-		    offset+=rowSizes[data.getItem(i).num];
 		
-		for(var i=visibleRange.top;i<rowNum;i++){
+		for(var i=visibleRange.top;i<rowNum;i++)
 		    t+=rowSizes[data.getItem(i).num];
-		}
-		stringArray.push("<div class='ui-widget-content " + rowCss + "' style='top:" + (t+offset) + "px'>");
+		
+		//		if(!sumSizes[d.num]){
+		
+		//console.log("top is "+offset+" row is "+row+" idx "+d.num );
+		//console.log(sumSizes);
+		stringArray.push("<div class='ui-widget-content " + rowCss + "' style='top:" + (t) + "px'>");
 	    }
 	    else
-	    stringArray.push("<div class='ui-widget-content " + rowCss );//+ "' style='top:" + (options.rowHeight * row - offset) + "px'>");
-
+		stringArray.push("<div class='ui-widget-content " + rowCss );//+ "' style='top:" + (options.rowHeight * row - offset) + "px'>");
+	    
 	    var colspan, m;
 	    for (var i = 0, ii = columns.length; i < ii; i++) {
 		m = columns[i];
@@ -1440,6 +1450,9 @@ if (typeof Slick === "undefined") {
 	    var m = columns[cell];
 	    var d = getDataItem(row);
 	    var visibleRange = getVisibleRange();
+	    if(visibleRange.top==-1)
+		visibleRange.top=0;
+
 	    var cellCss = "slick-cell l" + cell + " r" + Math.min(columns.length - 1, cell + colspan - 1) +
 		(m.cssClass ? " " + m.cssClass : "");
 	    if (row === activeRow && cell === activeCell) {
@@ -1454,19 +1467,16 @@ if (typeof Slick === "undefined") {
 	    }
 	    
 	    if(options.enableWrap){
-		var h = Math.floor(options.rowHeight*(Math.max(1,d.log.length/parseInt(options.wrapAfter,10))));
+		sumSizesInitialized=true;
+		var h = options.rowHeight*(Math.floor(Math.max(1,d.log.length/parseInt(options.wrapAfter,10))));
 		var id=d.id;
 		var rowNum = data.getRowById(d.id);
-		//console.log("Row number"+rowNum);
-		//console.log("id is "+d.id);
 		prev_h=rowSizes[d.num];
 		rowSizes[d.num] =  h;
+		sumSize+=h;
 		if((prev_h!=h)&&(h)&&(h!=0)){
-		  //  console.log(prev_h);
-		  //  console.log(h);
 		    mapIdxToRow[numRows]=id;   
 		    numRows++;
-		    //console.log("This is the cell being rendered "+id);
 		}
 		
 		var t=0;
@@ -1474,16 +1484,16 @@ if (typeof Slick === "undefined") {
 		for(var i=0;i<visibleRange.top;i++)
 		    offset+=rowSizes[data.getItem(i).num];
 		
-		//console.log(mapIdxToRow);
-		//console.log("number of rows "+ numRows);
-		for(var i=visibleRange.top;i<rowNum;i++){
+		for(var i=visibleRange.top;i<rowNum;i++)
 		    t+=rowSizes[data.getItem(i).num];
-//		    console.log((data.getItemByIdx(i)).num);
-		}
-		console.log("t is "+(t));
-		console.log("offset is "+(offset));
-		console.log("<div class='" + cellCss + "' style='white-space:normal;height:"+h+"px;top:'"+(t+offset)+"px';>");
-		stringArray.push("<div class='" + cellCss + "' style='white-space:normal;height:"+h+"px;top:'"+(t+offset)+"px';>");
+		
+//		if(!sumSizes[d.num]){
+		    if(rowNum==0)
+			sumSizes[d.num]=0;
+		    else
+			sumSizes[d.num]=t+offset;
+//		}
+		stringArray.push("<div class='" + cellCss + "' style='white-space:normal;height:"+h+"px;'>");
 	    }
 	    else{
 		stringArray.push("<div class='" + cellCss + "'>");
@@ -1714,25 +1724,34 @@ if (typeof Slick === "undefined") {
 	    
 	    //this is the filtered length itself.
 	    var len=data.getLength();
-
-	    for(var i=0;i<len;i++){
-		var cmp;
-		console.log(i,len);
-		cmp+=rowSizes[data.getItem(i).num];
-		//make sure t isn't set before
-		if((cmp>=top)&&(t==-1))
-		    t=i;
-		//checking for b==-1 is n't required;
-		if((cmp>bottom)&&(b==-1)){
-		    b=i;
-		    break;
+	    
+	    //TODO: put binary search over here, to make the access operations efficient.
+	    //console.log(top);
+	    if(sumSizesInitialized)
+		for(var i=0;i<len;i++){
+		    var cmp;
+		    cmp=sumSizes[data.getItem(i).num];
+		    //make sure t isn't set before
+		    if((cmp>=top)&&(t==-1))
+			t=(i-1>0)?(i-1):0;
+		    //checking for b==-1 is n't required;
+		    if((cmp>bottom)&&(b==-1)){
+			b=i;
+			break;
+		    }
 		}
+	    else{
+		t=0;
+		b=40;
 	    }
-	    //console.log("top"+t+"  bottom"+b);
 
+	    //t=(t==-1)?0:t;
+	    //b=(b==-1)?0:b;
+	    //console.log("top"+t+"  bottom"+b);
+	    //console.log(t,b);
 	    return {
-		top: t,//Math.floor((viewportTop + offset) / options.rowHeight),
-		bottom: i,//Math.ceil((viewportTop + offset + viewportH) / options.rowHeight),
+		top: Math.floor((viewportTop + offset) / options.rowHeight),
+		bottom: Math.ceil((viewportTop + offset + viewportH) / options.rowHeight),
 		leftPx: viewportLeft,
 		rightPx: viewportLeft + viewportW
 	    };
@@ -1740,6 +1759,8 @@ if (typeof Slick === "undefined") {
 
 	function getRenderedRange(viewportTop, viewportLeft) {
 	    var range = getVisibleRange(viewportTop, viewportLeft);
+
+	    //console.log(range);
 	    //buffer as many as being shown
 	    var buffer = Math.round(viewportH / options.rowHeight);
 	    var minBuffer = 3;
@@ -1980,6 +2001,7 @@ if (typeof Slick === "undefined") {
 
 	    // remove rows no longer in the viewport
 	    cleanupRows(rendered);
+	    sumSize=0;
 
 	    // add new rows & missing cells in existing rows
 	    if (lastRenderedScrollLeft != scrollLeft) {
@@ -1998,12 +2020,26 @@ if (typeof Slick === "undefined") {
 	    h_render = null;
 	    
 	    //we set the canvas width as the sum of all the heights in rowSizes and all the remaining possibly unrendered rows are assumed to be of height options.rowHeight
-	    var h=0;
-	    rowSizes.map(function(d,i){
-		h+=d;
-	    });
-	    
-	    $($canvas).height(h+(getDataLength()-numRows)*options.rowHeight);
+    
+	    if(options.enableWrap){
+		var h = -1;
+		console.log($("div.grid-canvas"));
+		$("div.ui-widget-content").each(function(i){
+		    if($(this).css){
+			var height_str=$(this).css('top');
+			var len=height_str.length;
+			height_str=height_str.substr(0,(len-2));
+			var height=parseInt(height_str);
+			h=Math.max(h,height);
+		    }
+		});
+		console.log("height is: "+h);
+		$($canvas).height(10000);
+		$('#log').height(h+100);
+		$($viewport).height(10000);
+	    }
+	    else
+		$($canvas).height(h+(getDataLength()-numRows)*options.rowHeight);
 	}
 
 	function handleHeaderRowScroll() {
@@ -2014,13 +2050,14 @@ if (typeof Slick === "undefined") {
 	}
 
 	function handleScroll() {
-	    //console.log(getVisibleRange());
+	    console.log(getDataLength());
 	    //console.log(getRenderedRange());
 	    scrollTop = $viewport[0].scrollTop;
 	    scrollLeft = $viewport[0].scrollLeft;
 	    var vScrollDist = Math.abs(scrollTop - prevScrollTop);
 	    var hScrollDist = Math.abs(scrollLeft - prevScrollLeft);
-
+	    //console.log("Vertical "+vScrollDist+" horizontal "+hScrollDist);
+	    
 	    if (hScrollDist) {
 		prevScrollLeft = scrollLeft;
 		$headerScroller[0].scrollLeft = scrollLeft;
@@ -2069,6 +2106,7 @@ if (typeof Slick === "undefined") {
 	    }
 
 	    trigger(self.onScroll, {scrollLeft: scrollLeft, scrollTop: scrollTop});
+//	    console.log(sumSizes);
 	}
 
 	function asyncPostProcessRows() {

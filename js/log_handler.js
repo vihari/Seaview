@@ -79,6 +79,10 @@ $(document).ready(function() {
 	}
     });
 
+    $("#filter").change(function(){
+	return filterAndUpdate();
+    });
+
     $("#log").height((window.innerHeight-nonesize)+"px")
     console.log(window.innerHeight);
 
@@ -180,7 +184,7 @@ function clear_all(className) {
 }
 
 function filterBy(obj,parameter,parameter_plot,ModePlot,ModeSelect){
-    var logs = file_content.split('</br>');
+    var logs = file_content;//.split('</br>');
     var ToDisplay = "";
     var first = true;
     var ip_num;
@@ -315,7 +319,7 @@ function toggleInfo(obj){
 }
 function toggleInstrumented(obj){
     if(obj.checked){
-	var logs = file_content.split("</br>");
+	var logs = file_content;//.split("</br>");
 	for(var i=0,line;i<logs.length;i++){
             line = logs[i];
             if(line.search("::SV")>-1)
@@ -472,8 +476,6 @@ function readMultipleFiles(evt) {
 }
 
 function updateT(){
-    var dataView;
-    var grid;
     var data = [];
     var once=true;
     
@@ -533,23 +535,19 @@ function updateT(){
 		//$(cellNode).empty().sparkline(vals, {width: "100%"});
     }
 
-    var columns = [{id: "l", name: "log", field: "log",width: 1200, rerenderOnResize: false, asyncPostRender: renderColor}];
+    var columns = [{id: "l", name: "log", field: "log",width: screen.width, rerenderOnResize: false, asyncPostRender: renderColor}];
 
     var options = {
 	editable: false,
 	enableAddRow: false,
 	enableCellNavigation: true,
 	enableAsyncPostRender: true,
-	rowHeight:20,
+	rowHeight:35,
 	
 	//text wraping options.
 	enableWrap:true,
-	wrapAfter:100
+	wrapAfter:80
     };
-
-    var percentCompleteThreshold = 0;
-    var prevPercentCompleteThreshold = 0;
-    var h_runfilters = null;
 
     function myFilter(item, args) {
 	if($('#filter').is(':checked')){
@@ -573,9 +571,13 @@ function updateT(){
 	file_content.map(function(d,i){data[i]=new DataItem(i,d);/*console.log(data[i]);*/});
 
 	dataView = new Slick.Data.DataView({ inlineFilters: true });
+	dataView.setRefreshHints({
+	    isFilterUnchanged: false
+	});
 	dataView.setPagingOptions({pageSize:25});
 	
 	grid = new Slick.Grid("#log", dataView, columns, options);
+	grid.log=true;
 	grid.registerPlugin(new Slick.AutoTooltips());
 	var pager = new Slick.Controls.Pager(dataView, grid, $("#pager"));
 	
@@ -591,32 +593,6 @@ function updateT(){
 	    grid.render();
 	});
 	
-
-	function filterAndUpdate() {
-	    //var isNarrowing = percentCompleteThreshold > prevPercentCompleteThreshold;
-	    //var isExpanding = percentCompleteThreshold < prevPercentCompleteThreshold;
-	    var renderedRange = grid.getRenderedRange();
-
-	    dataView.setFilterArgs();
-	    if($('#filter').is(':checked'))
-		dataView.setRefreshHints({
-		    ignoreDiffsBefore: renderedRange.top,
-		    ignoreDiffsAfter: renderedRange.bottom + 1,
-		    isFilterNarrowing: true,
-		    isFilterExpanding: false
-		});
-	    else if(filtered)
-		dataView.setRefreshHints({
-		    ignoreDiffsBefore: renderedRange.top,
-		    ignoreDiffsAfter: renderedRange.bottom + 1,
-		    isFilterNarrowing: false,
-		    isFilterExpanding: true
-		});
-	    dataView.refresh();
-
-	    //prevPercentCompleteThreshold = percentCompleteThreshold;
-	}
-
 	// initialize the model after all the events have been hooked up
 	dataView.beginUpdate();
 	dataView.setItems(data);
@@ -624,6 +600,29 @@ function updateT(){
 	//dataView.setFilterArgs(0);
 	dataView.endUpdate();
     })
+}
+
+function filterAndUpdate() {
+    dataView.setFilterArgs();
+    if($('#filter').is(':checked'))
+	dataView.setRefreshHints({
+	    ignoreDiffsBefore: renderedRange.top,
+	    ignoreDiffsAfter: renderedRange.bottom + 1,
+	    isFilterNarrowing: true,
+	    isFilterExpanding: false,
+	    isFilterUnchanged: false
+	});
+    else if(filtered)
+	dataView.setRefreshHints({
+	    ignoreDiffsBefore: renderedRange.top,
+	    ignoreDiffsAfter: renderedRange.bottom + 1,
+	    isFilterNarrowing: false,
+	    isFilterExpanding: true,
+	    isFilterUnchanged: false
+	});
+    dataView.refresh();
+
+    //prevPercentCompleteThreshold = percentCompleteThreshold;
 }
 
 function handle_storage(e){
