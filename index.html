@@ -1,0 +1,164 @@
+<meta charset="utf-8">
+<head><title>Seaview</title>
+  <link rel="stylesheet" href="SlickGrid-master/slick.grid.css"
+  type="text/css"/>
+  <link rel="stylesheet" href="SlickGrid-master/controls/slick.pager.css" type="text/css"/>
+  <link rel="stylesheet" href="SlickGrid-master/css/smoothness/jquery-ui-1.8.16.custom.css" type="text/css"/>
+  <style type="text/css">
+
+  html, body {
+  margin: 0;
+  padding: 0;
+  backround-color: White;
+  }
+  
+  body {
+  font: 11px Helvetica, Arial, sans-serif;
+  }
+  
+  #log {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  div.bar {
+  display: inline-block;
+  width: 20px;
+  height: 75px;	/* Gets overriden by D3-assigned height below */
+  margin-right: 2px;
+  background-color: teal;
+  }
+  
+  .selected{
+    background:yellow;
+  }
+</style>
+</head>
+
+<script src="jquery/jquery-1.6.2.min.js"></script>
+<script src="jquery/jquery-ui.min.js"></script>
+<link href="style/default.css" type="text/css"
+      rel="stylesheet"></link>
+<script type="text/javascript" src="js/log_handler.js"></script>
+<script src="SlickGrid-master/plugins/slick.autotooltips.js"></script>
+
+<script type="text/javascript" src="SEAVIEW/ips.js"></script>
+<script type="text/javascript" src="SEAVIEW/run.logs.js"></script>
+<script type="text/javascript" src="d3/d3.v3.min.js"></script>
+<script type="text/javascript" src="js/bar_chart.js"></script>
+
+<script src="SlickGrid-master/lib/jquery-1.7.min.js"></script>
+<script src="SlickGrid-master/lib/jquery-ui-1.8.16.custom.min.js"></script>
+<script src="SlickGrid-master/lib/jquery.event.drag-2.2.js"></script>
+
+<script src="SlickGrid-master/slick.core.js"></script>
+<script src="SlickGrid-master/slick.formatters.js"></script>
+<script src="SlickGrid-master/slick.editors.js"></script>
+<script src="SlickGrid-master/slick.grid.js"></script>
+<script type="text/javascript" src="js/log_handler.js"></script>
+<script src="SlickGrid-master/slick.groupitemmetadataprovider.js"></script>
+<script src="SlickGrid-master/slick.dataview.js"></script>
+<script src="SlickGrid-master/controls/slick.pager.js"></script>
+<script src="SlickGrid-master/controls/slick.columnpicker.js"></script>
+
+<script>  
+  if (window.addEventListener) {
+  window.addEventListener("storage",handle_storage,false);
+  } else {
+  window.attachEvent("onstorage", handle_storage);
+  };
+</script>
+
+<body style="background-color:#FFFFFF">
+  <input type="checkbox" class="menu-nav-check" id="menu-nav-check"/>
+  <div class="page-wrap">
+    <header class="main-header">
+      <label for="menu-nav-check" class="toggle-menu">
+	<pre style="font-size:40px;top:20px;">Show</pre>
+      </label>
+    </header>
+  
+    <div id="pager" style="width:100%;top:0px;height:20px;position:absolute"></div>
+    <table>
+      <tr>
+	<td style="height:300px;text-align:top;">
+	  <div id="code_area">
+	    <iframe width="100%" height="300px" src="code_browser/index.html" id="iframe_code"></iframe>
+	  </div>
+	</td>
+	<td style="height:200px;text-align:top;">
+	  <div class="plot" id="barchart">
+	    <iframe width="100%" height = "200px" src = "" id="iframe_plot"> </iframe>
+	  </div>
+	</td>
+	<script type="text/javascript" src="SEAVIEW/ips.js"></script>
+	<td style="top:200px">
+	  <div id="log" class="logs" >
+	    <p id = "file"></p>
+	  </div>
+	</td>
+      </tr>
+    </table>
+  </div>
+  
+  <div id="menu">
+    <ul>
+      <li><code>Choose a log file </code></br><input type="file" id="fileinput" multiple></li>
+      <li><input id="hide" type="checkbox" onchange="toggleSV(this)" checked></input><span align="left"><code>Hide tags</code></span></li>
+      <li><input id="info" type="checkbox" onchange="toggleInfo(this)" checked></input><span align="left"><code>Hide info</code></span></li>
+      <li><input id = "filter" type="checkbox"
+		 onchange="toggleInstrumented(this)" checked><code>Show only
+	  instrumented logs</code></input></li>
+      <li><input id = "plot" type="checkbox" onchange="toggleShowPlot()"><code>Plot area</code></input></li>
+      <li><input id = "code" type="checkbox" onchange="showCode()"><code>Code area</code></input></li>
+      <li><input type="checkbox"
+		 id='select_mode'></input><code>Enable grouping</code></span></li>
+      
+      <li><select id = "action_select">
+	  <option value="unit">Select by unit Id</option>
+	  <option value="dim">Select by dim Id</option>
+	  <option value="same">Same log statement</option>
+	  <option value="sig">Select by java type</option>
+	  <option value="class">Select by Class</option>
+	  <option value="method">Select by Method</option>
+      </select></li>
+
+      <li><button onclick="reset()">reset</button></li>
+
+      <li><select id="graph_type" onchange="toggleShowPlot()">
+	  <option value="bar">Bar chart over the variable</option>
+	  <option value="scatter">Scatter Plot over all the variables.</option>
+	  <!--  <option value="stack_bar_unit">Stacked Bar chart over same unit</option>
+		<option value="stack_bar_dim">Stacked Bar chart over same
+		  dimension</option>
+	  <option value="group_bar_unit">Grouped Bar chart over same
+	    unit</option>
+	  <option value="group_bar_dim">Grouped Bar chart over same
+	    dimension</option>
+	  <option value="group_bar_all">Grouped Bar chart over all variables
+	  </option>
+	  <option value="social_graph">Social graph(grouping with same
+	    dimensions)
+	  </option>-->
+	</select>
+      </li>
+	
+      <div style="display:none"><code>Mode:</code><span style="padding:2px; color: black;background-color: white; border: black 2px solid"><input id='plot_mode' type="checkbox" checked></input><code>Plot</code></div>
+      
+<!--<a href="bar.html?big=1" target="_blank">Big</a>-->
+
+<li><span id="file_name" style="font-size:10px"></span></li>
+<!--<li><input type="checkbox" id="rev_map"><code>Reverse Mapping</code></input></li>-->
+</ul>
+</div>
+
+<script>
+    document.getElementById('fileinput').addEventListener('change',
+    readMultipleFiles, false);
+</script>
+<!--This is just to test the width of a string font-size as is set in jquery-ui-1.8.16.custom.css-->
+<span id="width_tester" style="display:none;top:200px;font-size:16px;white-space:nowrap;color:red"></span>
+</body>
