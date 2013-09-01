@@ -6,7 +6,7 @@ var DimColors=new Array();
 //The default is to hide.
 var HideSV = true;
 var HideInfo = true;
-var ShowInstrumented = true;
+var OnlyInstrumented = true;
 
 var plotsize = 260;
 var codesize = 360;
@@ -73,18 +73,16 @@ $(document).ready(function() {
 	    $("#log").height((window.innerHeight-nonesize)+"px")
 	}
 	else if(($("#plot").attr('checked')?true:false)){
-	    console.log("should")
 	    $("#log").css("top",plotsize+"px");
 	    $("#log").height((window.innerHeight-plotsize)+"px")
 	}
     });
 
     $("#filter").change(function(){
-	return filterAndUpdate();
+	return ;//filterAndUpdate();
     });
 
-    $("#log").height((window.innerHeight-nonesize)+"px")
-    console.log(window.innerHeight);
+    $("#log").height((window.innerHeight-nonesize)+"px");
 
     $( "#barchart" ).resizable({});
 
@@ -142,7 +140,6 @@ function toggleShowPlot(){
 	if(value=='bar')document.getElementById('iframe_plot').src='bar.html';
 	else if(value=='scatter')document.getElementById('iframe_plot').src='scatter.html';
 	
-	//document.getElementById('log').style.marginTop='310px';
 	d3.select('#barchart').style('display','block')}
 }
 
@@ -183,6 +180,22 @@ function clear_all(className) {
     }
 }
 
+//Pass as constructor the object read from ips.js
+function IpsLog(obj) {
+//"IPNum":0,"dimensionID":244,"callSiteNum":0,"valueSig":"I","className":"edu.stanford.muse.Main","methodName":"doGroups","methodSig":"(Ledu/stanford/muse/email/AddressBook;Ljava/util/Collection;)Ledu/stanford/muse/index/GroupAssigner;","unit_num":1175,"lineNum":179,"type":"int","is_enum":false
+    this.IPNum = obj.IPNum;
+    this.dimensionID = obj.dimensionID;
+    this.callSiteNum = obj.callSiteNum;
+    this.valueSig = obj.valueSig;
+    this.className = obj.className;
+    this.methodName = obj.methodName;
+    this.methodSig = obj.methodSig;
+    this.unit_num = obj.unit_num;
+    this.lineNum = obj.lineNum;
+    this.type = obj.type;
+    this.is_enum = obj.is_enum;
+}
+
 function filterBy(obj,parameter,parameter_plot,ModePlot,ModeSelect){
     var logs = file_content;//.split('</br>');
     var ToDisplay = "";
@@ -204,6 +217,7 @@ function filterBy(obj,parameter,parameter_plot,ModePlot,ModeSelect){
 		    if(first){
 			first = false
 		    }
+		    /*TODO: Do hashing of ips and make efficient*/
 		    ip_num = parseInt(tags[1].slice(2,tags[1].length));
 		    for(var s=0;s<ips.length;s++){
 			log = ips[s];
@@ -239,55 +253,87 @@ function filterBy(obj,parameter,parameter_plot,ModePlot,ModeSelect){
 	return;
     //clear_all('bar');	
     //document.getElementById('barchart').style.height = "0px";
-    for(var i=0;i<logs.length;i++){
-	if(logs[i].search(/SV[0-9]*/)>-1){
-	    var st = logs[i].match(/SV[0-9]*/g)
-	    st = st.toString();
-	    iter = st.split(',')
-	    for(var j=0;j<iter.length;j++){
-		var ip_num = parseInt(iter[j].slice(2,iter[j].length));
-		var log;
-		for(var s=0;s<ips.length;s++){
-		    log = ips[s];
-		    if(log.IPNum == ip_num){
-			break;
-		    }
-		}
-		if(parameter=="class")
-		    if(log.className==obj.className)
-			ToDisplay+=logs[i]+"</br>";
-
-		if(parameter=="method")
-		    if(log.methodName==obj.methodName)
-			ToDisplay+=logs[i]+"</br>";
-		
-		if(parameter=="dim"){
-		    if(log.dimensionID==obj.dimensionID){
-			ToDisplay+=logs[i]+"</br>";
-		    }	
-		}
-		if(parameter=="unit"){
-		    if(log.unit_num==obj.unit_num){
-			ToDisplay+=logs[i]+"</br>";
-		    }	
-		}
-		if(parameter=="same"){
-		    if(log==obj){
-			ToDisplay+=logs[i]+"</br>";
-		    }	
-		}
-		if(parameter=="sig"){
-		    if(log.valueSig==obj.valueSig){
-			ToDisplay+=logs[i]+"</br>";
-		    }	
-		}
-	    }
-	}
+    
+    if(parameter=="class"){
+	//undefined in the sense can be any
+	updateFilter({
+	    className:obj.className,
+	    methodName:'undefined',
+	    dimensionID:'undefined',
+	    unit_num:'undefined',
+	    valueSig:'undefined',
+	    OnlyInstrumented:OnlyInstrumented
+	});
+	//if(log.className==obj.className)
+	//ToDisplay+=logs[i]+"</br>";
     }
-    colorizeDims(ToDisplay);
+
+    if(parameter=="method")
+	updateFilter({
+	    className:'undefined',
+	    methodName:obj.methodName,
+	    dimensionID:'undefined',
+	    unit_num:'undefined',
+	    valueSig:'undefined',
+	    OnlyInstrumented:OnlyInstrumented
+	});
+    //if(log.methodName==obj.methodName)
+    //ToDisplay+=logs[i]+"</br>";
+    
+    if(parameter=="dim")
+	updateFilter({
+	    className:'undefined',
+	    methodName:'undefined',
+	    dimensionID:obj.dimensionID+'',
+	    unit_num:'undefined',
+	    valueSig:'undefined',
+	    OnlyInstrumented:OnlyInstrumented
+	});
+    //if(log.dimensionID==obj.dimensionID){
+    //ToDisplay+=logs[i]+"</br>";
+    //}	
+    
+    if(parameter=="unit")
+	updateFilter({
+	    className:'undefined',
+	    methodName:'undefined',
+	    dimensionID:'undefined',
+	    unit_num:obj.unit_num+'',
+	    valueSig:'undefined',
+	    OnlyInstrumented:OnlyInstrumented
+	});
+    //if(log.unit_num==obj.unit_num){
+    //	ToDisplay+=logs[i]+"</br>";
+    //  }	
+    
+    if(parameter=="same"){
+	updateFilter({
+	    className:obj.className,
+	    methodName:obj.methodName,
+	    dimensionID:obj.dimensionID+'',
+	    unit_num:obj.unit_num+'',
+	    valueSig:obj.valueSig,
+	    OnlyInstrumented:OnlyInstrumented
+	});
+	console.log(obj);
+    }
+    //if(log==obj){
+    //	ToDisplay+=logs[i]+"</br>";
+    //}	
+    
+    if(parameter=="sig")
+	updateFilter({
+	    className:'undefined',
+	    methodName:'undefined',
+	    dimensionID:'undefined',
+	    unit_num:'undefined',
+	    valueSig:obj.valueSig,
+	    OnlyInstrumented:OnlyInstrumented
+	});
 }
 
 function group(j){
+    console.log("grouping called");
     var sel = document.getElementById("action_select");
     var value = sel.options[sel.selectedIndex].value;
     var sel = document.getElementById("graph_type");
@@ -300,38 +346,36 @@ function group(j){
 function toggleSV(obj){
     if(obj.checked){
 	HideSV = true;
-	colorizeDims(UnderDisplay);
+	refreshGrid();
     }
     else{
 	HideSV = false;
-	colorizeDims(UnderDisplay);
+	refreshGrid();
     }
 }
+
 function toggleInfo(obj){
     if(obj.checked){
 	HideInfo = true;
-	colorizeDims(UnderDisplay);
+	refreshGrid();
     }
     else{
 	HideInfo = false;
-	colorizeDims(UnderDisplay);
+	refreshGrid();
     }
 }
+
+function refreshGrid(){
+    grid.invalidateAllRows();
+    grid.render();
+}
+
 function toggleInstrumented(obj){
-    if(obj.checked){
-	var logs = file_content;//.split("</br>");
-	for(var i=0,line;i<logs.length;i++){
-            line = logs[i];
-            if(line.search("::SV")>-1)
-		filtered_content+=line+"</br>";
-	}
-	document.getElementById("file").innerHTML = filtered_content;
-	colorizeDims(filtered_content);
-    }
-    else{
-	document.getElementById("file").innerHTML = file_content;
-	colorizeDims(file_content);
-    }
+    if(obj.checked)
+	OnlyInstrumented = true;
+    else
+	OnlyInstrumented = false;
+    updateFilter();
 }
 
 
@@ -380,7 +424,8 @@ function colorizeDims(log){
 		var b=parseInt(color.substring(5,7),16);
 		var mx = (r>g?r:g)>b?(r>g?r:g):b;
 		var mn = Math.min(r,g,b);
-
+		var delim = "   "
+		
 		if((mx+mn)/512.0>=(0.5)){
 		    if(!HideInfo)
 			line = line.replace(iter[j],'<span id="SV'+i+'" onclick="group('+s+')" style="background-color:black;color:'+color+'">'+sv[2]+delim+"ClassName:"+ips[s]["className"]+" Method:"+ips[s]["methodName"]+" line: "+ips[s]["lineNum"]+delim+"</span>");
@@ -475,6 +520,7 @@ function readMultipleFiles(evt) {
     setTimeout(function(){updateT()},1000);
 }
 
+/*One time called function when the log is first loaded*/
 function updateT(){
     var data = [];
     var once=true;
@@ -506,7 +552,7 @@ function updateT(){
 	}
 	UniqueDims = dims.filter(function(elem, pos) {
 	    return dims.indexOf(elem) == pos;
-	})
+	});
     });
 
     $(function (){
@@ -523,38 +569,132 @@ function updateT(){
     }
 
     function renderColor(cellNode, row, dataContext, colDef) {
-	/*var vals = [
-	    dataContext["n1"],
-	    dataContext["n2"],
-	    dataContext["n3"],
-	    dataContext["n4"],
-	    dataContext["n5"]
-	];*/
-		
 	$(cellNode).html(colorizeDims(dataContext["log"]));
-		//$(cellNode).empty().sparkline(vals, {width: "100%"});
     }
 
     var columns = [{id: "l", name: "log", field: "log",width: screen.width, rerenderOnResize: false, asyncPostRender: renderColor}];
 
-    var options = {
+    options = {
 	editable: false,
 	enableAddRow: false,
 	enableCellNavigation: true,
 	enableAsyncPostRender: true,
-	rowHeight:35,
+	rowHeight:45,
 	
 	//text wraping options.
 	enableWrap:true,
 	wrapAfter:80
     };
 
-    function myFilter(item, args) {
-	if($('#filter').is(':checked')){
-	    return (item["log"].search(/:::SV[0-9]*:::(?:(?!:::).)*:::/)>-1);
+    function filterLogs(item, args) {
+	//store all the ip objects that match 
+	var logObjects = [];
+	var log;
+ 	if(item.log.search(/SV[0-9]*/)>-1){
+ 	    var st = item.log.match(/SV[0-9]*/g)
+ 	    st = st.toString();
+ 	    iter = st.split(',')
+ 	    for(var j=0;j<iter.length;j++){
+ 		var ip_num = parseInt(iter[j].slice(2,iter[j].length));
+ 		for(var s=0;s<ips.length;s++){
+ 		    log = ips[s];
+ 		    if(log.IPNum == ip_num){
+			logObjects.push(log);
+			break;
+ 		    }
+ 		}
+ 	    }
+ 	}
+
+	if(args.OnlyInstrumented){
+	    if (item["log"].search(/:::SV[0-9]*:::(?:(?!:::).)*:::/)>-1){
+		for (var i=0;i<logObjects.length;i++){
+		    var log = logObjects[i];
+		    if(args.className!=='undefined')
+			if(log.className !== args.className){
+			    if(i==logObjects.length-1)
+				return false;
+			    else
+				continue;
+			}
+		    if(args.methodName !== 'undefined')
+			if(log.methodName !== args.methodName){
+			    if(i==logObjects.length-1)
+				return false;
+			    else
+				continue;
+			}
+		    if(args.dimensionID !== 'undefined')
+			if(log.dimensionID+'' !== args.dimensionID){
+			    if(i==logObjects.length-1)
+				return false;
+			    else
+				continue;
+			}
+		    if(args.unit_num !== 'undefined')
+			if(log.unit_num+'' !== args.unit_num){
+			    if(i==logObjects.length-1)
+				return false;
+			    else
+				continue;
+			}
+		    if(args.valueSig !== 'undefined'){
+			if(log.valueSig !== args.valueSig)
+			    if(i==logObjects.length-1)
+				return false;
+			else
+			    continue;
+		    }
+		    return true;
+		}
+	    }
+	    else return false;
 	}
-	else
-	    return true;
+	else{
+	    //Should we retain the uninstrumented logs when filtering?
+	    if (item["log"].search(/:::SV[0-9]*:::(?:(?!:::).)*:::/)>-1){
+		for (var i=0;i<logObjects.length;i++){
+		    var log = logObjects[i];
+		    if(args.className!=='undefined')
+			if(log.className !== args.className){
+			    if(i==logObjects.length-1)
+				return false;
+			    else
+				continue;
+			}
+		    if(args.methodName !== 'undefined')
+			if(log.methodName !== args.methodName){
+			    if(i==logObjects.length-1)
+				return false;
+			    else
+				continue;
+			}
+		    if(args.dimensionID !== 'undefined')
+			if(log.dimensionID+'' !== args.dimensionID){
+			    if(i==logObjects.length-1)
+				return false;
+			    else
+				continue;
+			}
+		    if(args.unit_num !== 'undefined')
+			if(log.unit_num+'' !== args.unit_num){
+			    if(i==logObjects.length-1)
+				return false;
+			    else
+				continue;
+			}
+		    if(args.valueSig !== 'undefined'){
+			if(log.valueSig !== args.valueSig)
+			    if(i==logObjects.length-1)
+				return false;
+			else
+			    continue;
+		    }
+		    return true;
+		}
+	    }
+	    else return true;
+	}	
     }
 
     function DataItem(i,str) {
@@ -564,22 +704,20 @@ function updateT(){
     }
 
     $(function () {
-	// prepare the data
-	/*    for (var i = 0; i < 500000; i++) {
-	      data[i] = new DataItem(i);
-	      }*/
-	file_content.map(function(d,i){data[i]=new DataItem(i,d);/*console.log(data[i]);*/});
+	file_content.map(function(d,i){
+	    data[i]=new DataItem(i,d);
+	});
 
 	dataView = new Slick.Data.DataView({ inlineFilters: true });
 	dataView.setRefreshHints({
 	    isFilterUnchanged: false
 	});
-	dataView.setPagingOptions({pageSize:25});
+	dataView.setPagingOptions({pageSize:15});
 	
 	grid = new Slick.Grid("#log", dataView, columns, options);
 	grid.log=true;
 	grid.registerPlugin(new Slick.AutoTooltips());
-	var pager = new Slick.Controls.Pager(dataView, grid, $("#pager"));
+	pager = new Slick.Controls.Pager(dataView, grid, $("#pager"));
 	
 	// wire up model events to drive the grid
 	dataView.onRowCountChanged.subscribe(function (e, args) {
@@ -596,10 +734,28 @@ function updateT(){
 	// initialize the model after all the events have been hooked up
 	dataView.beginUpdate();
 	dataView.setItems(data);
-	dataView.setFilter(myFilter);
-	//dataView.setFilterArgs(0);
+	dataView.setFilter(filterLogs);
+	dataView.setFilterArgs({
+	    className:'undefined',
+	    methodName:'undefined',
+	    dimensionID:'undefined',
+	    unit_num:'undefined',
+	    valueSig:'undefined',
+	    OnlyInstrumented:OnlyInstrumented
+	});
 	dataView.endUpdate();
-    })
+    });
+}
+
+function reset(){
+    updateFilter({
+	className:'undefined',
+	methodName:'undefined',
+	dimensionID:'undefined',
+	unit_num:'undefined',
+	valueSig:'undefined',
+	OnlyInstrumented:OnlyInstrumented
+    });
 }
 
 function filterAndUpdate() {
@@ -621,8 +777,6 @@ function filterAndUpdate() {
 	    isFilterUnchanged: false
 	});
     dataView.refresh();
-
-    //prevPercentCompleteThreshold = percentCompleteThreshold;
 }
 
 function handle_storage(e){
@@ -679,9 +833,6 @@ function highlight_line(ip){
 		    .delay(750)
 		    .style("background-color", "white");
 		
-		//elem.style.color = "white";
-		//elem.style.backgroundColor = "black";
-
 		if(position>100)
 		    $("#log").scrollTop(position-100);	
 		else
@@ -693,4 +844,9 @@ function highlight_line(ip){
     }
     //    colorizeDims(ToDisplay);
     //   document.getElementById("file").innerHTML=ToDisplay;
+}
+
+function updateFilter(args){
+    dataView.setFilterArgs(args);
+    dataView.refresh();
 }

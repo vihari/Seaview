@@ -16,6 +16,12 @@
  *     and do proper cleanup.
  */
 
+/*
+ * options.enableWrap part added by 
+ * Vihari Piratla 
+ * viharipiratla{dot}gmail{dot}com 
+ */
+
 // make sure required JavaScript modules are loaded
 if (typeof jQuery === "undefined") {
     throw "SlickGrid requires jquery module to be loaded";
@@ -1397,7 +1403,6 @@ if (typeof Slick === "undefined") {
 	    
 	    if(options.enableWrap){
 		sumSizesInitialized=true;
-		var h = options.rowHeight*(Math.floor(Math.max(1,d.log.length/parseInt(options.wrapAfter,10))));
 		var id=d.id;
 		var rowNum = data.getRowById(d.id);
 		
@@ -1468,7 +1473,9 @@ if (typeof Slick === "undefined") {
 	    
 	    if(options.enableWrap){
 		sumSizesInitialized=true;
-		var h = options.rowHeight*(Math.floor(Math.max(1,d.log.length/parseInt(options.wrapAfter,10))));
+		$("#width_tester").text(d.log);
+		var h = options.rowHeight*Math.floor(($("#width_tester").width()/screen.width)+1);
+		//var h = options.rowHeight*(Math.floor(Math.max(1,d.log.length/parseInt(options.wrapAfter,10))));
 		var id=d.id;
 		var rowNum = data.getRowById(d.id);
 		prev_h=rowSizes[d.num];
@@ -1758,7 +1765,8 @@ if (typeof Slick === "undefined") {
 	    //console.log(range);
 	    //buffer as many as being shown
 	    var buffer = Math.round(viewportH / options.rowHeight);
-	    var minBuffer = 3;
+	    //TODO: When minbufer set to non zero, then it is as well rendering and displaying the extra rows, rendering is sometimes useful though
+	    var minBuffer = 0;
 
 	    //more probable that you move down hence buffer on the down side.
 	    if (vScrollDir == -1) {
@@ -2017,18 +2025,18 @@ if (typeof Slick === "undefined") {
 	    //we set the canvas width as the sum of all the heights in rowSizes and all the remaining possibly unrendered rows are assumed to be of height options.rowHeight
     
 	    if(options.enableWrap){
-		var h = -1;
-		$("div.ui-widget-content").each(function(i){
+		var h = 100;
+		$("div.slick-cell").each(function(i){
 		   if($(this).css){
-			var height_str=$(this).css('top');
+			var height_str=$(this).css('height');
 			var len=height_str.length;
 			height_str=height_str.substr(0,(len-2));
 			var height=parseInt(height_str);
-			h=Math.max(h,height);
+			h+=height;
 		    }
 		});
 		$($canvas).height(10000);
-		$('#log').height(h+100);
+		$('#log').height(h);
 		$($viewport).height(10000);
 	    }
 	    else

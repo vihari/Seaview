@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 set -e
-export UNIFI=$HOME/Programming_vihari/hangal
+export UNIFI=$HOME/repos/unifi
 export CLASSPATH="$UNIFI/classes/unifi.jar:$UNIFI/lib/bcel-5.2.jar:$UNIFI/lib/log4j-1.2.15.jar:$UNIFI/lib/commons-logging-1.1.1.jar:$UNIFI/lib/gson-1.5.jar"
 
 if [ -z $1 ];
@@ -30,6 +30,9 @@ jar cvf ../muse.jar .
 cd ..
 /bin/rm -f $TARGET
 mv muse.jar $TARGET
+
+#Move the unifi.jar so that the seaview runtime classes be included.
+cp $UNIFI/classes/unifi.jar WEB-INF/lib/
 
 # update muse.jar in muse.war
 jar uvf muse.war $TARGET

@@ -19,7 +19,6 @@ function elementInDocument(element) {
 	window.attachEvent("onstorage", handle_storage);
     };
     var requestFileSystem = obj.webkitRequestFileSystem || obj.mozRequestFileSystem || obj.requestFileSystem;
-    console.log(requestFileSystem)
     function onerror(message) {
 	alert(message);
     }
@@ -139,16 +138,18 @@ function handle_storage(e){
     if(!e)
 	e=window.event;
     console.log(e);
-    if(e.key=="file"){
-	if(e.oldValue!=e.newValue){
-	    //The value that is being read is raw one will be in dot noatation
-	    //TODO:I am not sure how the file path would differ in different OS; just check it and add accordingly.
-	    var path = e.newValue;
-	    var zip_file = files.name.split(".")[0];
-	    path = path.split(".").join("/");
-	    path = zip_file+"/"+path+".java";
-	    console.log(path)
-	    show(path);
+    if(typeof(files) !== "undefined"){
+	if(e.key=="file"){
+	    if(e.oldValue!=e.newValue){
+		//The value that is being read is raw one will be in dot noatation
+		//TODO:I am not sure how the file path would differ in different OS; just check it and add accordingly.
+		var path = e.newValue;
+		var zip_file = files.name.split(".")[0];
+		path = path.split(".").join("/");
+		path = zip_file+"/"+path+".java";
+		console.log(path)
+		show(path);
+	    }
 	}
     }
 }
