@@ -8,6 +8,7 @@ if [ -z $1 ];
 then 
     printf "Usage is:\n"
     printf "bash instrument.sh <path to muse-standalone.jar/muse-standalone.jar>\n"
+    printf "Please note that the jar supplied will be modified and is not revertable\n"
     exit 0
 fi
 

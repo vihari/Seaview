@@ -1,0 +1,30 @@
+To get started with Seaview one needs an instrumented log file, some supporting files that will give info about the method, class... info about the log.
+1. Start with instrumenting the source, this should be done with unifi. More info and unifi software can be found at: http://suif.stanford.edu/unifi. 
+   Please follow the same for instructions on how to install. Unifi source code: https://github.com/hangal/unifi.
+   Seaview was tested on the muse extensively: http://mobisocial.stanford.edu/muse/. 
+   To instrument muse one can as well use the scripts/instrument.sh relative to folder that this file exists in with arguements as the path to muse-standalone.jar and jr file itself. 
+   Please note that muse.war will be updated in the jar file supplied, so one may wish to have a backup first.
+   One can then extract muse.war from jar with jar xvf muse-*.jar muse.war.
+   This should then be deployed with either Tomcat or Jetty.
+2. After instrumentation one will be left with some bunch of js files that contains information about the logs that are instrumented.
+   Except for run.logs.js which will be populated upon running of application.
+   In the case of instrumentation with scripts/instrument.sh one can find tmpmuse folder which contains SEAVIEW folder that contains all the js files required.
+3. Place SEAVIEW folder in the base of webserver and make sure run.logs.js is editable by the app.
+4. Launch the application as usual and once you are done collect the log file and run.logs.js.
+5. Launch the Seaview webapp in any webserver after updating the SEAVIEW folder in the Seaview directory.
+
+Using Seaview:
+-> One can load the log file from launched server instance of Seaview.
+   As the log file is loaded it should be color coded with coding corresponding to the dimension of the variable(refer unifi site/paper).
+-> By default HideInfo, HideTags and ShowOnlyInstrumentedLogs are checked and play with them for extra info on the method or class or line num that logged the log, To show the tags as they are produced in the log file, To show the whole of log file without filtering only the instrumented logs respectively.
+-> This is followed by three options: Plot Area, Code Area and Enable Grouping which will show the plot, code and enables filtering upon clicking instrumented log variables respectively. 
+-> If the EnableGrouping checkbox is checked one can group logs as is decided by the Select by option below it: one can select by unit id, dim id, same class, method, same log statement or same type of variable(bool, string, int e.t.c) logged. This is cumulative and one can go on grouping.
+   [Note that as one goes on grouping the filtering is on the text that is being displayed rather than the whole log.]
+-> One can reset such grouping with reset, which will again show the whole log file.
+-> Currently there are two kinds of plots available: bar chart over the variable and scatterplot over all variables.
+   bar chart: Y axis is the value of the variable and X axis is the time as they are logged.
+              If one wishes to have bar plot of some variable, check Plot Area and set the option to Bar chart and click over the variable.
+   scatterPlot: The philosophical motivation for this is that the variables of same dimension should have similar values.(refer unifi paper) 
+   The bubbles are hence scattered over the XY plot color coded according to dimension i.e. same color: same dimension and are placed such that same colored bubbles fall nearer. Hovering over bubbles will display some extra info about the dimension.
+   Every bubble will be having a vertical line crossing its body with end points at the max and min of the dimension.
+   This can help in quick sanity check. 
