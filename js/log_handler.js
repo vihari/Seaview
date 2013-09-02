@@ -7,6 +7,11 @@ var DimColors=new Array();
 var HideSV = true;
 var HideInfo = true;
 var OnlyInstrumented = true;
+var className = "undefined";
+var methodName = "undefined";
+var dimensionID = "undefined";
+var unit_num = "undefined";
+var valueSig = "undefined";
 
 var plotsize = 260;
 var codesize = 360;
@@ -126,7 +131,9 @@ function toggleShowPlot(){
 	sz = parseInt(sz)
 	if(sz==310)//else something else is handling it.
 	    document.getElementById('log').style.marginTop='110px';*/
-	d3.select('#barchart').style('display','none')}
+	d3.select('#barchart').style('display','none');
+	updateFilter();
+    }
     else{
 	/*var sz= document.getElementById('log').style.marginTop.substr(0,3)
 	sz = parseInt(sz)
@@ -140,7 +147,9 @@ function toggleShowPlot(){
 	if(value=='bar')document.getElementById('iframe_plot').src='bar.html';
 	else if(value=='scatter')document.getElementById('iframe_plot').src='scatter.html';
 	
-	d3.select('#barchart').style('display','block')}
+	d3.select('#barchart').style('display','block');
+	updateFilter();
+    }
 }
 
 function getElementsByClassName(node,classname) {
@@ -256,80 +265,70 @@ function filterBy(obj,parameter,parameter_plot,ModePlot,ModeSelect){
     
     if(parameter=="class"){
 	//undefined in the sense can be any
-	updateFilter({
-	    className:obj.className,
-	    methodName:'undefined',
-	    dimensionID:'undefined',
-	    unit_num:'undefined',
-	    valueSig:'undefined',
-	    OnlyInstrumented:OnlyInstrumented
-	});
+	className=obj.className,
+	methodName='undefined',
+	dimensionID='undefined',
+	unit_num='undefined',
+	valueSig='undefined',
+	
+	updateFilter();
 	//if(log.className==obj.className)
 	//ToDisplay+=logs[i]+"</br>";
     }
 
-    if(parameter=="method")
-	updateFilter({
-	    className:'undefined',
-	    methodName:obj.methodName,
-	    dimensionID:'undefined',
-	    unit_num:'undefined',
-	    valueSig:'undefined',
-	    OnlyInstrumented:OnlyInstrumented
-	});
-    //if(log.methodName==obj.methodName)
-    //ToDisplay+=logs[i]+"</br>";
-    
-    if(parameter=="dim")
-	updateFilter({
-	    className:'undefined',
-	    methodName:'undefined',
-	    dimensionID:obj.dimensionID+'',
-	    unit_num:'undefined',
-	    valueSig:'undefined',
-	    OnlyInstrumented:OnlyInstrumented
-	});
-    //if(log.dimensionID==obj.dimensionID){
-    //ToDisplay+=logs[i]+"</br>";
-    //}	
-    
-    if(parameter=="unit")
-	updateFilter({
-	    className:'undefined',
-	    methodName:'undefined',
-	    dimensionID:'undefined',
-	    unit_num:obj.unit_num+'',
-	    valueSig:'undefined',
-	    OnlyInstrumented:OnlyInstrumented
-	});
-    //if(log.unit_num==obj.unit_num){
-    //	ToDisplay+=logs[i]+"</br>";
-    //  }	
-    
+    if(parameter=="method"){
+	className='undefined',
+	methodName=obj.methodName,
+	dimensionID='undefined',
+	unit_num='undefined',
+	valueSig='undefined',
+	
+	updateFilter();
+    }
+        
+    if(parameter=="dim"){
+	className='undefined',
+	methodName='undefined',
+	dimensionID=obj.dimensionID+'',
+	unit_num='undefined',
+	valueSig='undefined',
+		
+	updateFilter();
+    }
+        
+    if(parameter=="unit"){
+	className='undefined',
+	methodName='undefined',
+	dimensionID='undefined',
+	unit_num=obj.unit_num+'',
+	valueSig='undefined',
+	OnlyInstrumented=OnlyInstrumented
+    	
+	updateFilter();
+    }
+        
     if(parameter=="same"){
-	updateFilter({
-	    className:obj.className,
-	    methodName:obj.methodName,
-	    dimensionID:obj.dimensionID+'',
-	    unit_num:obj.unit_num+'',
-	    valueSig:obj.valueSig,
-	    OnlyInstrumented:OnlyInstrumented
-	});
-	console.log(obj);
+	className=obj.className,
+	methodName=obj.methodName,
+	dimensionID=obj.dimensionID+'',
+	unit_num=obj.unit_num+'',
+	valueSig=obj.valueSig,
+	
+	updateFilter();
     }
     //if(log==obj){
     //	ToDisplay+=logs[i]+"</br>";
     //}	
     
-    if(parameter=="sig")
-	updateFilter({
-	    className:'undefined',
-	    methodName:'undefined',
-	    dimensionID:'undefined',
-	    unit_num:'undefined',
-	    valueSig:obj.valueSig,
-	    OnlyInstrumented:OnlyInstrumented
-	});
+    if(parameter=="sig"){
+	className='undefined',
+	methodName='undefined',
+	dimensionID='undefined',
+	unit_num='undefined',
+	valueSig=obj.valueSig,
+	
+	updateFilter();
+    }
 }
 
 function group(j){
@@ -375,6 +374,7 @@ function toggleInstrumented(obj){
 	OnlyInstrumented = true;
     else
 	OnlyInstrumented = false;
+   
     updateFilter();
 }
 
@@ -748,14 +748,13 @@ function updateT(){
 }
 
 function reset(){
-    updateFilter({
-	className:'undefined',
-	methodName:'undefined',
-	dimensionID:'undefined',
-	unit_num:'undefined',
-	valueSig:'undefined',
-	OnlyInstrumented:OnlyInstrumented
-    });
+    className='undefined',
+    methodName='undefined',
+    dimensionID='undefined',
+    unit_num='undefined',
+    valueSig='undefined',
+    
+    updateFilter();
 }
 
 function filterAndUpdate() {
@@ -846,7 +845,14 @@ function highlight_line(ip){
     //   document.getElementById("file").innerHTML=ToDisplay;
 }
 
-function updateFilter(args){
-    dataView.setFilterArgs(args);
+function updateFilter(){
+    dataView.setFilterArgs({
+	className:className,
+	methodName:methodName,
+	dimensionID:dimensionID,
+	unit_num:unit_num,
+	valueSig:valueSig,
+	OnlyInstrumented:OnlyInstrumented
+    });
     dataView.refresh();
 }
