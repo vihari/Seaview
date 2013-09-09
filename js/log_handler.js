@@ -1,4 +1,7 @@
-var file_content
+var file_content;
+//This is the filtered content under display
+var UnderDisplay = '';
+var UnderDisplayValid = false;
 var UniqueDims;
 var UniqueUnits;
 var DimColors=new Array();
@@ -17,7 +20,19 @@ var plotsize = 260;
 var codesize = 360;
 var nonesize = 60;
 
+function DataItem(i,str) {
+    this.num = i;
+    this.id = "id_" + i;
+    this.log = str;
+}
+
 $(document).ready(function() {
+    if (window.addEventListener) {
+	window.addEventListener("storage",handle_storage,false);
+    } else {
+	window.attachEvent("onstorage", handle_storage);
+    };
+
     $("#rev_map").change(function(){
 	$('*[id^="SV"]').hover(function(){
 	    var g = this.onclick.toString();
@@ -29,6 +44,12 @@ $(document).ready(function() {
 		localStorage.setItem("scatter",g)
 	    }
 	});
+    });
+
+    $("#supportThreshold").keyup(function(event){
+	if(event.keyCode == 13){
+            $("#cluster").click();
+	}
     });
     
     $("#menu-nav-check").change(function(){
@@ -150,6 +171,18 @@ function toggleShowPlot(){
 	d3.select('#barchart').style('display','block');
 	updateFilter();
     }
+    refreshGrid();
+}
+
+function toggleShowClusters(){
+    if($("#cluster-toggle").is(':checked')){
+	$(".clusters-container").css('display','block');
+	$("#log").css('top',"250px");
+    }
+    else{
+	$(".clusters-container").css('display','none');
+	$("#log").css('top',"30px");
+    }
 }
 
 function getElementsByClassName(node,classname) {
@@ -214,6 +247,8 @@ function filterBy(obj,parameter,parameter_plot,ModePlot,ModeSelect){
     var log_ip;
     if(ModePlot&&(parameter_plot=="bar")){
 	dataset = []
+	indices = [];
+	ids = [];
 	for(var i=0;i<logs.length;i++){
 	    if(logs[i].search(/:::SV[0-9]*:::(?:(?!:::).)*:::/)>-1){
 		var st = logs[i].match(/:::SV[0-9]*:::(?:(?!:::).)*:::/g);
@@ -237,6 +272,8 @@ function filterBy(obj,parameter,parameter_plot,ModePlot,ModeSelect){
 		    if(log==obj){
 			log_ip = log;
 			dataset.push(parseInt(tags[2]));
+			indices.push(i);
+			ids.push(dataView.getRowById("id_"+i));
 		    }
 		}
 	    }
@@ -246,6 +283,8 @@ function filterBy(obj,parameter,parameter_plot,ModePlot,ModeSelect){
 	    if(document.getElementById('barchart').style.height=="0px")
 		document.getElementById('barchart').style.height = "210px";
 	    localStorage.setItem("data",dataset);
+	    localStorage.setItem("X-index",indices);
+	    localStorage.setItem("ids",ids);
 	    if(document.getElementById("plot").checked){
 		document.getElementById("iframe_plot").height="206px";
 		document.getElementById("iframe_plot").src="bar.html";
@@ -316,9 +355,6 @@ function filterBy(obj,parameter,parameter_plot,ModePlot,ModeSelect){
 	
 	updateFilter();
     }
-    //if(log==obj){
-    //	ToDisplay+=logs[i]+"</br>";
-    //}	
     
     if(parameter=="sig"){
 	className='undefined',
@@ -428,15 +464,15 @@ function colorizeDims(log){
 		
 		if((mx+mn)/512.0>=(0.5)){
 		    if(!HideInfo)
-			line = line.replace(iter[j],'<span id="SV'+i+'" onclick="group('+s+')" style="background-color:black;color:'+color+'">'+sv[2]+delim+"ClassName:"+ips[s]["className"]+" Method:"+ips[s]["methodName"]+" line: "+ips[s]["lineNum"]+delim+"</span>");
+			line = line.replace(iter[j],'<span id="SV'+j+'" onclick="group('+s+')" style="background-color:black;color:'+color+'">'+sv[2]+delim+"ClassName:"+ips[s]["className"]+" Method:"+ips[s]["methodName"]+" line: "+ips[s]["lineNum"]+delim+"</span>");
 		    if(HideInfo)
-			line = line.replace(iter[j],'<span id="SV'+i+'" onclick="group('+s+')" style="background-color:black;color:'+color+'">'+sv[2]+"</span>");
+			line = line.replace(iter[j],'<span id="SV'+j+'" onclick="group('+s+')" style="background-color:black;color:'+color+'">'+sv[2]+"</span>");
 		}
 		else{
 		    if(!HideInfo)
-			line = line.replace(iter[j],'<span id="SV'+i+'" onclick="group('+s+')" style="background-color:white;color:'+color+'">'+sv[2]+delim+"ClassName:"+ips[s]["className"]+" Method:"+ips[s]["methodName"]+" line:"+ips[s]["lineNum"]+delim+"</span>");
+			line = line.replace(iter[j],'<span id="SV'+j+'" onclick="group('+s+')" style="background-color:white;color:'+color+'">'+sv[2]+delim+"ClassName:"+ips[s]["className"]+" Method:"+ips[s]["methodName"]+" line:"+ips[s]["lineNum"]+delim+"</span>");
 		    else
-			line = line.replace(iter[j],'<span id="SV'+i+'" onclick="group('+s+')" style="background-color:white;color:'+color+'">'+sv[2]+"</span>");
+			line = line.replace(iter[j],'<span id="SV'+j+'" onclick="group('+s+')" style="background-color:white;color:'+color+'">'+sv[2]+"</span>");
 		}
 
 		
@@ -518,6 +554,9 @@ function readMultipleFiles(evt) {
     et=new Date().getTime();
     console.log("Time to load the file is "+(et-st));
     setTimeout(function(){updateT()},1000);
+    
+    //$("#plot").prop('checked',true);
+    //toggleShowPlot();
 }
 
 /*One time called function when the log is first loaded*/
@@ -580,13 +619,14 @@ function updateT(){
 	enableCellNavigation: true,
 	enableAsyncPostRender: true,
 	rowHeight:45,
+	asyncPostRenderDelay:0,
 	
 	//text wraping options.
 	enableWrap:true,
 	wrapAfter:80
     };
 
-    function filterLogs(item, args) {
+    window.filterLogs = function (item, args) {
 	//store all the ip objects that match 
 	var logObjects = [];
 	var log;
@@ -693,14 +733,8 @@ function updateT(){
 		    return true;
 		}
 	    }
-	    else return true;
+	    else return true
 	}	
-    }
-
-    function DataItem(i,str) {
-	this.num = i;
-	this.id = "id_" + i;
-	this.log = str;
     }
 
     $(function () {
@@ -712,7 +746,7 @@ function updateT(){
 	dataView.setRefreshHints({
 	    isFilterUnchanged: false
 	});
-	dataView.setPagingOptions({pageSize:15});
+	dataView.setPagingOptions({pageSize:-1});
 	
 	grid = new Slick.Grid("#log", dataView, columns, options);
 	grid.log=true;
@@ -785,12 +819,12 @@ function handle_storage(e){
     if(e.key=="log_file"){
 	highlight_line(e.newValue);
     }
+    else if(e.key=="bar_id")
+	grid.scrollRowToTop(parseInt(e.newValue));
 }
 
 function highlight_line(ip){
-    ip=parseInt(ip)
-    console.log("called")
-    //alert("called")
+    ip=parseInt(ip);
     var logs = filtered_content.split("</br>");
     colorizeDims(filtered_content);
     var ToDisplay="";
@@ -845,14 +879,124 @@ function highlight_line(ip){
     //   document.getElementById("file").innerHTML=ToDisplay;
 }
 
+function updateUnderDisplay(args){
+    UnderDisplayValid = true;
+    var logs = file_content;
+    for(var i=0;i<logs.length;i++){
+	if(filterLogs(new DataItem(i,logs[i]),args))
+	    UnderDisplay += logs[i]+"<br>";
+    }
+}
+
 function updateFilter(){
-    dataView.setFilterArgs({
+    UnderDisplay = '';
+    args = {
 	className:className,
 	methodName:methodName,
 	dimensionID:dimensionID,
 	unit_num:unit_num,
 	valueSig:valueSig,
-	OnlyInstrumented:OnlyInstrumented
-    });
+	OnlyInstrumented:OnlyInstrumented};
+    dataView.setFilterArgs(args);
     dataView.refresh();
+    updateUnderDisplay(args);
+}
+
+function clusterize(){
+    args = {
+	className:className,
+	methodName:methodName,
+	dimensionID:dimensionID,
+	unit_num:unit_num,
+	valueSig:valueSig,
+	OnlyInstrumented:OnlyInstrumented};
+    
+    if((UnderDisplay==='')&&!UnderDisplayValid)
+	updateUnderDisplay(args);
+    cluster(UnderDisplay,$('#supportThreshold').val());
+}
+
+/*Here we assume data is log that we wish to cluster right now and are seperated by <br>*/
+function cluster(data,support_threshold){
+    //This implementation is similar to slct.
+    
+    var thresh = parseInt(support_threshold);
+    if(!(thresh == thresh))
+	console.error("Enter a valid number in text box");
+    if(thresh<1)
+	thresh = 1;
+
+    //first pass: get the ips that are frequent, this is similar to the 
+    //word-vector of slct implementation. 
+    lines = data.split('<br>');
+    //zero initialised
+    ips_count = Array.apply(null, new Array(5)).map(Number.prototype.valueOf,0);
+    words_count = {};
+    for(var i=0;i<lines.length;i++){
+	//check if instrumented
+	if(lines[i].search(/:::SV[0-9]*:::(?:(?!:::).)*:::/)>-1){
+	    var st = lines[i].match(/:::SV[0-9]*:::(?:(?!:::).)*:::/g);
+	    st = st.toString();
+	    iter = st.split(',');
+	    for(var j=0;j<iter.length;j++){
+		var tags = iter[j].split(":::");
+		if(tags.length<3)
+		    continue;
+				
+		ip_num = parseInt(tags[1].slice(2,tags[1].length));
+		
+		ips_count[ip_num]++;
+		if(typeof(words_count[tags[2]+(ip_num+'')]) === "undefined")
+		    words_count[tags[2]+(ip_num+'')] = 1;
+		else
+		    words_count[tags[2]+(ip_num+'')]++;
+	    }
+	}
+    }
+
+    candidate_count = {};
+    for(var i=0;i<lines.length;i++){
+	if(lines[i].search(/:::SV[0-9]*:::(?:(?!:::).)*:::/)>-1){
+	    var st = lines[i].match(/:::SV[0-9]*:::(?:(?!:::).)*:::/g);
+	    st = st.toString();
+	    var iter = st.split(',');
+	    var sig = 0;
+	    var ip_vars = [];
+	    var candidate = '';
+	    text_part = lines[i].split(/:::SV[0-9]*:::(?:(?!:::).)*:::/);
+	    for(var j=0;j<iter.length;j++){
+		var tags = iter[j].split(":::");
+		if(tags.length<3)
+		    continue;
+		
+		ip_num = parseInt(tags[1].slice(2,tags[1].length));
+		if(words_count[tags[2]+(ip_num+'')]>thresh)
+		    candidate += text_part[j]+tags[2];
+		else
+		    candidate += text_part[j]+"*";
+	    }
+	    candidate += text_part[iter.length];
+	    
+	    //We dont want time to be clustered in and hence slice it out.
+	    //Temp: Just remove the three fields seperated by space under 
+	    //the assumption that they correspond to date month and time
+	    var temp = candidate.split(/\s+/).slice(3,candidate.length);
+	    candidate = '';
+	    temp.forEach(function(part){
+		candidate += part+' ';
+	    });
+	    candidate = "<div>"+candidate+"</div>";
+	    
+	    if(typeof(candidate_count[candidate]) === "undefined")
+		candidate_count[candidate] = 1;
+	    else
+		candidate_count[candidate]++;
+	}
+    }
+    Object.keys(candidate_count).forEach(function (key){
+	if(candidate_count[key]>thresh){
+	    $(".clusters-container").append(key);
+	    console.log(key,candidate_count[key]);
+	}
+    });
 }
