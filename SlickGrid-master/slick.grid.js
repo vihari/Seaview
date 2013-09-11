@@ -1758,7 +1758,7 @@ if (typeof Slick === "undefined") {
 		}
 		i++;
 	    }
-	    console.log(top,bottom);
+	    //console.log(top,bottom);
 	    return {
 		top: top,
 		bottom: bottom,

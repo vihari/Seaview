@@ -139,17 +139,15 @@ function handle_storage(e){
 	e=window.event;
     console.log(e);
     if(typeof(files) !== "undefined"){
-	if(e.key=="file"){
-	    if(e.oldValue!=e.newValue){
-		//The value that is being read is raw one will be in dot noatation
-		//TODO:I am not sure how the file path would differ in different OS; just check it and add accordingly.
-		var path = e.newValue;
-		var zip_file = files.name.split(".")[0];
-		path = path.split(".").join("/");
-		path = zip_file+"/"+path+".java";
-		console.log(path)
-		show(path);
-	    }
+	if(e.key=="log_string"){
+	    //The value that is being read is raw one will be in dot noatation
+	    //TODO:I am not sure how the file path would differ in different OS; just check it and add accordingly.
+	    var path = localStorage.getItem("file");
+	    var zip_file = files.name.split(".")[0];
+	    path = path.split(".").join("/");
+	    path = zip_file+"/"+path+".java";
+	    console.log(path)
+	    show(path);
 	}
     }
 }
@@ -191,4 +189,56 @@ function show(file){
 	    }
 	})
     })
+    setTimeout(function(){highlight_line({
+	"key":"log_string",
+	"newValue": localStorage.getItem("log_string")
+    });},1000);
+
 };
+
+highlight_line = function(e){
+    //var codeContainer = $(".container");
+    var codeContainer = document.getElementsByClassName("container")[0];
+    console.log(document.getElementsByClassName("container")[0]);
+    var nodeList = codeContainer.childNodes;
+    var min_score=100000;
+    var max_score = -1;
+    var bestLine;
+    //somehow the line num estimate from ips is completely offbeat.
+    var offset = 800;
+    //We expect log_string to be reg exp :::Unique::: seperated with lineNum and 
+    //then search for +-offset of the given Line num.
+    fields = e.newValue.split(':::Unique:::');
+    var search_string = fields[0];
+    var lineNum = parseInt(fields[1]);
+    var bestLineNum = 0;
+    for(var i=0;i<nodeList.length;i++){
+	var node = nodeList[i];
+	var NodeText = node.innerHTML;
+	//? for smallest match possible
+	var text = NodeText.replace(/<.*?>/g,'');
+	//if((i>=(lineNum-offset))&&(i<=lineNum+offset)){
+	    //var score = levenshteinenator(search_string,text);
+	var score = getMatches(search_string,text);
+	if(score>max_score){
+	    max_score = score;
+	    bestLine = node;
+	    bestLineNum = i;
+	}
+    }
+    console.log("Best line "+bestLineNum,search_string);
+    bestLine.scrollIntoView();
+}
+
+//always search string first
+function getMatches(a,b){
+    var score = 0; 
+    //Some log hint
+    if(b.indexOf('log')>-1){
+	keywords = a.split(/\s+/);
+	for(var i=0;i<keywords.length;i++)
+	    if(b.indexOf(keywords[i])>-1)
+		score++;
+    }
+    return score;
+}

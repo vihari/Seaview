@@ -13,7 +13,7 @@ var load = localStorage.getItem("data");
 var bar,all_bars;
 
 var num = 0;
-
+var highlight_width = 20;
 parseLocalStorage = function(load,dataset){
     num = 0;
     negativeNum = false;
@@ -70,6 +70,14 @@ var highlightLog = function(d){
     //TODO: also should convey about ip_num
     localStorage.setItem("bar_id",d.id);
 }
+
+window.onload = function() {
+    if (window.addEventListener) {
+	window.addEventListener("storage",handle_storage,false);
+    } else {
+	window.attachEvent("onstorage", handle_storage);
+    }
+};
 
 function barChart(col){
     var sp = window.innerWidth-40 ;
@@ -194,7 +202,7 @@ function barChart(col){
 	svg.selectAll("rect.plot")
 	    .data(data)	
 	    .enter().append("svg:rect")
-	    .attr("x", function(d){return x(d.x) - offset;})
+	    .attr("x", function(d){return x(d.x) - offset-w/2;})
 	    .attr("y", function(d) { return d.value>=0?(y(d.value)):zeroPosition; })
 	    .attr("class", function(d) { return d.value < 0 ? "bar negative" : "bar positive"; })
             .attr("width", w)
@@ -226,5 +234,57 @@ function barChart(col){
             .attr("d", line);
 	removeBars();
 	updateBarChart();
+    }
+
+    window.handle_storage = function(e){
+	console.log(e);
+	if(e.bar_id_plot != 'undefined'){
+	    var index = ids.indexOf(parseInt(e.bar_id_plot,10));
+	    if(index<0)
+		return;
+	    var x_d = xindices[index];
+	    var y_d = dataset[index];
+	    var zeroPosition = y(0);
+	    var h = Math.abs(y(y_d)-y(0));
+	    console.log(x_d,y_d,h);
+	    y_d = y_d>=0?(y(y_d)):zeroPosition;
+	    
+	    if(h>15){
+		var tempBar=svg.append("svg:rect")
+		    .attr("x",x(x_d)-highlight_width/2)
+		    .attr("y",y_d)
+		    .attr("width",highlight_width)
+		    .attr("height",h)
+		    .attr("opacity",1)
+		    .attr("class","tempBar")
+		    .attr("fill","yellow");
+		
+		tempBar
+		    .transition()
+		    .attr("width",0)
+		    .attr("opacity",0.5)
+		    .duration(1000);
+	    }
+	    else{
+		var tempBar=svg.append("svg:rect")
+		    .attr("x",x(x_d)-highlight_width/2)
+		    .attr("y",y_d)
+		    .attr("width",highlight_width)
+		    .attr("height",30)
+		    .attr("opacity",1)
+		    .attr("class","tempBar")
+		    .attr("fill","yellow");
+		
+		tempBar
+		    .transition()
+		    .attr("width",0)
+		    .attr("opacity",0.5)
+		    .attr("height",0)
+		    .duration(1000);
+	    }
+	    setTimeout(function(){
+	    d3.select("rect.tempBar").data([]).exit().remove();
+	    },1100);
+	}
     }
 }

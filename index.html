@@ -4,6 +4,8 @@
   type="text/css"/>
   <link rel="stylesheet" href="SlickGrid-master/controls/slick.pager.css" type="text/css"/>
   <link rel="stylesheet" href="SlickGrid-master/css/smoothness/jquery-ui-1.8.16.custom.css" type="text/css"/>
+  <link rel="stylesheet" href="style/bar.css" type="text/css"/>
+
   <!--For normalzing the user agent styles of browser-->
   <style type="text/css">
 
@@ -73,6 +75,8 @@
 <script src="SlickGrid-master/slick.dataview.js"></script>
 <script src="SlickGrid-master/controls/slick.pager.js"></script>
 <script src="SlickGrid-master/controls/slick.columnpicker.js"></script>
+<script type="text/javascript" src="js/bar_chart2.js"></script>
+<script type="text/javascript" src="d3/d3.v3.min.js"></script>
 
 <body style="background-color:#FFFFFF">
   <input type="checkbox" class="menu-nav-check" id="menu-nav-check"/>
@@ -94,6 +98,15 @@
 	<td style="height:200px;text-align:top;">
 	  <div class="plot" id="barchart" style="z-index:1">
 	    <iframe width="100%" height = "200px" src = "" id="iframe_plot"> </iframe>
+	    <!--<div id="iframe_plot" style="position:fixed;
+					 height:206px;
+					 width: 100%;
+					 top:0px;
+					 right:0px;" class="plot" >
+             </br>
+	     <div class="bob"></div>
+	    </div>-->
+
 	  </div>
 	</td>
 

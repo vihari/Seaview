@@ -131,6 +131,7 @@ $(document).ready(function() {
         //$('#content).width(1224-setWidth);
         //$('.menu).width(setWidth-6);
     });
+
 });
 
 function showCode(){
@@ -290,8 +291,19 @@ function filterBy(obj,parameter,parameter_plot,ModePlot,ModeSelect){
 		document.getElementById("iframe_plot").src="bar.html";
 	    }
 	}
+	/*var logText = logs[i];//$("#line"+indices[0]).html();
+	var extra = logText.indexOf('-');
+	logText = logText.slice(extra+2,logText.length);
+	reg_exp = logText.replace(/<span.*?>.*?<\/span>/g,'*');
+	*/
+	var logText = logs[indices[0]];
+	var extra = logText.indexOf('-');
+	logText = logText.slice(extra+2,logText.length);
+	logText = logText.replace(/:::SV[0-9]*:::.*?:::/g,'*');
 	document.getElementById("file_name").innerHTML = obj.className;
 	localStorage.setItem("file",obj.className);
+	localStorage.setItem("log_string",logText+":::Unique:::"+log.lineNum);
+	
 	//ear_all('bar');	
 	//rChart(DimColors[obj.dimensionID]);
 	if(!ModeSelect)
@@ -778,7 +790,28 @@ function updateT(){
 	    OnlyInstrumented:OnlyInstrumented
 	});
 	dataView.endUpdate();
+
+	
+	$("body").on("hover",".slick-row",function(){
+	    writeRowNum(this)
+	});
     });
+}
+
+window.glob = "undefined";
+var writeRowNum = function(obj){
+    glob = obj;
+    var row;
+    range = grid.getViewport();
+    for(var i=range.top;i<range.bottom+1;i++){
+	var text = dataView.getItem(i).log;
+	text = text.replace(/:::SV[0-9]*:::(.*?):::/g,"$1");
+	//console.log(text+" delimit "+obj.textContent);
+	if(text == obj.textContent){
+	    row = i;break;
+	}
+    }
+    localStorage.setItem("bar_id_plot",row);
 }
 
 function reset(){
@@ -819,8 +852,18 @@ function handle_storage(e){
     if(e.key=="log_file"){
 	highlight_line(e.newValue);
     }
-    else if(e.key=="bar_id")
-	grid.scrollRowToTop(parseInt(e.newValue));
+    else if(e.key=="bar_id"){
+	if(e.newValue != e.oldValue)
+	    grid.scrollRowToTop(parseInt(e.newValue));
+	grid.flashCell(parseInt(e.newValue),0);
+	//TODO: Make this work
+	var row = parseInt(e.newValue);
+	grid.setCellCssStyles("highlight", {
+	    row : {
+		log: "selected" 
+	    }
+	});
+    }
 }
 
 function highlight_line(ip){
