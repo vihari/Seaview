@@ -1,0 +1,466 @@
+Analyzing: WEB-INF/lib/muse.jar 
+Jar entry META-INF/MANIFEST.MF: compressed,  (size = 107, compressed size = 95)
+Jar entry com/google/code/samples/oauth2/OAuth2SaslClient.class: compressed,  (size = 3182, compressed size = 1440)
+10 methods
+Jar entry com/google/code/samples/oauth2/OAuth2SaslClientFactory.class: compressed,  (size = 2332, compressed size = 1032)
+4 methods
+Jar entry edu/stanford/muse/Main.class: compressed,  (size = 11058, compressed size = 4730)
+6 methods
+Jar entry edu/stanford/muse/datacache/Blob.class: compressed,  (size = 5224, compressed size = 2361)
+17 methods
+Jar entry edu/stanford/muse/datacache/BlobSet$1.class: compressed,  (size = 1454, compressed size = 705)
+3 methods
+Jar entry edu/stanford/muse/datacache/BlobSet$2.class: compressed,  (size = 1583, compressed size = 674)
+3 methods
+Jar entry edu/stanford/muse/datacache/BlobSet.class: compressed,  (size = 13567, compressed size = 6071)
+15 methods
+Jar entry edu/stanford/muse/datacache/BlobStats.class: compressed,  (size = 544, compressed size = 356)
+1 methods
+Jar entry edu/stanford/muse/datacache/BlobStore.class: compressed,  (size = 5345, compressed size = 2116)
+23 methods
+(abstract or native)
+(abstract or native)
+(abstract or native)
+(abstract or native)
+(abstract or native)
+(abstract or native)
+(abstract or native)
+(abstract or native)
+(abstract or native)
+Jar entry edu/stanford/muse/datacache/FileBlobStore.class: compressed,  (size = 11518, compressed size = 5336)
+20 methods
+Jar entry edu/stanford/muse/email/AddressBook.class: compressed,  (size = 28294, compressed size = 12665)
+52 methods
+Jar entry edu/stanford/muse/email/AddressBookStats.class: compressed,  (size = 1037, compressed size = 594)
+2 methods
+Jar entry edu/stanford/muse/email/ArchiveStats.class: compressed,  (size = 3493, compressed size = 1695)
+3 methods
+Jar entry edu/stanford/muse/email/CalendarUtil.class: compressed,  (size = 7865, compressed size = 4033)
+17 methods
+Jar entry edu/stanford/muse/email/Contact.class: compressed,  (size = 6460, compressed size = 3071)
+15 methods
+Jar entry edu/stanford/muse/email/DummySSLSocketFactory.class: compressed,  (size = 1962, compressed size = 795)
+9 methods
+Jar entry edu/stanford/muse/email/DummyTrustManager.class: compressed,  (size = 754, compressed size = 383)
+4 methods
+Jar entry edu/stanford/muse/email/EmailAttachmentBlob.class: compressed,  (size = 2911, compressed size = 1455)
+8 methods
+Jar entry edu/stanford/muse/email/EmailContactsFetcherCLI.class: compressed,  (size = 2865, compressed size = 1575)
+3 methods
+Jar entry edu/stanford/muse/email/EmailFetcherStats.class: compressed,  (size = 962, compressed size = 562)
+3 methods
+Jar entry edu/stanford/muse/email/EmailFetcherThread.class: compressed,  (size = 32747, compressed size = 16027)
+34 methods
+Jar entry edu/stanford/muse/email/EmailStore.class: compressed,  (size = 6302, compressed size = 2985)
+20 methods
+(abstract or native)
+(abstract or native)
+(abstract or native)
+(abstract or native)
+(abstract or native)
+Jar entry edu/stanford/muse/email/EmailThread.class: compressed,  (size = 2939, compressed size = 1512)
+7 methods
+Jar entry edu/stanford/muse/email/FetchConfig.class: compressed,  (size = 863, compressed size = 464)
+2 methods
+Jar entry edu/stanford/muse/email/Filter.class: compressed,  (size = 9804, compressed size = 4631)
+19 methods
+Jar entry edu/stanford/muse/email/FolderInfo.class: compressed,  (size = 1804, compressed size = 963)
+3 methods
+Jar entry edu/stanford/muse/email/ImapPopConnectionOptions.class: compressed,  (size = 1412, compressed size = 763)
+3 methods
+Jar entry edu/stanford/muse/email/ImapPopEmailStore$OAuth2Provider.class: compressed,  (size = 819, compressed size = 480)
+1 methods
+Jar entry edu/stanford/muse/email/ImapPopEmailStore.class: compressed,  (size = 8244, compressed size = 3907)
+12 methods
+Jar entry edu/stanford/muse/email/ImapPrefetcher.class: compressed,  (size = 5574, compressed size = 2629)
+4 methods
+Jar entry edu/stanford/muse/email/Location.class: compressed,  (size = 360, compressed size = 247)
+1 methods
+Jar entry edu/stanford/muse/email/MTEmailFetcher.class: compressed,  (size = 13125, compressed size = 6218)
+24 methods
+Jar entry edu/stanford/muse/email/MailingList.class: compressed,  (size = 4000, compressed size = 2033)
+3 methods
+Jar entry edu/stanford/muse/email/MboxEmailStore$FolderCache.class: compressed,  (size = 3383, compressed size = 1623)
+5 methods
+Jar entry edu/stanford/muse/email/MboxEmailStore.class: compressed,  (size = 8244, compressed size = 4033)
+13 methods
+Jar entry edu/stanford/muse/email/MuseEmailFetcher.class: compressed,  (size = 18144, compressed size = 8554)
+23 methods
+Jar entry edu/stanford/muse/email/StaticStatusProvider.class: compressed,  (size = 966, compressed size = 516)
+4 methods
+Jar entry edu/stanford/muse/email/StatusProvider.class: compressed,  (size = 262, compressed size = 205)
+3 methods
+(abstract or native)
+(abstract or native)
+(abstract or native)
+Jar entry edu/stanford/muse/email/TextOnlyImapPrefetcher.class: compressed,  (size = 4984, compressed size = 2570)
+5 methods
+Jar entry edu/stanford/muse/email/VerifyEmailSetup.class: compressed,  (size = 3592, compressed size = 1792)
+4 methods
+Jar entry edu/stanford/muse/email/WebPageThumbnail.class: compressed,  (size = 7848, compressed size = 3862)
+6 methods
+Jar entry edu/stanford/muse/exceptions/CancelledException.class: compressed,  (size = 340, compressed size = 222)
+1 methods
+Jar entry edu/stanford/muse/exceptions/InvalidFetcherException.class: compressed,  (size = 618, compressed size = 355)
+2 methods
+Jar entry edu/stanford/muse/exceptions/LoginFailedException.class: compressed,  (size = 663, compressed size = 357)
+2 methods
+Jar entry edu/stanford/muse/exceptions/MboxFolderNotReadableException.class: compressed,  (size = 576, compressed size = 327)
+2 methods
+Jar entry edu/stanford/muse/exceptions/NoDefaultFolderException.class: compressed,  (size = 718, compressed size = 390)
+1 methods
+Jar entry edu/stanford/muse/exceptions/NotEnoughMemoryException.class: compressed,  (size = 593, compressed size = 340)
+2 methods
+Jar entry edu/stanford/muse/exceptions/ReadContentsException.class: compressed,  (size = 409, compressed size = 253)
+1 methods
+Jar entry edu/stanford/muse/exceptions/TimedOutException.class: compressed,  (size = 436, compressed size = 284)
+1 methods
+Jar entry edu/stanford/muse/graph/Edge.class: compressed,  (size = 908, compressed size = 398)
+1 methods
+Jar entry edu/stanford/muse/graph/Graph.class: compressed,  (size = 8086, compressed size = 3750)
+13 methods
+Jar entry edu/stanford/muse/graph/GroupsGraph.class: compressed,  (size = 6922, compressed size = 2744)
+15 methods
+Jar entry edu/stanford/muse/graph/Node.class: compressed,  (size = 3255, compressed size = 1419)
+12 methods
+Jar entry edu/stanford/muse/groups/AlgoStats.class: compressed,  (size = 698, compressed size = 430)
+1 methods
+Jar entry edu/stanford/muse/groups/Graph$Edge.class: compressed,  (size = 533, compressed size = 317)
+1 methods
+Jar entry edu/stanford/muse/groups/Graph$Node.class: compressed,  (size = 550, compressed size = 325)
+1 methods
+Jar entry edu/stanford/muse/groups/Graph.class: compressed,  (size = 4061, compressed size = 1960)
+6 methods
+Jar entry edu/stanford/muse/groups/Group.class: compressed,  (size = 12460, compressed size = 5421)
+31 methods
+Jar entry edu/stanford/muse/groups/GroupAlgorithmStats.class: compressed,  (size = 2662, compressed size = 1235)
+2 methods
+Jar entry edu/stanford/muse/groups/GroupHierarchy$1.class: compressed,  (size = 1498, compressed size = 603)
+3 methods
+Jar entry edu/stanford/muse/groups/GroupHierarchy.class: compressed,  (size = 3861, compressed size = 1738)
+3 methods
+Jar entry edu/stanford/muse/groups/GroupStats.class: compressed,  (size = 3480, compressed size = 1683)
+4 methods
+Jar entry edu/stanford/muse/groups/GroupUtils$1.class: compressed,  (size = 1386, compressed size = 593)
+3 methods
+Jar entry edu/stanford/muse/groups/GroupUtils.class: compressed,  (size = 13916, compressed size = 5557)
+8 methods
+Jar entry edu/stanford/muse/groups/Grouper$1.class: compressed,  (size = 222, compressed size = 163)
+0 methods
+Jar entry edu/stanford/muse/groups/Grouper$BestMoveTracker.class: compressed,  (size = 8873, compressed size = 3360)
+11 methods
+Jar entry edu/stanford/muse/groups/Grouper.class: compressed,  (size = 31009, compressed size = 11687)
+45 methods
+Jar entry edu/stanford/muse/groups/GrouperStats.class: compressed,  (size = 10161, compressed size = 4186)
+19 methods
+Jar entry edu/stanford/muse/groups/JSONGroup.class: compressed,  (size = 434, compressed size = 277)
+1 methods
+Jar entry edu/stanford/muse/groups/Move$MyComparator.class: compressed,  (size = 2476, compressed size = 1170)
+3 methods
+Jar entry edu/stanford/muse/groups/Move$Type.class: compressed,  (size = 1189, compressed size = 617)
+4 methods
+Jar entry edu/stanford/muse/groups/Move.class: compressed,  (size = 9691, compressed size = 4091)
+19 methods
+Jar entry edu/stanford/muse/groups/NameHash.class: compressed,  (size = 1397, compressed size = 839)
+3 methods
+Jar entry edu/stanford/muse/groups/SimilarGroup$1.class: compressed,  (size = 985, compressed size = 480)
+3 methods
+Jar entry edu/stanford/muse/groups/SimilarGroup.class: compressed,  (size = 7128, compressed size = 2893)
+22 methods
+Jar entry edu/stanford/muse/groups/SimilarGroupMethods$1.class: compressed,  (size = 1326, compressed size = 568)
+3 methods
+Jar entry edu/stanford/muse/groups/SimilarGroupMethods$2.class: compressed,  (size = 1374, compressed size = 601)
+3 methods
+Jar entry edu/stanford/muse/groups/SimilarGroupMethods.class: compressed,  (size = 16338, compressed size = 6972)
+15 methods
+Jar entry edu/stanford/muse/groups/SimilarSuperGroup.class: compressed,  (size = 1475, compressed size = 650)
+1 methods
+Jar entry edu/stanford/muse/ie/Anagrams.class: compressed,  (size = 4262, compressed size = 2248)
+7 methods
+Jar entry edu/stanford/muse/ie/NameInfo.class: compressed,  (size = 4605, compressed size = 2196)
+10 methods
+Jar entry edu/stanford/muse/ie/NameInfoMemory.class: compressed,  (size = 4717, compressed size = 2240)
+10 methods
+Jar entry edu/stanford/muse/ie/NameTypes.class: compressed,  (size = 9605, compressed size = 4431)
+7 methods
+Jar entry edu/stanford/muse/ie/NameTypesMemory.class: compressed,  (size = 9815, compressed size = 4535)
+7 methods
+Jar entry edu/stanford/muse/ie/TypeHierarchy$1.class: compressed,  (size = 232, compressed size = 169)
+0 methods
+Jar entry edu/stanford/muse/ie/TypeHierarchy$TypeHierarchyNode.class: compressed,  (size = 1787, compressed size = 748)
+6 methods
+Jar entry edu/stanford/muse/ie/TypeHierarchy.class: compressed,  (size = 4361, compressed size = 2134)
+6 methods
+Jar entry edu/stanford/muse/index/Archive$1.class: compressed,  (size = 2247, compressed size = 1051)
+2 methods
+Jar entry edu/stanford/muse/index/Archive$2.class: compressed,  (size = 1486, compressed size = 665)
+3 methods
+Jar entry edu/stanford/muse/index/Archive$3.class: compressed,  (size = 1482, compressed size = 661)
+3 methods
+Jar entry edu/stanford/muse/index/Archive.class: compressed,  (size = 29002, compressed size = 12039)
+57 methods
+Jar entry edu/stanford/muse/index/Card.class: compressed,  (size = 2169, compressed size = 1125)
+4 methods
+Jar entry edu/stanford/muse/index/CardTerm.class: compressed,  (size = 3362, compressed size = 1798)
+5 methods
+Jar entry edu/stanford/muse/index/CategoryDocument.class: compressed,  (size = 2138, compressed size = 999)
+2 methods
+Jar entry edu/stanford/muse/index/DataSet.class: compressed,  (size = 4502, compressed size = 2054)
+6 methods
+Jar entry edu/stanford/muse/index/DatedDocument.class: compressed,  (size = 5523, compressed size = 2806)
+14 methods
+Jar entry edu/stanford/muse/index/Document.class: compressed,  (size = 4163, compressed size = 1857)
+15 methods
+Jar entry edu/stanford/muse/index/EmailDocument.class: compressed,  (size = 22860, compressed size = 10077)
+40 methods
+Jar entry edu/stanford/muse/index/FriendsLocation.class: compressed,  (size = 2836, compressed size = 1355)
+4 methods
+Jar entry edu/stanford/muse/index/GroupAssigner.class: compressed,  (size = 15204, compressed size = 6306)
+21 methods
+Jar entry edu/stanford/muse/index/Highlighter.class: compressed,  (size = 7417, compressed size = 3776)
+3 methods
+Jar entry edu/stanford/muse/index/IndexManager.class: compressed,  (size = 4289, compressed size = 1820)
+7 methods
+Jar entry edu/stanford/muse/index/IndexOptions.class: compressed,  (size = 4704, compressed size = 2441)
+5 methods
+Jar entry edu/stanford/muse/index/IndexUtils$1.class: compressed,  (size = 1115, compressed size = 579)
+3 methods
+Jar entry edu/stanford/muse/index/IndexUtils$Window.class: compressed,  (size = 1087, compressed size = 592)
+2 methods
+Jar entry edu/stanford/muse/index/IndexUtils.class: compressed,  (size = 43367, compressed size = 17879)
+53 methods
+Jar entry edu/stanford/muse/index/Indexer$IndexStats.class: compressed,  (size = 891, compressed size = 511)
+1 methods
+Jar entry edu/stanford/muse/index/Indexer.class: compressed,  (size = 11974, compressed size = 5286)
+27 methods
+(abstract or native)
+(abstract or native)
+(abstract or native)
+(abstract or native)
+(abstract or native)
+(abstract or native)
+(abstract or native)
+(abstract or native)
+(abstract or native)
+Jar entry edu/stanford/muse/index/InternTable.class: compressed,  (size = 2055, compressed size = 1067)
+7 methods
+Jar entry edu/stanford/muse/index/Lexicon$Lexicon1Lang.class: compressed,  (size = 9037, compressed size = 4020)
+9 methods
+Jar entry edu/stanford/muse/index/Lexicon.class: compressed,  (size = 12211, compressed size = 4907)
+18 methods
+Jar entry edu/stanford/muse/index/LinkInfo.class: compressed,  (size = 4095, compressed size = 1920)
+6 methods
+Jar entry edu/stanford/muse/index/LocationInfo.class: compressed,  (size = 730, compressed size = 401)
+2 methods
+Jar entry edu/stanford/muse/index/LuceneIndexer$FilterFunctor.class: compressed,  (size = 295, compressed size = 203)
+1 methods
+(abstract or native)
+Jar entry edu/stanford/muse/index/LuceneIndexer.class: compressed,  (size = 38739, compressed size = 16555)
+57 methods
+Jar entry edu/stanford/muse/index/MemoryDocument.class: compressed,  (size = 837, compressed size = 473)
+3 methods
+Jar entry edu/stanford/muse/index/MultiDoc.class: compressed,  (size = 1544, compressed size = 743)
+5 methods
+Jar entry edu/stanford/muse/index/MyTokenizer.class: compressed,  (size = 5573, compressed size = 3011)
+15 methods
+Jar entry edu/stanford/muse/index/NER.class: compressed,  (size = 17863, compressed size = 8276)
+25 methods
+Jar entry edu/stanford/muse/index/NERTokenizer.class: compressed,  (size = 1486, compressed size = 685)
+5 methods
+Jar entry edu/stanford/muse/index/NLP.class: compressed,  (size = 1724, compressed size = 917)
+4 methods
+Jar entry edu/stanford/muse/index/PersonDocument.class: compressed,  (size = 2330, compressed size = 1205)
+3 methods
+Jar entry edu/stanford/muse/index/Posting.class: compressed,  (size = 3756, compressed size = 1861)
+10 methods
+Jar entry edu/stanford/muse/index/Summarizer$1.class: compressed,  (size = 1287, compressed size = 641)
+3 methods
+Jar entry edu/stanford/muse/index/Summarizer.class: compressed,  (size = 16561, compressed size = 7646)
+17 methods
+Jar entry edu/stanford/muse/index/Trace.class: compressed,  (size = 2350, compressed size = 1126)
+5 methods
+Jar entry edu/stanford/muse/lang/Languages$LangInfo.class: compressed,  (size = 597, compressed size = 353)
+1 methods
+Jar entry edu/stanford/muse/lang/Languages.class: compressed,  (size = 6137, compressed size = 3125)
+5 methods
+Jar entry edu/stanford/muse/lens/Lens$1.class: compressed,  (size = 1246, compressed size = 665)
+3 methods
+Jar entry edu/stanford/muse/lens/Lens.class: compressed,  (size = 11776, compressed size = 5456)
+6 methods
+Jar entry edu/stanford/muse/lens/LensPrefs.class: compressed,  (size = 6187, compressed size = 3031)
+8 methods
+Jar entry edu/stanford/muse/memory/FileEncryptor.class: compressed,  (size = 4321, compressed size = 2272)
+7 methods
+Jar entry edu/stanford/muse/memory/MemoryQuestion$UserAnswerStats.class: compressed,  (size = 1239, compressed size = 672)
+2 methods
+Jar entry edu/stanford/muse/memory/MemoryQuestion.class: compressed,  (size = 6610, compressed size = 3049)
+17 methods
+Jar entry edu/stanford/muse/memory/MemoryStudy$StudyStats.class: compressed,  (size = 714, compressed size = 417)
+1 methods
+Jar entry edu/stanford/muse/memory/MemoryStudy.class: compressed,  (size = 12727, compressed size = 5593)
+22 methods
+Jar entry edu/stanford/muse/memory/RandomCodeGen.class: compressed,  (size = 1641, compressed size = 949)
+2 methods
+Jar entry edu/stanford/muse/memory/Screener.class: compressed,  (size = 4053, compressed size = 1972)
+4 methods
+Jar entry edu/stanford/muse/slant/CSEDetails.class: compressed,  (size = 380, compressed size = 258)
+1 methods
+Jar entry edu/stanford/muse/slant/CustomSearchHelper.class: compressed,  (size = 26359, compressed size = 13282)
+24 methods
+Jar entry edu/stanford/muse/slant/GoogleGet.class: compressed,  (size = 3849, compressed size = 2050)
+3 methods
+Jar entry edu/stanford/muse/slant/KeyFinder.class: compressed,  (size = 2023, compressed size = 834)
+15 methods
+Jar entry edu/stanford/muse/slant/LogoutServlet.class: compressed,  (size = 1171, compressed size = 563)
+2 methods
+Jar entry edu/stanford/muse/slant/PostServlet.class: compressed,  (size = 1793, compressed size = 892)
+2 methods
+Jar entry edu/stanford/muse/slant/SigninServlet.class: compressed,  (size = 2501, compressed size = 1227)
+2 methods
+Jar entry edu/stanford/muse/slant/TwitterCallbackServlet$ValueComparator.class: compressed,  (size = 1087, compressed size = 539)
+2 methods
+Jar entry edu/stanford/muse/slant/TwitterCallbackServlet.class: compressed,  (size = 19527, compressed size = 9669)
+18 methods
+Jar entry edu/stanford/muse/stats/DiaryStat.class: compressed,  (size = 507, compressed size = 325)
+1 methods
+Jar entry edu/stanford/muse/stats/Stat.class: compressed,  (size = 285, compressed size = 209)
+1 methods
+Jar entry edu/stanford/muse/stats/StatsCollector.class: compressed,  (size = 656, compressed size = 359)
+2 methods
+Jar entry edu/stanford/muse/test/msgshow$1.class: compressed,  (size = 1119, compressed size = 632)
+2 methods
+Jar entry edu/stanford/muse/test/msgshow.class: compressed,  (size = 10192, compressed size = 5367)
+6 methods
+Jar entry edu/stanford/muse/test/t1.class: compressed,  (size = 1402, compressed size = 723)
+4 methods
+Jar entry edu/stanford/muse/util/AcrobaticsHelper.class: compressed,  (size = 319, compressed size = 222)
+1 methods
+Jar entry edu/stanford/muse/util/CryptoUtils.class: compressed,  (size = 3114, compressed size = 1511)
+10 methods
+Jar entry edu/stanford/muse/util/DetailedFacetItem.class: compressed,  (size = 2763, compressed size = 1217)
+10 methods
+Jar entry edu/stanford/muse/util/EmailUtils.class: compressed,  (size = 31184, compressed size = 14435)
+39 methods
+Jar entry edu/stanford/muse/util/JSONUtils$1.class: compressed,  (size = 666, compressed size = 381)
+1 methods
+Jar entry edu/stanford/muse/util/JSONUtils$Message.class: compressed,  (size = 591, compressed size = 344)
+1 methods
+Jar entry edu/stanford/muse/util/JSONUtils.class: compressed,  (size = 21484, compressed size = 9305)
+25 methods
+Jar entry edu/stanford/muse/util/Log4JUtils.class: compressed,  (size = 5296, compressed size = 2692)
+6 methods
+Jar entry edu/stanford/muse/util/Pair.class: compressed,  (size = 1957, compressed size = 879)
+8 methods
+Jar entry edu/stanford/muse/util/ProtovisUtil.class: compressed,  (size = 15189, compressed size = 6386)
+16 methods
+Jar entry edu/stanford/muse/util/SloppyDates$DateRangeSpec.class: compressed,  (size = 2810, compressed size = 1322)
+4 methods
+Jar entry edu/stanford/muse/util/SloppyDates.class: compressed,  (size = 5427, compressed size = 2684)
+6 methods
+Jar entry edu/stanford/muse/util/ThunderbirdUtils$ThunderbirdAccount.class: compressed,  (size = 821, compressed size = 429)
+1 methods
+Jar entry edu/stanford/muse/util/ThunderbirdUtils.class: compressed,  (size = 14390, compressed size = 6936)
+10 methods
+Jar entry edu/stanford/muse/util/Triple.class: compressed,  (size = 2262, compressed size = 944)
+9 methods
+Jar entry edu/stanford/muse/util/UnionFindBox.class: compressed,  (size = 1497, compressed size = 700)
+2 methods
+Jar entry edu/stanford/muse/util/UnionFindObject.class: compressed,  (size = 1145, compressed size = 638)
+6 methods
+Jar entry edu/stanford/muse/util/UnionFindSet$1.class: compressed,  (size = 1197, compressed size = 568)
+3 methods
+Jar entry edu/stanford/muse/util/UnionFindSet.class: compressed,  (size = 3012, compressed size = 1351)
+5 methods
+Jar entry edu/stanford/muse/util/Util$1.class: compressed,  (size = 955, compressed size = 542)
+3 methods
+Jar entry edu/stanford/muse/util/Util$2.class: compressed,  (size = 1368, compressed size = 650)
+3 methods
+Jar entry edu/stanford/muse/util/Util$3.class: compressed,  (size = 1378, compressed size = 657)
+3 methods
+Jar entry edu/stanford/muse/util/Util$4.class: compressed,  (size = 1363, compressed size = 640)
+3 methods
+Jar entry edu/stanford/muse/util/Util$5.class: compressed,  (size = 1385, compressed size = 645)
+3 methods
+Jar entry edu/stanford/muse/util/Util$MyFilenameFilter.class: compressed,  (size = 1001, compressed size = 532)
+3 methods
+Jar entry edu/stanford/muse/util/Util.class: compressed,  (size = 57716, compressed size = 26602)
+165 methods
+Jar entry edu/stanford/muse/util/Version.class: compressed,  (size = 437, compressed size = 313)
+1 methods
+Jar entry edu/stanford/muse/webapp/Accounts.class: compressed,  (size = 7827, compressed size = 3946)
+4 methods
+Jar entry edu/stanford/muse/webapp/Config$Mode.class: compressed,  (size = 1228, compressed size = 630)
+4 methods
+Jar entry edu/stanford/muse/webapp/Config.class: compressed,  (size = 1123, compressed size = 619)
+6 methods
+Jar entry edu/stanford/muse/webapp/CrosswordHelper$CrosswordPainter.class: compressed,  (size = 7106, compressed size = 3852)
+11 methods
+Jar entry edu/stanford/muse/webapp/CrosswordHelper.class: compressed,  (size = 26207, compressed size = 12827)
+16 methods
+Jar entry edu/stanford/muse/webapp/GroupsConfig.class: compressed,  (size = 4036, compressed size = 1899)
+7 methods
+Jar entry edu/stanford/muse/webapp/GroupsUI.class: compressed,  (size = 15387, compressed size = 6392)
+8 methods
+Jar entry edu/stanford/muse/webapp/HTMLImagerUserAgent.class: compressed,  (size = 1442, compressed size = 821)
+2 methods
+Jar entry edu/stanford/muse/webapp/HTMLToImage.class: compressed,  (size = 3884, compressed size = 1970)
+3 methods
+Jar entry edu/stanford/muse/webapp/HTMLUtils.class: compressed,  (size = 7920, compressed size = 3518)
+13 methods
+Jar entry edu/stanford/muse/webapp/JSPHelper.class: compressed,  (size = 46441, compressed size = 20495)
+46 methods
+Jar entry edu/stanford/muse/webapp/NewFilter.class: compressed,  (size = 3172, compressed size = 1547)
+7 methods
+Jar entry edu/stanford/muse/webapp/SessionListener.class: compressed,  (size = 1580, compressed size = 740)
+3 methods
+Jar entry edu/stanford/muse/webapp/Sessions.class: compressed,  (size = 12304, compressed size = 5691)
+18 methods
+Jar entry edu/stanford/muse/webapp/SimpleSessions.class: compressed,  (size = 7949, compressed size = 3738)
+9 methods
+Jar entry edu/stanford/muse/xword/ArchiveCluer.class: compressed,  (size = 17829, compressed size = 9132)
+8 methods
+Jar entry edu/stanford/muse/xword/BacktrackingPlacer$GridQuality.class: compressed,  (size = 2386, compressed size = 1128)
+4 methods
+Jar entry edu/stanford/muse/xword/BacktrackingPlacer.class: compressed,  (size = 12455, compressed size = 6044)
+11 methods
+Jar entry edu/stanford/muse/xword/Clue$ClueStats.class: compressed,  (size = 1848, compressed size = 976)
+1 methods
+Jar entry edu/stanford/muse/xword/Clue$MyAddr.class: compressed,  (size = 530, compressed size = 319)
+1 methods
+Jar entry edu/stanford/muse/xword/Clue.class: compressed,  (size = 5183, compressed size = 2089)
+26 methods
+Jar entry edu/stanford/muse/xword/Cluer.class: compressed,  (size = 687, compressed size = 352)
+3 methods
+(abstract or native)
+Jar entry edu/stanford/muse/xword/Crossword$1.class: compressed,  (size = 1139, compressed size = 567)
+3 methods
+Jar entry edu/stanford/muse/xword/Crossword$2.class: compressed,  (size = 960, compressed size = 511)
+3 methods
+Jar entry edu/stanford/muse/xword/Crossword$3.class: compressed,  (size = 1178, compressed size = 612)
+3 methods
+Jar entry edu/stanford/muse/xword/Crossword.class: compressed,  (size = 35363, compressed size = 17805)
+37 methods
+Jar entry edu/stanford/muse/xword/CrosswordManager$LevelInfo.class: compressed,  (size = 1368, compressed size = 706)
+2 methods
+Jar entry edu/stanford/muse/xword/CrosswordManager.class: compressed,  (size = 6894, compressed size = 3309)
+12 methods
+Jar entry edu/stanford/muse/xword/CrosswordThread.class: compressed,  (size = 1501, compressed size = 756)
+3 methods
+Jar entry edu/stanford/muse/xword/FixedCluer.class: compressed,  (size = 3309, compressed size = 1528)
+3 methods
+Jar entry edu/stanford/muse/xword/FixedPlacer.class: compressed,  (size = 8869, compressed size = 4311)
+7 methods
+Jar entry edu/stanford/muse/xword/PlaceInfo.class: compressed,  (size = 1948, compressed size = 1026)
+6 methods
+Jar entry edu/stanford/muse/xword/Placer$1.class: compressed,  (size = 217, compressed size = 163)
+0 methods
+Jar entry edu/stanford/muse/xword/Placer$PlacabilityCalculator.class: compressed,  (size = 8185, compressed size = 4034)
+14 methods
+Jar entry edu/stanford/muse/xword/Placer$PlacabilityInfo.class: compressed,  (size = 1234, compressed size = 619)
+4 methods
+Jar entry edu/stanford/muse/xword/Placer.class: compressed,  (size = 14057, compressed size = 7044)
+19 methods
+Jar entry edu/stanford/muse/xword/SentenceTokenizer.class: compressed,  (size = 8275, compressed size = 4289)
+10 methods
+Jar entry edu/stanford/muse/xword/Word.class: compressed,  (size = 3639, compressed size = 1699)
+12 methods

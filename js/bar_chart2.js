@@ -186,9 +186,20 @@ function barChart(col){
 	.attr("width", width)
 	.attr("height", height);
 
+    var l = d3.svg.line()
+	.x(function(d, i) { 
+	    return x(d.x); })
+	.y(function(d, i) { return y(0); }); 
+    
+    var zeroArray = Array.apply(null, new Array(dataset.length)).map(Number.prototype.valueOf,0);
+    svg.append("path")
+	.datum(data)
+	.attr("class", "darkline")
+	.attr("d", l);
+    
     window.chartBody = svg.append("g")
 	.attr("clip-path", "url(#clip)");
-
+    
     chartBody.append("svg:path")
 	.datum(data)
 	.attr("class", "line")

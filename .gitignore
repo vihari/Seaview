@@ -18,12 +18,10 @@
 *.jar
 *.rar
 *.tar
-*.zip
 *.war
 
 # Logs and databases #
 ######################
-*.log
 *.sql
 *.sqlite
 

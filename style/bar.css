@@ -42,14 +42,19 @@ body {
 .x.axis path {
     display: none;
 }
+.darkLine{
+    fill: #000;
+    stroke: #9E9797;
+    stroke-width: 2px;
+}
 .line {
     fill: none;
     stroke: steelblue;
     stroke-width: 1.5px;
 }
 .y.axis{
-    stroke: #000000
+    stroke: #9E9797
 }
 .x.axis{
-    stroke: #000000
+    stroke: #9E9797
 }
