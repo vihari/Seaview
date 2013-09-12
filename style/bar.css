@@ -53,8 +53,10 @@ body {
     stroke-width: 1.5px;
 }
 .y.axis{
-    stroke: #9E9797
+    stroke: #000;
+    stroke-width:1px;
 }
 .x.axis{
-    stroke: #9E9797
+    stroke: #000;
+    stroke-width:1px;
 }
