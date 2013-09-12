@@ -75,10 +75,10 @@
 <script src="SlickGrid-master/slick.dataview.js"></script>
 <script src="SlickGrid-master/controls/slick.pager.js"></script>
 <script src="SlickGrid-master/controls/slick.columnpicker.js"></script>
-<script type="text/javascript" src="js/bar_chart2.js"></script>
+<script type="text/javascript" src="js/bar_chart.js"></script>
 <script type="text/javascript" src="d3/d3.v3.min.js"></script>
 
-<body style="background-color:#FFFFFF">
+<body style="background-color:#FFFFFF;overflow:hidden;">
   <input type="checkbox" class="menu-nav-check" id="menu-nav-check"/>
   <div class="page-wrap">
     <header class="main-header">
@@ -96,15 +96,16 @@
 	  </div>
 	</td>
 	<td style="height:200px;text-align:top;">
-	  <div class="plot" id="barchart" style="z-index:1">
-	    <iframe width="100%" height = "200px" src = "" id="iframe_plot"> </iframe>
-	    <!--<div id="iframe_plot" style="position:fixed;
+	  <div class="plot" id="barchart" style="z-index:1;
+						 overflow-x:hidden;
+						 overflow-y:auto">
+	    <!--<iframe width="100%" height = "200px" src = "" id="iframe_plot"> </iframe>-->
+	    <!--<div id="dummy" class="plot" style="position:fixed;
 					 height:206px;
 					 width: 100%;
 					 top:0px;
-					 right:0px;" class="plot" >
+					 right:0px;" >
              </br>
-	     <div class="bob"></div>
 	    </div>-->
 
 	  </div>

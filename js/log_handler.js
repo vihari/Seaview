@@ -166,7 +166,8 @@ function toggleShowPlot(){
 	document.getElementById('iframe_plot').style.height='206px';*/
 	var sel = document.getElementById('graph_type');
 	var value = sel.options[sel.selectedIndex].value;
-	if(value=='bar')document.getElementById('iframe_plot').src='bar.html';
+	//if(value=='bar')document.getElementById('iframe_plot').src='bar.html';
+	if(value=='bar')barChart();
 	else if(value=='scatter')document.getElementById('iframe_plot').src='scatter.html';
 	
 	d3.select('#barchart').style('display','block');
@@ -286,10 +287,10 @@ function filterBy(obj,parameter,parameter_plot,ModePlot,ModeSelect){
 	    localStorage.setItem("data",dataset);
 	    localStorage.setItem("X-index",indices);
 	    localStorage.setItem("ids",ids);
-	    if(document.getElementById("plot").checked){
-		document.getElementById("iframe_plot").height="206px";
-		document.getElementById("iframe_plot").src="bar.html";
-	    }
+	    //This is handle_storage defined in bar_chart.js
+	    handle_bar_storage({
+		"eventType": "updateBars"
+	    });
 	}
 	/*var logText = logs[i];//$("#line"+indices[0]).html();
 	var extra = logText.indexOf('-');
@@ -812,6 +813,9 @@ var writeRowNum = function(obj){
 	}
     }
     localStorage.setItem("bar_id_plot",row);
+    handle_bar_storage({
+	"eventType": "highlightBar"
+    });
 }
 
 function reset(){
@@ -846,15 +850,13 @@ function filterAndUpdate() {
 }
 
 function handle_storage(e){
-    //alert("called_handle")
     if(!e)
 	e=window.event;
     if(e.key=="log_file"){
 	highlight_line(e.newValue);
     }
     else if(e.key=="bar_id"){
-	if(e.newValue != e.oldValue)
-	    grid.scrollRowToTop(parseInt(e.newValue));
+	grid.scrollRowToTop(parseInt(e.newValue));
 	grid.flashCell(parseInt(e.newValue),0);
 	//TODO: Make this work
 	var row = parseInt(e.newValue);
