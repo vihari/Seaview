@@ -27,13 +27,13 @@ java -Xmx1g -classpath $CLASSPATH unifi.drivers.Instrumenter $TARGET
 
 # instrumented files under seaview, jar up and copy to target
 cd SEAVIEW
+#Move the unifi.jar so that the seaview runtime classes be included.
+cp $UNIFI/classes/unifi.jar WEB-INF/lib/
+
 jar cvf ../muse.jar .
 cd ..
 /bin/rm -f $TARGET
 mv muse.jar $TARGET
-
-#Move the unifi.jar so that the seaview runtime classes be included.
-cp $UNIFI/classes/unifi.jar WEB-INF/lib/
 
 # update muse.jar in muse.war
 jar uvf muse.war $TARGET

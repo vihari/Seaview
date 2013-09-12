@@ -12,7 +12,6 @@ a { text-decoration: none; }
     background: #f1103a;
     //color: white;
     border-radius:50%;
-//    text-shadow: #222 0px -1px 1px;
     position: relative;
     width: 32px;
     height:32px;
@@ -41,15 +40,15 @@ a { text-decoration: none; }
 }
 
 .main-header:after {
-	position: absolute;
-	content: '';
-	width: 50%;
-	height: 2px;
-	background: #fff;
-	top: 50%;
-	margin-top: -1px;
-	left: 25%;
-	box-shadow: 0 -4px #fff, 0 4px #fff;
+    position: absolute;
+    content: '';
+    width: 50%;
+    height: 2px;
+    background: #fff;
+    top: 50%;
+    margin-top: -1px;
+    left: 25%;
+    box-shadow: 0 -4px #fff, 0 4px #fff;
 }
 
 .page-wrap {
@@ -101,11 +100,12 @@ a { text-decoration: none; }
     -o-transition: all 1s ease;  
     -ms-transition: all 1s ease;  
     transition: all 1s ease;  
-//    transition: all 2s ease;
 }
+
 p#file{
-    position:obsolute;
+    position:absolute;
 }
+
 .menu-nav-check{
     display:none;
 }
@@ -181,7 +181,7 @@ p#file{
 
 #code_area ~ #plot:checked {
 //    width:300px
-#log{
+  #log{
     top=300px
-}
+  }
 }

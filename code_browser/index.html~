@@ -5,7 +5,7 @@
     <title>Code Browser</title>
   </head>
   <body id="body">
-    <link rel="stylesheet" href="demo.css">
+    <link rel="stylesheet" href="browse.css">
     <link rel="stylesheet" href="../syntaxhighlighter_3.0.83/styles/shThemeDefault.css">
     <link rel="stylesheet" href="../syntaxhighlighter_3.0.83/styles/shCore.css">
 
@@ -19,6 +19,15 @@
 	    <input type="file" accept="application/zip" id="file-input">
 	  </label>
 	</li>
+	<li>
+	  <label>
+	    <span class="form-label">choose temporary storage</span>
+	    <select id="creation-method-input">
+	      <option value="Blob">RAM</option>
+	      <option value="File">HDD</option>
+	    </select>
+	  </label>
+	</li>
       </ol>
 
     </div>
@@ -26,6 +35,7 @@
 <div id="container">
 <pre class="brush: java" id="code">
 </pre></div>
+<script src="../jquery/jquery-1.6.2.min.js"></script>
 <script type="text/javascript" src="../syntaxhighlighter_3.0.83/scripts/shCore.js"></script>
 <script type="text/javascript" src="../syntaxhighlighter_3.0.83/scripts/shBrushJava.js"></script>
 <script type="text/javascript" src="../syntaxhighlighter_3.0.83/scripts/shBrushJScript.js"></script>  
@@ -37,7 +47,8 @@
 <script type="text/javascript" src="WebContent/zip.js"></script>
 <script type="text/javascript" src="WebContent/inflate.js"></script>
 <script type="text/javascript" src="WebContent/deflate.js"></script>
-<script type="text/javascript" src="demo2.js"></script>
+<script src="../js/levenshtein.js"></script>
+<script type="text/javascript" src="browse.js"></script>
 
 </body>
 </html>

@@ -314,7 +314,6 @@
     }
 
     function mapRowsToIds(rowArray) {
-      //console.log();
       var ids = [];
       for (var i = 0; i < rowArray.length; i++) {
         if (rowArray[i] < rows.length) {
@@ -711,12 +710,15 @@
         var batchFilter = options.inlineFilters ? compiledFilter : uncompiledFilter;
         var batchFilterWithCaching = options.inlineFilters ? compiledFilterWithCaching : uncompiledFilterWithCaching;
 
-        if (refreshHints.isFilterNarrowing) {
+          if (refreshHints.isFilterNarrowing) {
           filteredItems = batchFilter(filteredItems, filterArgs);
+	    console.log("narrowing");
         } else if (refreshHints.isFilterExpanding) {
           filteredItems = batchFilterWithCaching(items, filterArgs, filterCache);
+	    console.log("expanding");
         } else if (!refreshHints.isFilterUnchanged) {
           filteredItems = batchFilter(items, filterArgs);
+	    console.log("unchanged");
         }
       } else {
         // special case:  if not filtering and not paging, the resulting

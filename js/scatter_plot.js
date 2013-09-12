@@ -14,7 +14,6 @@ var count = makeArrayOf(0,ips.length)
 var cov = makeArrayOf(0,ips.length)
 
 function handle_storage(e){
-    //alert("called_handle")
     if(!e)
 	e=window.event;
     if(e.key=="scatter"){
@@ -28,7 +27,7 @@ function isLarge(height){
 }
 
 function highlight_circle(ip){
-    console.log("high"+ip)
+    console.log("high "+ip)
     var i;
     console.log(dataset)
     for(i=0;i<dataset.length;i++)
