@@ -167,7 +167,8 @@ function toggleShowPlot(){
 	var sel = document.getElementById('graph_type');
 	var value = sel.options[sel.selectedIndex].value;
 	//if(value=='bar')document.getElementById('iframe_plot').src='bar.html';
-	if(value=='bar')barChart();
+	if($("svg").size()==0)
+	    if(value=='bar')barChart();
 	else if(value=='scatter')document.getElementById('iframe_plot').src='scatter.html';
 	
 	d3.select('#barchart').style('display','block');
