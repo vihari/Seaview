@@ -8,7 +8,6 @@ if [ -z $1 ];
 then 
     printf "Usage is:\n"
     printf "bash instrument.sh <path to muse-standalone.jar/muse-standalone.jar>\n"
-    printf "Please note that the jar supplied will be modified and is not revertable\n"
     exit 0
 fi
 
@@ -27,19 +26,16 @@ java -Xmx1g -classpath $CLASSPATH unifi.drivers.Instrumenter $TARGET
 
 # instrumented files under seaview, jar up and copy to target
 cd SEAVIEW
-#Move the unifi.jar so that the seaview runtime classes be included.
-cp $UNIFI/classes/unifi.jar WEB-INF/lib/
-
 jar cvf ../muse.jar .
 cd ..
 /bin/rm -f $TARGET
 mv muse.jar $TARGET
 
-# update muse.jar in muse.war
-jar uvf muse.war $TARGET
+# update muse.jar in muse.war and also insert unifi.jar for the seaview runtime
+cp -p $UNIFI/classes/unifi.jar WEB-INF/lib/
+jar uvf muse.war WEB-INF/lib
 
 # update muse.war in muse-standalone
 jar uvf $1 muse.war
-jar uvf $1 $UNIFI/classes/unifi.jar
 cd ..
 #rm -rf tmpmuse

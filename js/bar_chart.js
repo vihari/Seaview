@@ -237,8 +237,8 @@ function barChart(){
 	/*svg.select(".y.grid")
             .call(make_y_axis()
 		  .tickSize(-width, 0, 0)
-		  .tickFormat(""));
-	*/
+		  .tickFormat(""));*/
+	
 	svg.select(".line")
             .attr("class", "line")
             .attr("d", line);

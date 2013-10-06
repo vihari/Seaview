@@ -154,6 +154,7 @@ function toggleShowPlot(){
 	if(sz==310)//else something else is handling it.
 	    document.getElementById('log').style.marginTop='110px';*/
 	d3.select('#barchart').style('display','none');
+	$("#iframe_plot").css('display','none');
 	updateFilter();
     }
     else{
@@ -167,10 +168,19 @@ function toggleShowPlot(){
 	var sel = document.getElementById('graph_type');
 	var value = sel.options[sel.selectedIndex].value;
 	//if(value=='bar')document.getElementById('iframe_plot').src='bar.html';
-	if(value=='bar')barChart();
-	else if(value=='scatter')document.getElementById('iframe_plot').src='scatter.html';
+	if($("svg").size()==0){
+	    barChart();
+	    document.getElementById('iframe_plot').src='scatter.html';
+	}
 	
-	d3.select('#barchart').style('display','block');
+	if(value == "bar"){
+	    d3.select('#barchart').style('display','block');
+	    $("#iframe_plot").css('display','none');
+	}
+	else if(value == "scatter"){
+	    $("#iframe_plot").css('display','block');
+	    d3.select('#barchart').style('display','none');
+	}
 	updateFilter();
     }
     refreshGrid();

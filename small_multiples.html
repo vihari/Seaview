@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+.verticalLine {
+    border-left: thin solid #000000;
+    position:static;
+}
+
+#div2{
+font: 13px sans-serif;
+    position:fixed;
+}
+
+.bar rect {
+  fill: steelblue;
+  shape-rendering: crispEdges;
+}
+
+.bar text {
+  fill: #fff;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+div #div3{
+position:absolute;
+top: 130px;
+}
+
+</style>
+<body>
+<table>
+  <tr>
+    <td>
+      <div id="div1" style="overflow:auto">
+	<p id="p1"></p>
+    </td>
+    <td>
+      <div class="verticalLine">
+      </div>
+    </td>
+    <td>
+      <div id="div2">
+      </div>
+   </td>
+  </tr>
+</table>
+</div>
+<script src="d3/d3.v3.min.js"></script>
+<script src="SEAVIEW/run_logs.js"></script>
+<script src="SEAVIEW/ips.js"></script>
+<script src="SEAVIEW/from_logs.js"></script>
+<script src="jquery/jquery-1.6.2.min.js"></script>
+<script src="js/small_multiples.js"></script>
+<script>  
+  if (window.addEventListener) {
+  window.addEventListener("storage",handle_storage,false);
+  } else {
+  window.attachEvent("onstorage", handle_storage);
+  };
+</script>
+  
