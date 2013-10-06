@@ -170,7 +170,7 @@ function toggleShowPlot(){
 	//if(value=='bar')document.getElementById('iframe_plot').src='bar.html';
 	if($("svg").size()==0){
 	    barChart();
-	    document.getElementById('iframe_plot').src='scatter.html';
+	    //document.getElementById('iframe_plot').src='scatter.html';
 	}
 	
 	if(value == "bar"){
@@ -669,6 +669,12 @@ function updateT(){
  	    }
  	}
 
+	if(args.filterText !== "undefined"){
+	    var re = new RegExp(args.filterText, "i");
+	    if(item["log"].search(re)==-1)
+		return false;
+	}
+	
 	if(args.OnlyInstrumented){
 	    if (item["log"].search(/:::SV[0-9]*:::(?:(?!:::).)*:::/)>-1){
 		for (var i=0;i<logObjects.length;i++){
@@ -792,13 +798,16 @@ function updateT(){
 	dataView.beginUpdate();
 	dataView.setItems(data);
 	dataView.setFilter(filterLogs);
+	var FilterText = $("#filterText").val();
+	if(FilterText == "")FilterText="undefined";
 	dataView.setFilterArgs({
 	    className:'undefined',
 	    methodName:'undefined',
 	    dimensionID:'undefined',
 	    unit_num:'undefined',
 	    valueSig:'undefined',
-	    OnlyInstrumented:OnlyInstrumented
+	    OnlyInstrumented:OnlyInstrumented,
+	    filterText:FilterText
 	});
 	dataView.endUpdate();
 
@@ -945,13 +954,17 @@ function updateUnderDisplay(args){
 
 function updateFilter(){
     UnderDisplay = '';
+    var filterText = $("#filterText").val();
+    if(filterText == "")filterText = "undefined";
     args = {
 	className:className,
 	methodName:methodName,
 	dimensionID:dimensionID,
 	unit_num:unit_num,
 	valueSig:valueSig,
-	OnlyInstrumented:OnlyInstrumented};
+	OnlyInstrumented:OnlyInstrumented,
+	filterText:filterText};
+   
     dataView.setFilterArgs(args);
     dataView.refresh();
     updateUnderDisplay(args);

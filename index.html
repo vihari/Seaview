@@ -81,6 +81,9 @@
 <body style="background-color:#FFFFFF;overflow:hidden;">
   <input type="checkbox" class="menu-nav-check" id="menu-nav-check"/>
   <div class="page-wrap">
+    <div style="position:fixed;top:20px;left:800px;">
+      <input id="filterText" type="text" placeHolder="filter text">
+    </div>
     <header class="main-header">
       <label for="menu-nav-check" class="toggle-menu">
 	<pre style="font-size:40px;top:20px;">Show</pre>
@@ -137,7 +140,7 @@
 
       <li><input id = "plot" type="checkbox" onchange="toggleShowPlot()"><code>Plot area</code></input>
       <input id = "code" type="checkbox" onchange="showCode()"><code>Code area</code></input></li>
-       <li><input id = "cluster-toggle" type="checkbox" onchange="toggleShowClusters()"><code>Display Clusters</code></input></li>
+       <!--<li><input id = "cluster-toggle" type="checkbox" onchange="toggleShowClusters()"><code>Display Clusters</code></input></li>-->
       <li><input type="checkbox"
 		 id='select_mode'></input><code>Enable grouping</code></span></li>
       
@@ -189,6 +192,12 @@
 <script>
     document.getElementById('fileinput').addEventListener('change',
     readMultipleFiles, false);
+    document.getElementById("filterText").addEventListener("keydown", function(e) {
+    if (!e) { var e = window.event; }
+
+    // Enter is pressed
+    if (e.keyCode == 13) { updateFilter(); }
+    }, false);
 </script>
 
 <!--This is just to test the width of a string font-size as is set in jquery-ui-1.8.16.custom.css-->

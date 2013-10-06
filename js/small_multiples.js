@@ -293,10 +293,6 @@ showExtra = function(id){
 	    "</tr>";
 	html += "</table><br>";
 	html += Selector+":  "+id+"<br>";
-	html += "Belongs to: "+"<br>";
-	run_obj.map(function(obj){
-	    html += obj.log+"<br>";
-	});
 	
 	removeHistogram();
 	uniqueVals = values.filter(function(elem, pos) {
@@ -336,10 +332,6 @@ showExtra = function(id){
 	}
 	html += "</ol>";
 	html += Selector+":  "+id+"<br>";
-	html += "Belongs to: "+"<br>";
-	run_obj.map(function(obj){
-	    html += obj.log+"<br>";
-	});
     }
     else if(valueSig == "Z"){
 	removeHistogram();
@@ -353,12 +345,21 @@ showExtra = function(id){
 	html += "<table border='1'><tr><th>true</th><th>false</th></tr>";
 	html += "<tr><td>"+true_count+"</td><td>"+false_count+"</td></tr></table>"
 	html += Selector+":  "+id+"<br>";
-	html += "Belongs to: "+"<br>";
-	run_obj.map(function(obj){
-	    html += obj.log+"<br>";
-	});
 
     }
+    html += "Belongs to: "+"<br>";
+    run_obj.map(function(obj){
+	ip = obj.ip_num;
+	log = obj.log;
+	matches = log.match(/:::.*?:::/g);
+	matches.map(function(m){
+	    if(m === ":::"+ip+":::")
+		log = log.replace(m,"<span style='background-color:red'>*</span>");
+	    else
+		log = log.replace(m,'*');
+	});
+	html += log+"<br>";
+    });
     html += "</div>";
     $("#div2").html(html);
 }

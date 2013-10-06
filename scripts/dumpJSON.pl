@@ -83,7 +83,7 @@ while(<LOG_FILE>){
 		$json=$json."\"sec\":"."\"nill\"".'},';
 	    }
 	    
-	    $log =~ s/:::SV([0-9]*):::(.*?):::/\*/g;
+	    $log =~ s/:::SV([0-9]*):::(.*?):::/:::$1:::/g;
 	    $json = $json."\"log\": \"".$log."\"";
 	    $json = $json."}";
 	    
