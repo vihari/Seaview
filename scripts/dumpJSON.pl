@@ -33,7 +33,7 @@ while(<LOG_FILE>){
     chomp;
     my $log = $_;
     
-    if($log=~/SV/){
+    if($log=~/:::SV.*?:::.*?:::/){
 	while($log =~ m/.*?:::SV([0-9]*):::(.*?):::/g){
 	    if($first){
 		$json = $json."{";

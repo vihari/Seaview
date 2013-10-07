@@ -47,6 +47,12 @@
   .slick-viewport{
     overflow:auto;
   }
+  div#plot_div{
+    position:absolute;
+    height:200px;
+    width:100%;
+    top: 50px;
+  }
   </style>
 </head>
 
@@ -102,15 +108,13 @@
 	  <div class="plot" id="barchart" style="z-index:1;
 						 overflow-x:hidden;
 						 overflow-y:auto">
-	    <iframe width="100%" height = "200px" src = "" id="iframe_plot"> </iframe>
-	    <!--<div id="dummy" class="plot" style="position:fixed;
-					 height:206px;
-					 width: 100%;
-					 top:0px;
-					 right:0px;" >
-             </br>
-	    </div>-->
-
+	  </div>
+	</td>
+	<td style="height:200px;text-align:top;">
+	  <div id="plot_div" style="z-index:1;
+				    overflow-x:hidden;
+				    overflow-y:auto">
+	    <iframe width="100%" height = "200px" src = "" id="iframe_plot" style="display:none"> </iframe>
 	  </div>
 	</td>
 
@@ -157,7 +161,7 @@
 
       <li><select id="graph_type" onchange="toggleShowPlot()">
 	  <option value="bar">Bar chart over the variable</option>
-	  <option value="scatter">Scatter Plot over all the variables.</option>
+	  <option value="scatter">Scatter Plot</option>
 	  <!--  <option value="stack_bar_unit">Stacked Bar chart over same unit</option>
 		<option value="stack_bar_dim">Stacked Bar chart over same
 		  dimension</option>
@@ -171,6 +175,9 @@
 	    dimensions)
 	  </option>-->
 	</select>
+      </li>
+      <li>
+	<a href="http://localhost:8080/Seaview/small_multiples.html" target="_blank" style="color:white">Summary chart</a>
       </li>
       	
       <div style="display:none"><code>Mode:</code><span style="padding:2px; color: black;background-color: white; border: black 2px solid"><input id='plot_mode' type="checkbox" checked></input><code>Plot</code></div>

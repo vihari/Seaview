@@ -73,7 +73,7 @@ var highlightLog = function(d){
     //handle_storage of log_handler, as now both js on same page, manual trigger
     handle_storage({
 	"key":"bar_id",
-	"newValue":d.id
+	"newValue":d.id+""
     });
 }
 

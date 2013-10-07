@@ -26,6 +26,17 @@ function DataItem(i,str) {
     this.log = str;
 }
 
+getSrc = function(Selector,id){
+    src = "http://localhost:8080/Seaview/small_plot.html?selectorID="+id+"&selector="+Selector+"&x=lineNum&width="+screen.width+"&height="+180;
+    return src;
+}
+
+getUrl = function(){
+    selector = localStorage.getItem('selector');
+    id = parseInt(localStorage.getItem('selector_id'));
+    return getSrc(selector,id);
+}
+
 $(document).ready(function() {
     if (window.addEventListener) {
 	window.addEventListener("storage",handle_storage,false);
@@ -155,6 +166,7 @@ function toggleShowPlot(){
 	    document.getElementById('log').style.marginTop='110px';*/
 	d3.select('#barchart').style('display','none');
 	$("#iframe_plot").css('display','none');
+	$("#plot_div").css('display','none');
 	updateFilter();
     }
     else{
@@ -170,15 +182,17 @@ function toggleShowPlot(){
 	//if(value=='bar')document.getElementById('iframe_plot').src='bar.html';
 	if($("svg").size()==0){
 	    barChart();
-	    //document.getElementById('iframe_plot').src='scatter.html';
+	    document.getElementById('iframe_plot').src=getUrl();
 	}
 	
 	if(value == "bar"){
 	    d3.select('#barchart').style('display','block');
 	    $("#iframe_plot").css('display','none');
+	    $("#plot_div").css('display','none');
 	}
 	else if(value == "scatter"){
 	    $("#iframe_plot").css('display','block');
+	    $("#plot_div").css('display','block');
 	    d3.select('#barchart').style('display','none');
 	}
 	updateFilter();
@@ -285,7 +299,8 @@ function filterBy(obj,parameter,parameter_plot,ModePlot,ModeSelect){
 			log_ip = log;
 			dataset.push(parseInt(tags[2]));
 			indices.push(i);
-			ids.push(dataView.getRowById("id_"+i));
+			//ids.push(dataView.getRowById("id_"+i));
+			ids.push(i);
 		    }
 		}
 	    }
@@ -767,6 +782,7 @@ function updateT(){
     }
 
     $(function () {
+	console.log(file_content.length);
 	file_content.map(function(d,i){
 	    data[i]=new DataItem(i,d);
 	});
@@ -875,6 +891,7 @@ function handle_storage(e){
 	highlight_line(e.newValue);
     }
     else if(e.key=="bar_id"){
+	console.log(e);
 	grid.scrollRowToTop(parseInt(e.newValue));
 	grid.flashCell(parseInt(e.newValue),0);
 	//TODO: Make this work
@@ -884,6 +901,9 @@ function handle_storage(e){
 		log: "selected" 
 	    }
 	});
+    }
+    else if((e.key=="selector")||(e.key=="selector_id")){
+	$("#iframe_plot").attr('src',getUrl());
     }
 }
 

@@ -6,12 +6,12 @@ body {
   font: 10px sans-serif;
 }
 
-.axis path,
-.axis line {
+.axis path, .axis line {
   fill: none;
-  stroke: #000;
+  stroke: #CBCBCB;
   shape-rendering: crispEdges;
 }
+
 
 .browser text {
   text-anchor: left;
@@ -28,12 +28,25 @@ path.strokes {
   opacity:0.8;
 }
 
+.bar rect {
+  fill: #B6FED6;
+  shape-rendering: crispEdges;
+}
+
+.bar text {
+  fill: #000;
+}
+
 </style>
+<head>
+  <script src="SEAVIEW/units.js"></script>
+  <script src="d3/d3.v3.min.js"></script>
+  <script src="SEAVIEW/run_logs.js"></script>
+  <script src="SEAVIEW/ips.js"></script>
+  <script src="SEAVIEW/from_logs.js"></script>
+  <script src="js/d3.legend.js"></script>
+  <script src="jquery/jquery-1.6.2.min.js"></script>
+  <script src="js/small_plot2.js"></script>
+</head>
 <body>
-<script src="d3/d3.v3.min.js"></script>
-<script src="SEAVIEW/run_logs.js"></script>
-<script src="SEAVIEW/ips.js"></script>
-<script src="SEAVIEW/from_logs.js"></script>
-<script src="js/d3.legend.js"></script>
-<script src="jquery/jquery-1.6.2.min.js"></script>
-<script src="js/small_plot2.js"></script>
+</body>

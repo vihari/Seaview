@@ -137,7 +137,7 @@ function elementInDocument(element) {
 function handle_storage(e){
     if(!e)
 	e=window.event;
-    console.log(e);
+
     if(typeof(files) !== "undefined"){
 	if(e.key=="log_string"){
 	    //The value that is being read is raw one will be in dot noatation

@@ -11,6 +11,10 @@ body {
     position:static;
 }
 
+#div1{
+top:30px;
+}
+
 #div2{
 font: 13px sans-serif;
     position:fixed;
@@ -27,7 +31,7 @@ font: 13px sans-serif;
 
 .axis path, .axis line {
   fill: none;
-  stroke: #000;
+  stroke: #CBCBCB;
   shape-rendering: crispEdges;
 }
 
@@ -36,8 +40,34 @@ position:absolute;
 top: 130px;
 }
 
+#selector{
+position:fixed;
+z-index:2;
+top:0px;
+left:1000px;
+}
+#palletes{
+position:fixed;
+top:0px;
+height:25px;
+z-index:10;
+background-color:white;
+}
 </style>
+<head>
+  <!--<script src="SEAVIEW/units.js">-->
+</head>
 <body>
+  <div id="palletes">
+  </div>
+  <div id="selector">
+    Group By: 
+    <select id = "selector_select">
+      <option value="dimensionID">Dimension</option>
+      <option value="IPNum">Variable</option>
+      <option value="unit_num">Unit</option>
+    </select>
+  </div>
 <table>
   <tr>
     <td>
