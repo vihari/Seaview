@@ -13,7 +13,7 @@ $(document).ready(function(){
     var margin = {top: 50, right: 50, bottom: 30, left: 20};
     var width = 200,height = 200;
     var available_width = screen.width;
-    var max_width = 0.5*screen.width;
+    var max_width = 0.6*screen.width;
     var info_width = available_width-max_width-2*(margin.left+margin.right);
     //var Selector = gup("selector");
     var sel = document.getElementById("selector_select");
