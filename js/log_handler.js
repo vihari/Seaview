@@ -27,7 +27,7 @@ function DataItem(i,str) {
 }
 
 getSrc = function(Selector,id){
-    src = "http://localhost:8080/Seaview/small_plot.html?selectorID="+id+"&selector="+Selector+"&x=lineNum&width="+screen.width+"&height="+180;
+    src = "./small_plot.html?selectorID="+id+"&selector="+Selector+"&x=lineNum&width="+screen.width+"&height="+180;
     return src;
 }
 
@@ -664,7 +664,7 @@ function updateT(){
 	wrapAfter:80
     };
 
-    window.filterLogs = function (item, args) {
+    filterLogs = function (item, args) {
 	//store all the ip objects that match 
 	var logObjects = [];
 	var log;
@@ -834,7 +834,7 @@ function updateT(){
     });
 }
 
-window.glob = "undefined";
+glob = "undefined";
 var writeRowNum = function(obj){
     glob = obj;
     var row;

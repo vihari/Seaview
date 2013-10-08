@@ -14,6 +14,7 @@ var bar,all_bars;
 
 var num = 0;
 var highlight_width = 20;
+var font_size = "10px"
 parseLocalStorage = function(load,dataset){
     num = 0;
     negativeNum = false;
@@ -81,18 +82,19 @@ function barChart(){
     var sp = window.innerWidth-40 ;
     var width = window.innerWidth;
     margin = {
-	top: 0,
-	right: 20,
+	top: 20,
+	right: 50,
 	bottom: 20,
-	left: 45
+	left: 30
     };
     
+    width = width - margin.left-margin.right;
     var w = Math.floor(sp/dataset.length),h = 180;
     w = Math.floor(sp/((d3.max(xindices)-d3.min(xindices))));
     var height = h;
     //x-offset
     var offset = 1.5;
-    var leftOffset = 30;
+    var leftOffset = 50;
 
     window.x = d3.scale.linear()
 	.domain(d3.extent(xindices))
@@ -141,7 +143,7 @@ function barChart(){
 	return d3.svg.axis()
             .scale(y)
             .orient("left")
-            .ticks(5);
+            .ticks(5)
     };
 
     var xAxis = d3.svg.axis()
@@ -151,8 +153,10 @@ function barChart(){
 
     svg.append("svg:g")
 	.attr("class", "x axis")
-	.attr("transform", "translate(0, " + height + ")")
-	.call(xAxis);
+	.attr("transform", "translate(0, " + h + ")")
+	.call(xAxis)
+      .selectAll("text")
+	.style("font-size",font_size);
 
     var yAxis = d3.svg.axis()
 	.scale(y)
@@ -161,7 +165,10 @@ function barChart(){
 
     svg.append("g")
 	.attr("class", "y axis")
-	.call(yAxis);
+    	.attr("transform", "translate(" + margin.left + ",0)")
+	.call(yAxis)
+      .selectAll("text")
+	.style("font-size",font_size);
 
     svg.append("g")
 	.attr("class", "x grid")
@@ -209,6 +216,11 @@ function barChart(){
 	if(w<0)
 	    return;
 	zeroPosition = y(0);
+	basePosition = 0;
+	if(y.domain()[0]>0)
+	    basePosition = Math.min(zeroPosition,y(y.domain()[0]));
+	else
+	    basePosition = Math.max(zeroPosition,y(y.domain()[0]));
 	svg.selectAll("rect.plot")
 	    .data(data)	
 	    .enter().append("svg:rect")
@@ -216,7 +228,7 @@ function barChart(){
 	    .attr("y", function(d) { return d.value>=0?(y(d.value)):zeroPosition; })
 	    .attr("class", function(d) { return d.value < 0 ? "bar negative" : "bar positive"; })
             .attr("width", w)
-	    .attr("height", function(d){return Math.abs(y(d.value)-y(0));})
+	    .attr("height", function(d){var h=Math.abs(y(d.value)-basePosition); return h;})
 	    .on("click",function(d){highlightLog(d);})
 	    .on("mouseover", function(d){d.value<0?d3.select(this).style("fill","blue"):d3.select(this).style("fill","red");})
 	    .on("mouseout", function(d){d.value<=0?d3.select(this).style("fill","brown"):d3.select(this).style("fill","steelblue");});
@@ -228,7 +240,10 @@ function barChart(){
     }
 
     function zoomed() {
-	svg.select(".x.axis").call(xAxis);
+	svg.select(".x.axis").call(xAxis)
+	.selectAll("text")
+	.style("font-size",font_size);
+
 	//svg.select(".y.axis").call(yAxis);
 	svg.select(".x.grid")
             .call(make_x_axis()
@@ -246,7 +261,7 @@ function barChart(){
 	updateBarChart();
     }
 
-    window.handle_bar_storage = function(e){
+    handle_bar_storage = function(e){
 	if(e.eventType == "highlightBar"){
 	    if(e.bar_id_plot != 'undefined'){
 		//var index = ids.indexOf(parseInt(e.bar_id_plot,10));

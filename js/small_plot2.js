@@ -11,6 +11,11 @@ $(document).ready(function(){
     height = parseInt(gup("height")) - margin.top - margin.bottom;
     available_width = screen.width;
 
+    font_size = "";
+    if(height>400)
+	font_size="16px";
+    else
+	font_size="10px";
     function gup(name) {
 	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
 	var regexS = "[\\?&]" + name + "=([^&#]*)";
@@ -188,10 +193,12 @@ $(document).ready(function(){
     });
     color.domain(names);
 
+    console.log(ip_nums[0]);
     var dimensionID = ips[ip_nums[0]].dimensionID;
     is_quant_or_ord = reps[dimensionID].is_quant_or_ord;
     var_name = reps[dimensionID].name;
-    console.log(is_quant_or_ord)
+    split_name = var_name.split(/\sin\s/)[0];
+    console.log(split_name);console.log(var_name);
 
     insertHistogram = function(values){
 	// A formatter for counts.
@@ -203,7 +210,7 @@ $(document).ready(function(){
 
 	// Generate a histogram using twenty uniformly-spaced bins.
 	var data = d3.layout.histogram()
-	    .bins(x.ticks(20))
+	    .bins(x.ticks(10))
 	(values);
 
 	var y = d3.scale.linear()
@@ -231,8 +238,8 @@ $(document).ready(function(){
             .attr("x", (width / 2))             
             .attr("y", 0 -(margin.top/3))
             .attr("text-anchor", "middle")  
-            .style("font-size", "10px") 
-            .text(var_name);
+            .style("font-size", font_size) 
+            .text(split_name);
 
 	var bar = svg.selectAll(".bar")
 	    .data(data)
@@ -252,6 +259,7 @@ $(document).ready(function(){
 	    .attr("y", 6)
 	    .attr("x", (x(bar_width)-x(0))/2)
 	    .attr("text-anchor", "middle")
+	    .style("font-size",font_size)
 	    .text(function(d) { 
 		dom = y.domain();
 		if(d.y>(dom[0]+(Math.abs(dom[1]-dom[0])/10)))
@@ -268,7 +276,8 @@ $(document).ready(function(){
 	    .attr("class", "x axis")
 	    .attr("transform", "translate(0," + height + ")")
 	    .call(xAxis)
-	.selectAll("text")  
+	.selectAll("text")
+	    .style("font-size",font_size)
 	    .style("text-anchor", "end")
 	    .attr("dx", "-.8em")
 	    .attr("dy", ".15em")
@@ -316,8 +325,8 @@ $(document).ready(function(){
             .attr("x", (width / 2))             
             .attr("y", 0 -(margin.top/3))
             .attr("text-anchor", "middle")  
-            .style("font-size", "10px") 
-            .text(var_name);
+            .style("font-size", font_size) 
+            .text(split_name);
 
 
 	svg.append("g")
@@ -328,13 +337,16 @@ $(document).ready(function(){
 	    .style("text-anchor", "end")
 	    .attr("dx", "-.8em")
 	    .attr("dy", ".15em")
+	    .style("font-size", font_size)
 	    .attr("transform", function(d) {
 		return "rotate(-30)" 
 	    });
 
 	svg.append("g")
 	    .attr("class", "y axis")
-	    .call(yAxis);
+	    .call(yAxis)
+	    .selectAll("text")  
+	    .style("font-size",font_size);
 
 	/*svg.append("path")
 	  .datum(data)
@@ -358,7 +370,7 @@ $(document).ready(function(){
 	    .on("click",function(d){console.log(d);highlightLog(d)})
 	    .attr("fill",function(d){return color(d.name)})
 	    .attr("opacity","0.5")
-	    .style("stroke","black");
+	    .style("stroke",function(d){return color(d.name)});
     }
 
     vals = [];
@@ -390,6 +402,7 @@ $(document).ready(function(){
             .style("text-anchor", "end")
             .attr("dx", "-.8em")
             .attr("dy", ".15em")
+	    .style("font-size",font_size)
             .attr("transform", function(d) {
 		return "rotate(-30)" 
             });
