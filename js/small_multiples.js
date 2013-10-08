@@ -13,7 +13,7 @@ $(document).ready(function(){
     var margin = {top: 50, right: 50, bottom: 30, left: 20};
     var width = 200,height = 200;
     var available_width = screen.width;
-    var max_width = 0.6*screen.width;
+    var max_width = 0.5*screen.width;
     var info_width = available_width-max_width-2*(margin.left+margin.right);
     //var Selector = gup("selector");
     var sel = document.getElementById("selector_select");
@@ -23,11 +23,11 @@ $(document).ready(function(){
     $("#div2").width(info_width);
     $("#div2").height(500);
     document.getElementsByClassName("verticalLine")[0].style.position = "fixed";
-    document.getElementsByClassName("verticalLine")[0].style.left = max_width+50+"px";
+    document.getElementsByClassName("verticalLine")[0].style.left = max_width+3*margin.left+"px";
     document.getElementsByClassName("verticalLine")[0].style.top = "0px";
     $('.verticalLine').height(screen.height);
     document.getElementById("div2").style.position = "fixed";
-    document.getElementById("div2").style.left = max_width+70+"px";
+    document.getElementById("div2").style.left = max_width+3*margin.left+20+"px";
 
     var indicators = {
 	"float": "#FFF0F0",
@@ -134,11 +134,11 @@ $(document).ready(function(){
 	    iframe.style.top = height_accum+"px";
 	    iframe.style.left = width_accum+"px";
 	    iframe.id = data.key;
-	    if((width_accum+width)>max_width){
+	    width_accum += width;
+	    console.log(width_accum, height_accum,max_width);
+	    if((width_accum+width)>(max_width)){
 		width_accum=margin.left;
 		height_accum += height;
-	    }else{
-		width_accum += width;
 	    }
 	    return iframe;
 	};
