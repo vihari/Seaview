@@ -197,7 +197,10 @@ $(document).ready(function(){
     var dimensionID = ips[ip_nums[0]].dimensionID;
     is_quant_or_ord = reps[dimensionID].is_quant_or_ord;
     var_name = reps[dimensionID].name;
-    split_name = var_name.split(/\sin\s/)[0];
+    if(var_name.search(/\sin\s/)>-1)
+	split_name = var_name.split(/\sin\s/)[0];
+    else if(var_name.search(/\sof\s.*?,\s?type.*/))
+	split_name = var_name.split(/\sof\s/)[0];
     console.log(split_name);console.log(var_name);
 
     insertHistogram = function(values){
