@@ -14,7 +14,6 @@ var count = makeArrayOf(0,ips.length)
 var cov = makeArrayOf(0,ips.length)
 
 function handle_storage(e){
-    //alert("called_handle")
     if(!e)
 	e=window.event;
     if(e.key=="scatter"){
@@ -23,8 +22,12 @@ function handle_storage(e){
     }
 }
 
+function isLarge(height){
+    return ((height>400)?true:false);
+}
+
 function highlight_circle(ip){
-    console.log("high"+ip)
+    console.log("high "+ip)
     var i;
     console.log(dataset)
     for(i=0;i<dataset.length;i++)
@@ -80,12 +83,10 @@ function extract_summary(){
 	com.push([mean[i],(r)/*This is the factor for radius.*/,i])
 	rad_sum += r;
     }
-    //    console.log("Log count is "+log_cnt);
     
     //filter all those vars that were logged and also is a numerical.
     //those types which may be objects but are implicitly numerical are ignored.
-    com = com.filter(function(d,i){return ((count[i]/*&&com[i][0]*/>0)&&(ips[d[2]].valueSig == ("I"||"J"||"S"||"Z"||"D"||"F")))?true:false;})
-    
+    com = com.filter(function(d,i){return ((count[i]/*&&com[i][0]*/>0)&&(ips[d[2]].valueSig == ("I"||"J"||"S"||"Z"||"D"||"F")))?true:false;});    
 }
 
 var start_time = new Date().getTime();
@@ -129,7 +130,7 @@ var sel=d3.select('div#plot')
     .attr("height",h)
     .attr("pointer-events", "all")
   .append('g')
-    .call(d3.behavior.zoom().on("zoom", redraw))
+    .call(d3.behavior.zoom().x(xScale).on("zoom", redraw))
   .append('g');
 
 sel.append('svg:rect')
@@ -144,12 +145,27 @@ function redraw() {
 var xAxis = d3.svg.axis()
     .scale(xScale)
     .orient("bottom");
-var yAxis = d3.svg.axis()
-    .scale(yScale)
-    .orient("left");
-var yAxis2 = d3.svg.axis()
-    .scale(yScale)
-    .orient("right");
+if(isLarge(h)){
+    //then ticks wont look crowded.
+    var yAxis = d3.svg.axis()
+	.scale(yScale)
+	.orient("left")
+	.ticks(10);
+    var yAxis2 = d3.svg.axis()
+	.scale(yScale)
+	.orient("right")
+	.ticks(10);
+}
+else{
+   var yAxis = d3.svg.axis()
+	.scale(yScale)
+	.orient("left")
+	.ticks(5);
+    var yAxis2 = d3.svg.axis()
+	.scale(yScale)
+	.orient("right")
+	.ticks(5);
+}
 
 var cols = d3.scale.category20();//["red","blue","green","teal","steelblue"];
 
@@ -172,7 +188,6 @@ dataset.map(function(d){m.push(d);})
 xval.map(function(d){x.push(d);})
 xval.map(function(d){x.push(d);})
 
-<<<<<<< HEAD
 var start_time = new Date().getTime();
 if(isLarge(h)){
     sel.selectAll("line")
@@ -225,41 +240,12 @@ else{
 	    logs.map(function(d){if(d.right==ip)log.push(d.left)})
 	    return yScale(d3.max(log));})
 	.attr("y2",function(d,i){
-=======
-sel.selectAll("line")
-    .data(m)
-    .enter().append("line")
-    .attr("style","stroke:"+lightline)
-    .attr("id",function(d,i){
-	if(i<dataset.length)
-	return("line"+i)
-	else return("hor"+(i-dataset.length));})
-    .attr("x1", function(d,i){
-	if(i<dataset.length)
-	    return xScale(x[i]);
-	else
-	    return xScale(0)})
-    .attr("x2", function(d,i){
-	if(i<dataset.length)
-	    return xScale(x[i]);
-	else
-	    return xScale(w)})
-    .attr("y1", function(d,i){
-	if(i<dataset.length){
-	var log = [];var ip=d[2]
-	logs.map(function(d){if(d.right==ip)log.push(d.left)})
-	return yScale(d3.max(log));}
-	else return(yScale(d[0]))})
-    .attr("y2",function(d,i){
-	if(i<dataset.length){
->>>>>>> master
 	    var log = [];var ip=d[2]
 	    logs.map(function(d){if(d.right==ip)log.push(d.left)})
-	    return yScale(d3.min(log));}
-	else return(yScale(d[0]))
-    })
-    .on("mouseover", function(d, i) { highlight( d, i, this ); })
-    .on("mouseout", function(d, i) { downlight( d, i, this ); });
+	    return yScale(d3.min(log));})
+	.on("mouseover", function(d, i) { highlight( d, i, this ); })
+	.on("mouseout", function(d, i) { downlight( d, i, this ); });
+}
 
 console.log("Line insertions: "+(new Date().getTime()-start_time));
 var start_time = new Date().getTime();
@@ -296,7 +282,7 @@ console.log("Time b4 line 281: "+(new Date().getTime()-st));
 $('circle').tipsy({ 
     gravity: $.fn.tipsy.autoWE,
     html: true, 
-    opacity: 1.0,
+    opacity: 0.8,
     title: function() {
 	//On hover display, the max and min values,mean and variance.count and a link to the source code.
         var d = this.__data__, c = cols(d.i);
@@ -308,20 +294,15 @@ $('circle').tipsy({
 	localStorage.setItem("line",log);
 	var y = yScale(d[0]);var x = xScale(xval[d.i])
 	localStorage.setItem("log_file",ip);
-	//log = log.join('</br>');
+
 	var unit_name = unit_names[d[2]]["name"];
-	/*var x = "";var chunk = 100;
-	for(var i=0;i<(unit_name.length/chunk)+1;i++){
-	    x+=unit_name.substr(Math.max((i-1)*chunk,0),i*chunk)+"<br>"
-	}
-	x+=unit_name.substr(unit_name.length-chunk,unit_name);
-	unit_name = x;*/
 	unit_name = unit_name.split(";").join(";<br>")
-	if(rep_names[unit_mappings[d[2]]]["is_quant_or_ord"])
-	    var message = '<div width="150px"><span style="color:white">The max and min values for the selected circle are '+Math.round((d3.max(log)))+','+Math.round(d3.min(log))+" respectively</br>Mean and variance are "+Math.round(d[0]*100)/100+','+Math.round(cov[d[2]]*100)/100+" respectively</br>Count is "+count[ip]+"</br>info"+unit_name+" ip: "+ip+"</span></div>"
+	if(reps[unit_mappings[d[2]]]["is_quant_or_ord"])
+	    var message = '<div width="150px"><span style="color:white">max, min: '+Math.round((d3.max(log)))+','+Math.round(d3.min(log))+" respectively</br>Mean and variance are "+Math.round(d[0]*100)/100+','+Math.round(cov[d[2]]*100)/100+" respectively</br>Count is "+count[ip]+"</br>info"+unit_name+" ip: "+ip+"</span></div>"
 	else
-	    var message = '<div width="150px"><span style="color:white">The max and min values for the selected circle are '+Math.round((d3.max(log)))+','+Math.round(d3.min(log))+" respectively</br>Mean is "+Math.round(d[0]*100)/100+"</br>Count is "+count[ip]+"</br>info"+unit_name+" ip: "+ip+"</span></div>";
+	    var message = '<div width="150px"><span style="color:white">max, min:'+Math.round((d3.max(log)))+','+Math.round(d3.min(log))+" respectively</br>Mean is "+Math.round(d[0]*100)/100+"</br>Count is "+count[ip]+"</br>info"+unit_name+" ip: "+ip+"</span></div>";
 	console.log(message)
+
 	//there is no point in showing the line plot if there are huge number of logs.
 	if((count[ip]>2)&&(count[ip]<1000))
             return '<table><tr><td><div width="150px" height="80px"><iframe width="150px" height = "80px" src = "linechart.html" id="iframe_plot"></iframe></div></td><td>'+message+"</td></tr></table>"; 
@@ -333,4 +314,3 @@ var end_time = new Date().getTime();
 console.log("All the remaining stuff: "+(end_time-start_time));
 
 console.log("Total time: "+(new Date().getTime()-st));
-

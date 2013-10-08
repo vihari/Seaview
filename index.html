@@ -47,6 +47,12 @@
   .slick-viewport{
     overflow:auto;
   }
+  div#plot_div{
+    position:absolute;
+    height:200px;
+    width:100%;
+    top: 50px;
+  }
   </style>
 </head>
 
@@ -58,7 +64,7 @@
 <script src="SlickGrid-master/plugins/slick.autotooltips.js"></script>
 
 <script type="text/javascript" src="SEAVIEW/ips.js"></script>
-<script type="text/javascript" src="SEAVIEW/run.logs.js"></script>
+<script type="text/javascript" src="SEAVIEW/run_logs.js"></script>
 <script type="text/javascript" src="d3/d3.v3.min.js"></script>
 <script type="text/javascript" src="js/bar_chart.js"></script>
 
@@ -70,17 +76,20 @@
 <script src="SlickGrid-master/slick.formatters.js"></script>
 <script src="SlickGrid-master/slick.editors.js"></script>
 <script src="SlickGrid-master/slick.grid.js"></script>
+<script type="text/javascript" src="js/bar_chart.js"></script>
 <script type="text/javascript" src="js/log_handler.js"></script>
 <script src="SlickGrid-master/slick.groupitemmetadataprovider.js"></script>
 <script src="SlickGrid-master/slick.dataview.js"></script>
 <script src="SlickGrid-master/controls/slick.pager.js"></script>
 <script src="SlickGrid-master/controls/slick.columnpicker.js"></script>
-<script type="text/javascript" src="js/bar_chart.js"></script>
 <script type="text/javascript" src="d3/d3.v3.min.js"></script>
 
 <body style="background-color:#FFFFFF;overflow:hidden;">
   <input type="checkbox" class="menu-nav-check" id="menu-nav-check"/>
   <div class="page-wrap">
+    <div style="position:fixed;top:20px;left:800px;">
+      <input id="filterText" type="text" placeHolder="filter text">
+    </div>
     <header class="main-header">
       <label for="menu-nav-check" class="toggle-menu">
 	<pre style="font-size:40px;top:20px;">Show</pre>
@@ -99,15 +108,13 @@
 	  <div class="plot" id="barchart" style="z-index:1;
 						 overflow-x:hidden;
 						 overflow-y:auto">
-	    <!--<iframe width="100%" height = "200px" src = "" id="iframe_plot"> </iframe>-->
-	    <!--<div id="dummy" class="plot" style="position:fixed;
-					 height:206px;
-					 width: 100%;
-					 top:0px;
-					 right:0px;" >
-             </br>
-	    </div>-->
-
+	  </div>
+	</td>
+	<td style="height:200px;text-align:top;">
+	  <div id="plot_div" style="z-index:1;
+				    overflow-x:hidden;
+				    overflow-y:auto">
+	    <iframe width="100%" height = "200px" src = "" id="iframe_plot" style="display:none"> </iframe>
 	  </div>
 	</td>
 
@@ -137,7 +144,7 @@
 
       <li><input id = "plot" type="checkbox" onchange="toggleShowPlot()"><code>Plot area</code></input>
       <input id = "code" type="checkbox" onchange="showCode()"><code>Code area</code></input></li>
-       <li><input id = "cluster-toggle" type="checkbox" onchange="toggleShowClusters()"><code>Display Clusters</code></input></li>
+       <!--<li><input id = "cluster-toggle" type="checkbox" onchange="toggleShowClusters()"><code>Display Clusters</code></input></li>-->
       <li><input type="checkbox"
 		 id='select_mode'></input><code>Enable grouping</code></span></li>
       
@@ -154,7 +161,7 @@
 
       <li><select id="graph_type" onchange="toggleShowPlot()">
 	  <option value="bar">Bar chart over the variable</option>
-	  <option value="scatter">Scatter Plot over all the variables.</option>
+	  <option value="scatter">Scatter Plot</option>
 	  <!--  <option value="stack_bar_unit">Stacked Bar chart over same unit</option>
 		<option value="stack_bar_dim">Stacked Bar chart over same
 		  dimension</option>
@@ -168,6 +175,9 @@
 	    dimensions)
 	  </option>-->
 	</select>
+      </li>
+      <li>
+	<a href="./small_multiples.html" target="_blank" style="color:white">Summary chart</a>
       </li>
       	
       <div style="display:none"><code>Mode:</code><span style="padding:2px; color: black;background-color: white; border: black 2px solid"><input id='plot_mode' type="checkbox" checked></input><code>Plot</code></div>
@@ -189,6 +199,12 @@
 <script>
     document.getElementById('fileinput').addEventListener('change',
     readMultipleFiles, false);
+    document.getElementById("filterText").addEventListener("keydown", function(e) {
+    if (!e) { var e = window.event; }
+
+    // Enter is pressed
+    if (e.keyCode == 13) { updateFilter(); }
+    }, false);
 </script>
 
 <!--This is just to test the width of a string font-size as is set in jquery-ui-1.8.16.custom.css-->

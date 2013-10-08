@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+.verticalLine {
+    border-left: thin solid #000000;
+    position:static;
+}
+
+#div1{
+top:30px;
+}
+
+#div2{
+font: 13px sans-serif;
+    position:fixed;
+}
+
+.bar rect {
+  fill: steelblue;
+  shape-rendering: crispEdges;
+}
+
+.bar text {
+  fill: #fff;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #CBCBCB;
+  shape-rendering: crispEdges;
+}
+
+div #div3{
+position:absolute;
+top: 130px;
+}
+
+#selector{
+position:fixed;
+z-index:2;
+top:0px;
+left:1000px;
+}
+#palletes{
+position:fixed;
+top:0px;
+height:25px;
+z-index:10;
+background-color:white;
+}
+</style>
+<head>
+  <!--<script src="SEAVIEW/units.js">-->
+</head>
+<body>
+  <div id="palletes">
+  </div>
+  <div id="selector">
+    Group By: 
+    <select id = "selector_select">
+      <option value="dimensionID">Dimension</option>
+      <option value="IPNum">Variable</option>
+      <option value="unit_num">Unit</option>
+    </select>
+  </div>
+<table>
+  <tr>
+    <td>
+      <div id="div1" style="overflow:auto">
+	<p id="p1"></p>
+    </td>
+    <td>
+      <div class="verticalLine">
+      </div>
+    </td>
+    <td>
+      <div id="div2">
+      </div>
+   </td>
+  </tr>
+</table>
+</div>
+<script src="d3/d3.v3.min.js"></script>
+<script src="SEAVIEW/units.js"></script>
+<script src="SEAVIEW/run_logs.js"></script>
+<script src="SEAVIEW/ips.js"></script>
+<script src="SEAVIEW/from_logs.js"></script>
+<script src="jquery/jquery-1.6.2.min.js"></script>
+<script src="js/small_multiples.js"></script>
+<script>  
+  if (window.addEventListener) {
+  window.addEventListener("storage",handle_storage,false);
+  } else {
+  window.attachEvent("onstorage", handle_storage);
+  };
+</script>
+  

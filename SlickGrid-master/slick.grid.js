@@ -2815,8 +2815,17 @@ if (typeof Slick === "undefined") {
 		console.warn("Done");
 	    }
 	
-	    for(var i=0;i<row;i++)
+	    console.log(row,data.getLength())
+	    desired_id = "id_"+row;
+	    var i = 0;
+	    for(i=0;i<data.getLength();i++){
+		id = data.getItem(i).id;
+		if(id === desired_id)
+		    break;
 		toScroll += rowSizes[data.getItem(i).id];
+	    }
+	    if(i == data.getLength())
+		console.warn("Log line not in View?");
 
 	    scrollTo(toScroll);
 	}

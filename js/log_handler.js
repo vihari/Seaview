@@ -26,6 +26,17 @@ function DataItem(i,str) {
     this.log = str;
 }
 
+getSrc = function(Selector,id){
+    src = "./small_plot.html?selectorID="+id+"&selector="+Selector+"&x=lineNum&width="+screen.width+"&height="+180;
+    return src;
+}
+
+getUrl = function(){
+    selector = localStorage.getItem('selector');
+    id = parseInt(localStorage.getItem('selector_id'));
+    return getSrc(selector,id);
+}
+
 $(document).ready(function() {
     if (window.addEventListener) {
 	window.addEventListener("storage",handle_storage,false);
@@ -154,6 +165,8 @@ function toggleShowPlot(){
 	if(sz==310)//else something else is handling it.
 	    document.getElementById('log').style.marginTop='110px';*/
 	d3.select('#barchart').style('display','none');
+	$("#iframe_plot").css('display','none');
+	$("#plot_div").css('display','none');
 	updateFilter();
     }
     else{
@@ -167,11 +180,21 @@ function toggleShowPlot(){
 	var sel = document.getElementById('graph_type');
 	var value = sel.options[sel.selectedIndex].value;
 	//if(value=='bar')document.getElementById('iframe_plot').src='bar.html';
-	if($("svg").size()==0)
-	    if(value=='bar')barChart();
-	else if(value=='scatter')document.getElementById('iframe_plot').src='scatter.html';
+	if($("svg").size()==0){
+	    barChart();
+	    document.getElementById('iframe_plot').src=getUrl();
+	}
 	
-	d3.select('#barchart').style('display','block');
+	if(value == "bar"){
+	    d3.select('#barchart').style('display','block');
+	    $("#iframe_plot").css('display','none');
+	    $("#plot_div").css('display','none');
+	}
+	else if(value == "scatter"){
+	    $("#iframe_plot").css('display','block');
+	    $("#plot_div").css('display','block');
+	    d3.select('#barchart').style('display','none');
+	}
 	updateFilter();
     }
     refreshGrid();
@@ -276,7 +299,8 @@ function filterBy(obj,parameter,parameter_plot,ModePlot,ModeSelect){
 			log_ip = log;
 			dataset.push(parseInt(tags[2]));
 			indices.push(i);
-			ids.push(dataView.getRowById("id_"+i));
+			//ids.push(dataView.getRowById("id_"+i));
+			ids.push(i);
 		    }
 		}
 	    }
@@ -640,7 +664,7 @@ function updateT(){
 	wrapAfter:80
     };
 
-    window.filterLogs = function (item, args) {
+    filterLogs = function (item, args) {
 	//store all the ip objects that match 
 	var logObjects = [];
 	var log;
@@ -660,6 +684,12 @@ function updateT(){
  	    }
  	}
 
+	if(args.filterText !== "undefined"){
+	    var re = new RegExp(args.filterText, "i");
+	    if(item["log"].search(re)==-1)
+		return false;
+	}
+	
 	if(args.OnlyInstrumented){
 	    if (item["log"].search(/:::SV[0-9]*:::(?:(?!:::).)*:::/)>-1){
 		for (var i=0;i<logObjects.length;i++){
@@ -752,6 +782,7 @@ function updateT(){
     }
 
     $(function () {
+	console.log(file_content.length);
 	file_content.map(function(d,i){
 	    data[i]=new DataItem(i,d);
 	});
@@ -783,13 +814,16 @@ function updateT(){
 	dataView.beginUpdate();
 	dataView.setItems(data);
 	dataView.setFilter(filterLogs);
+	var FilterText = $("#filterText").val();
+	if(FilterText == "")FilterText="undefined";
 	dataView.setFilterArgs({
 	    className:'undefined',
 	    methodName:'undefined',
 	    dimensionID:'undefined',
 	    unit_num:'undefined',
 	    valueSig:'undefined',
-	    OnlyInstrumented:OnlyInstrumented
+	    OnlyInstrumented:OnlyInstrumented,
+	    filterText:FilterText
 	});
 	dataView.endUpdate();
 
@@ -800,7 +834,7 @@ function updateT(){
     });
 }
 
-window.glob = "undefined";
+glob = "undefined";
 var writeRowNum = function(obj){
     glob = obj;
     var row;
@@ -857,6 +891,7 @@ function handle_storage(e){
 	highlight_line(e.newValue);
     }
     else if(e.key=="bar_id"){
+	console.log(e);
 	grid.scrollRowToTop(parseInt(e.newValue));
 	grid.flashCell(parseInt(e.newValue),0);
 	//TODO: Make this work
@@ -866,6 +901,9 @@ function handle_storage(e){
 		log: "selected" 
 	    }
 	});
+    }
+    else if((e.key=="selector")||(e.key=="selector_id")){
+	$("#iframe_plot").attr('src',getUrl());
     }
 }
 
@@ -936,13 +974,17 @@ function updateUnderDisplay(args){
 
 function updateFilter(){
     UnderDisplay = '';
+    var filterText = $("#filterText").val();
+    if(filterText == "")filterText = "undefined";
     args = {
 	className:className,
 	methodName:methodName,
 	dimensionID:dimensionID,
 	unit_num:unit_num,
 	valueSig:valueSig,
-	OnlyInstrumented:OnlyInstrumented};
+	OnlyInstrumented:OnlyInstrumented,
+	filterText:filterText};
+   
     dataView.setFilterArgs(args);
     dataView.refresh();
     updateUnderDisplay(args);
