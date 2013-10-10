@@ -89,7 +89,7 @@ function barChart(){
     };
     
     width = width - margin.left-margin.right;
-    var w = Math.floor(sp/dataset.length),h = 180;
+    var w = Math.floor(sp/dataset.length),h = 180-margin.bottom;
     w = Math.floor(sp/((d3.max(xindices)-d3.min(xindices))));
     var height = h;
     //x-offset
@@ -165,8 +165,7 @@ function barChart(){
 
     svg.append("g")
 	.attr("class", "y axis")
-    	.attr("transform", "translate(" + margin.left + ",0)")
-	.call(yAxis)
+    	.call(yAxis)
       .selectAll("text")
 	.style("font-size",font_size);
 
@@ -218,13 +217,13 @@ function barChart(){
 	zeroPosition = y(0);
 	basePosition = 0;
 	if(y.domain()[0]>0)
-	    basePosition = Math.min(zeroPosition,y(y.domain()[0]));
-	else
 	    basePosition = Math.max(zeroPosition,y(y.domain()[0]));
+	else
+	    basePosition = Math.min(zeroPosition,y(y.domain()[0]));
 	svg.selectAll("rect.plot")
 	    .data(data)	
 	    .enter().append("svg:rect")
-	    .attr("x", function(d){return x(d.x) - offset-w/2;})
+	    .attr("x", function(d){if((d.x>x.domain()[1])||(d.x<x.domain()[0]))return -100; return x(d.x) - offset-w/2;})
 	    .attr("y", function(d) { return d.value>=0?(y(d.value)):zeroPosition; })
 	    .attr("class", function(d) { return d.value < 0 ? "bar negative" : "bar positive"; })
             .attr("width", w)
