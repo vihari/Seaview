@@ -165,8 +165,7 @@ function barChart(){
 
     svg.append("g")
 	.attr("class", "y axis")
-    	.attr("transform", "translate(" + margin.left + ",0)")
-	.call(yAxis)
+    	.call(yAxis)
       .selectAll("text")
 	.style("font-size",font_size);
 
@@ -224,7 +223,7 @@ function barChart(){
 	svg.selectAll("rect.plot")
 	    .data(data)	
 	    .enter().append("svg:rect")
-	    .attr("x", function(d){return x(d.x) - offset-w/2;})
+	    .attr("x", function(d){if((d.x>x.domain()[1])||(d.x<x.domain()[0]))return -100; return x(d.x) - offset-w/2;})
 	    .attr("y", function(d) { return d.value>=0?(y(d.value)):zeroPosition; })
 	    .attr("class", function(d) { return d.value < 0 ? "bar negative" : "bar positive"; })
             .attr("width", w)
