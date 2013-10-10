@@ -89,7 +89,7 @@ function barChart(){
     };
     
     width = width - margin.left-margin.right;
-    var w = Math.floor(sp/dataset.length),h = 180;
+    var w = Math.floor(sp/dataset.length),h = 180-margin.bottom;
     w = Math.floor(sp/((d3.max(xindices)-d3.min(xindices))));
     var height = h;
     //x-offset
@@ -217,9 +217,9 @@ function barChart(){
 	zeroPosition = y(0);
 	basePosition = 0;
 	if(y.domain()[0]>0)
-	    basePosition = Math.min(zeroPosition,y(y.domain()[0]));
-	else
 	    basePosition = Math.max(zeroPosition,y(y.domain()[0]));
+	else
+	    basePosition = Math.min(zeroPosition,y(y.domain()[0]));
 	svg.selectAll("rect.plot")
 	    .data(data)	
 	    .enter().append("svg:rect")
