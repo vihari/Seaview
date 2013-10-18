@@ -18,12 +18,12 @@
 *.jar
 *.rar
 *.tar
-*.zip
+#*.zip
 *.war
 
 # Logs and databases #
 ######################
-*.log
+#*.log
 *.sql
 *.sqlite
 
@@ -41,3 +41,8 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+#git files#
+#####################
+*.git
+*.gitigignore
