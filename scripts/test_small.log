@@ -1,0 +1,30 @@
+] doc=null  Clue$ClueStats: serialVersionUID=1 version=1 answerPartOfAnyAddressBookName=false nMessagesWithAnswer=-1 nThreadsWithAnswer=-1 daysSinceFirstMention=-1 daysSinceLastMention=-1 histogramOfAnswerOccurrence=null answerCategory=[none] namesInClue=0 nSmileys=0 clueLength=79 sentenceNumInMessage=-1 nValidClueCandidates=-1 answerNERCategoryInClue=[none] daysOld=16 dateOfMessage=-1 namesInMessage=-1 charsInMessage=-1 answerPartOfRecipientName=false nRecipients=-1 subjectLength=-1 nMessagesInThread=-1 daysSpannedByThread=-1 threadInitiatedByUser=false finalScore=-0.35000002 sentenceNumBoost=0.0 docScore=0.0 linesBoost=0.0 namesScore=0.0 exclamationScore=0.0 smileyScore=0.0 lengthBoost=-1.25 ::: lines boost = :::SV267:::1.0:::
+31 Aug 00:19:27 LuceneIndexer INFO  - :::SV163:::0::: docs added to docNumMap cache
+31 Aug 00:19:27 LuceneIndexer INFO  - :::SV163:::0::: docs added to docNumMap cache
+31 Aug 00:19:27 ArchiveCluer INFO  - score = :::SV268:::-12.000001::: namesScore = :::SV269:::2.0::: exclamationScore = :::SV270:::0.0::: smileyScore = :::SV271:::0.0::: lengthBoost = :::SV272:::-15.000001:::
+31 Aug 00:19:27 ArchiveCluer INFO  - raw clue score for methodunits is :::SV260:::-11.000001::: sentence num boost = :::SV261:::-4.4:::
+31 Aug 00:19:27 ArchiveCluer INFO  - clue score for methodunits is :::SV262:::-14.400002::: (docscore: :::SV263:::1.0:::) for sentence# :::SV264:::22::: in doc #:::SV265:::1:::::::SV266:::Clue: serialVersionUID=8699239120657874242 date=1377812519000 cc=null bcc=null subject=[Re: Query] clueStats=[edu.stanford.muse.xword.Clue$ClueStats@57db05df] clue=[OutOfBounds exception in get_local_var_unit function in ___________.] audioURL=null picURL=null fullPicURL=null URLs=null hint=[Subject: Re: Query
+>>>>> /muse/memorystudy.jsp?options...] doc=null  Clue$ClueStats: serialVersionUID=1 version=1 answerPartOfAnyAddressBookName=false nMessagesWithAnswer=-1 nThreadsWithAnswer=-1 daysSinceFirstMention=-1 daysSinceLastMention=-1 histogramOfAnswerOccurrence=null answerCategory=[none] namesInClue=1 nSmileys=0 clueLength=68 sentenceNumInMessage=-1 nValidClueCandidates=-1 answerNERCategoryInClue=[none] daysOld=0 dateOfMessage=-1 namesInMessage=-1 charsInMessage=-1 answerPartOfRecipientName=false nRecipients=-1 subjectLength=-1 nMessagesInThread=-1 daysSpannedByThread=-1 threadInitiatedByUser=false finalScore=-14.400002 sentenceNumBoost=0.0 docScore=0.0 linesBoost=0.0 namesScore=2.0 exclamationScore=0.0 smileyScore=0.0 lengthBoost=-15.000001 ::: lines boost = :::SV267:::1.0:::
+31 Aug 00:33:35 LuceneIndexer INFO  - :::SV163:::0::: docs added to docNumMap cache
+31 Aug 00:33:35 LuceneIndexer INFO  - :::SV163:::0::: docs added to docNumMap cache
+31 Aug 00:38:07 LuceneIndexer INFO  - :::SV163:::0::: docs added to docNumMap cache
+31 Aug 00:38:07 LuceneIndexer INFO  - :::SV163:::0::: docs added to docNumMap cache
+31 Aug 00:39:19 LuceneIndexer INFO  - :::SV163:::0::: docs added to docNumMap cache
+31 Aug 00:39:19 LuceneIndexer INFO  - :::SV163:::0::: docs added to docNumMap cache
+31 Aug 00:40:05 LuceneIndexer INFO  - :::SV163:::0::: docs added to docNumMap cache
+31 Aug 00:40:05 LuceneIndexer INFO  - :::SV163:::0::: docs added to docNumMap cache
+31 Aug 00:40:35 LuceneIndexer INFO  - :::SV163:::0::: docs added to docNumMap cache
+31 Aug 00:40:35 LuceneIndexer INFO  - :::SV163:::0::: docs added to docNumMap cache
+31 Aug 00:41:10 LuceneIndexer INFO  - :::SV163:::0::: docs added to docNumMap cache
+31 Aug 00:41:10 LuceneIndexer INFO  - :::SV163:::0::: docs added to docNumMap cache
+31 Aug 00:42:07 LuceneIndexer INFO  - :::SV163:::0::: docs added to docNumMap cache
+31 Aug 00:42:07 LuceneIndexer INFO  - :::SV163:::0::: docs added to docNumMap cache
+31 Aug 00:43:02 LuceneIndexer INFO  - :::SV163:::0::: docs added to docNumMap cache
+31 Aug 00:43:02 LuceneIndexer INFO  - :::SV163:::0::: docs added to docNumMap cache
+31 Aug 01:01:24 LuceneIndexer INFO  - :::SV163:::0::: docs added to docNumMap cache
+31 Aug 01:01:24 LuceneIndexer INFO  - :::SV163:::0::: docs added to docNumMap cache
+31 Aug 01:01:49 LuceneIndexer INFO  - :::SV163:::0::: docs added to docNumMap cache
+31 Aug 01:01:49 LuceneIndexer INFO  - :::SV163:::0::: docs added to docNumMap cache
+31 Aug 01:03:44 LuceneIndexer INFO  - :::SV163:::0::: docs added to docNumMap cache
+31 Aug 01:03:44 LuceneIndexer INFO  - :::SV163:::0::: docs added to docNumMap cache
+31 Aug 01:08:04 FileBlobStore INFO  - packed datastore: :::SV11:::Data store with 0 unique blobs:::
