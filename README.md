@@ -9,3 +9,7 @@ Usage:
 3) Host the downloaded package in a webserver and open it in a browser either firefox or chrome (Not any other, atleast for now!).
 4) You can just open the log file that was produced by the instrumented software, from the browser.
 5) The page can then navigate you to all the analysis you can make. (Well the documentation is yet to be written.)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/vihari/seaview/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
