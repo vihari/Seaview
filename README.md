@@ -1,15 +1,14 @@
 Seaview
 =======
 
-This project is aimed at easing the analysis of log file. This project is the sister project of unifi (https://github.com/hangal/unifi).
+Seaview eases the analysis of log with program analysis techniques and handy data-visualisations. This is a sister project of unifi (https://github.com/hangal/unifi).<br>
 
-Usage:
-1) The java class files of the software need to be instrumented at first with unifi.
-2) Once the software is instrumented, the software can now be run normally and then preserve the log file produced.
-3) Host the downloaded package in a webserver and open it in a browser either firefox or chrome (Not any other, atleast for now!).
-4) You can just open the log file that was produced by the instrumented software, from the browser.
-5) The page can then navigate you to all the analysis you can make. (Well the documentation is yet to be written.)
+##Usage
+1. Unifi analyses and instruments the classes.
+2. The log of the instrumented software will now have the extra information about the variables involved in logging such as the unifi-related markers like its units and dimensions.
+3. Seaview can now help you analyse the log file. Host the war in a webserver and open it in a browser (preferably firefox or chrome).
+4. Point it to the log file that was produced by the instrumented software, from the browser.
+5. The page should then navigate you to all the analysis/visualisations you can make. (Well the documentation is yet to be compiled.)
 
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/vihari/seaview/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
+To understand how an instrumented log file looks like see this [file](https://github.com/vihari/Seaview/blob/master/test/muse.log)<br>
+Try the demo [here](http://vihari.github.io/Seaview/) with the log file above
